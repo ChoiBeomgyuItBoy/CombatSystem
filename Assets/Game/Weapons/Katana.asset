@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4f23ace626f10499494d32d1670af6, type: 3}
   m_Name: Katana
   m_EditorClassIdentifier: 
-  equippedWeaponPrefab: {fileID: 7544761661415881196, guid: 6e1c51fe3e03ad24a9da3857cb2fa657, type: 3}
+  equippedWeaponPrefab: {fileID: 1227218876564722152, guid: 6e1c51fe3e03ad24a9da3857cb2fa657, type: 3}
+  baseDamage: 20
   isLeftHanded: 0
   combo:
   - animationName: Sword Attack 1

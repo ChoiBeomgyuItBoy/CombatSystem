@@ -3,11 +3,17 @@ using UnityEngine;
 namespace CombatSystem.Combat
 {
     [CreateAssetMenu(menuName = "New Weapon")]
-    public class WeaponConfig : ScriptableObject
+    public class WeaponData : ScriptableObject
     {
-        [SerializeField] GameObject equippedWeaponPrefab;
+        [SerializeField] Weapon equippedWeaponPrefab;
+        [SerializeField] float baseDamage = 20;
         [SerializeField] bool isLeftHanded = false;
         [SerializeField] WeaponAttack[] combo;
+
+        public float GetBaseDamage()
+        {
+            return baseDamage;
+        }
 
         public WeaponAttack GetAttack(int index)
         {
@@ -19,19 +25,23 @@ namespace CombatSystem.Combat
             return combo.Length;
         }
 
-        public void Spawn(Transform rightHand, Transform leftHand)
+        public Weapon Spawn(Transform rightHand, Transform leftHand)
         {
+            Weapon weaponInstance = null;
+
             if(equippedWeaponPrefab != null)
             {
                 if(isLeftHanded)
                 {
-                    Instantiate(equippedWeaponPrefab, leftHand);
+                    weaponInstance = Instantiate(equippedWeaponPrefab, leftHand);
                 }
                 else
                 {
-                    Instantiate(equippedWeaponPrefab, rightHand);
+                    weaponInstance = Instantiate(equippedWeaponPrefab, rightHand);
                 }
             } 
+
+            return weaponInstance;
         }
     }
 }

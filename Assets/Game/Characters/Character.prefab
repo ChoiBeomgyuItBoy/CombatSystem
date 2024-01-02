@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5771482465836489871}
+  - component: {fileID: 1384929639412431959}
   - component: {fileID: 8187136884615502377}
   - component: {fileID: 2948939330408793743}
   - component: {fileID: 1428742509520650680}
+  - component: {fileID: 3142970437634222817}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -35,6 +37,32 @@ Transform:
   - {fileID: 3263866245073541978}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &1384929639412431959
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853830607492479419}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.2
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.02
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &8187136884615502377
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -90,6 +118,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790453190c9080d4182f3d76c801e433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 6
+--- !u!114 &3142970437634222817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853830607492479419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba099d0c2320e1429cc54f0ce4d0f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
 --- !u!1001 &3080792496243113137
 PrefabInstance:
   m_ObjectHideFlags: 0

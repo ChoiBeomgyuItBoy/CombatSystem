@@ -5,9 +5,10 @@ namespace CombatSystem.Combat
 {
     public class Fighter : MonoBehaviour, IAction, IPredicateEvaluator
     {
-        [SerializeField] WeaponConfig weapon;
+        [SerializeField] WeaponData weaponData;
         [SerializeField] Transform rightHand;
         [SerializeField] Transform leftHand;
+        Weapon weapon;
         Animator animator;
         int currentAttackIndex = 0;
 
@@ -18,17 +19,22 @@ namespace CombatSystem.Combat
 
         void Start()
         {
-            weapon.Spawn(rightHand, leftHand);
+            weapon = weaponData.Spawn(rightHand, leftHand);
+        }
+
+        void Hit()
+        {
+            weapon.Hit(gameObject, weaponData.GetBaseDamage());
         }
 
         WeaponAttack GetCurrentAttack()
         {
-            return weapon.GetAttack(currentAttackIndex);
+            return weaponData.GetAttack(currentAttackIndex);
         }
 
         bool CurrentAttackIsLast()
         {
-            return currentAttackIndex == weapon.GetComboLength() - 1;
+            return currentAttackIndex == weaponData.GetComboLength() - 1;
         }
 
         bool CanDoCombo()
