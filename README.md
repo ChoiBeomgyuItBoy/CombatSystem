@@ -1,2 +1,6 @@
-# CombatSystem
-3rd Person Combat System / Advanced Unity C# Development
+# Unity 3rd Person Combat System
+
+## Overview:
+  - ...
+## Play Test:
+  - ...
