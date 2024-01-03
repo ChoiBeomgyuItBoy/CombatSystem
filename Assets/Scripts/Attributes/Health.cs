@@ -12,6 +12,11 @@ namespace CombatSystem.Attributes
             currentHealth = Mathf.Max(0, currentHealth - damage);
         }
 
+        public float GetFraction()
+        {
+            return currentHealth / maxHealth;
+        }
+
         void Awake()
         {
             currentHealth = maxHealth;
