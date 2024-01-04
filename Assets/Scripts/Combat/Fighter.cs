@@ -1,5 +1,6 @@
-using RainbowAssets.Utils;
 using UnityEngine;
+using CombatSystem.Core;
+using RainbowAssets.Utils;
 
 namespace CombatSystem.Combat
 {
@@ -9,22 +10,17 @@ namespace CombatSystem.Combat
         [SerializeField] Transform rightHand;
         [SerializeField] Transform leftHand;
         Weapon weapon;
-        Animator animator;
+        Motioner motioner;
         int currentAttackIndex = 0;
 
         void Awake()
         {
-            animator = GetComponent<Animator>();
+            motioner = GetComponent<Motioner>();
         }
 
         void Start()
         {
             weapon = weaponData.Spawn(rightHand, leftHand);
-        }
-
-        void Hit()
-        {
-            weapon.Hit(gameObject, weaponData.GetBaseDamage());
         }
 
         WeaponAttack GetCurrentAttack()
@@ -35,6 +31,26 @@ namespace CombatSystem.Combat
         bool CurrentAttackIsLast()
         {
             return currentAttackIndex == weaponData.GetComboLength() - 1;
+        }
+
+        float GetCurrentAttackTime()
+        {
+            return motioner.GetNormalizedTime("Attack");
+        }
+
+        void Attack()
+        {
+            motioner.Play(GetCurrentAttack().GetAnimationName());
+        }
+
+        void CycleCombo()
+        {
+            currentAttackIndex++;
+        }
+
+        void ResetCombo()
+        {
+            currentAttackIndex = 0;
         }
 
         bool CanDoCombo()
@@ -56,43 +72,32 @@ namespace CombatSystem.Combat
             return true;
         }
 
-        float GetCurrentAttackTime()
+        // Animation Event
+        void Hit()
         {
-            var currentInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-            if(currentInfo.IsTag("Attack") && !animator.IsInTransition(0))
-            {
-                return currentInfo.normalizedTime;
-            }
-
-            return 0;
+            weapon.Hit(gameObject, weaponData.GetBaseDamage());
         }
 
         void IAction.DoAction(string actionID, string[] parameters)
         {
             if(actionID == "Attack")
             {
-                animator.CrossFade(GetCurrentAttack().GetAnimationName(), 0.1f);
+                Attack();
             }
 
             if(actionID == "Cycle Combo")
             {
-                currentAttackIndex++;
+                CycleCombo();
             }
 
             if(actionID == "Reset Combo")
             {
-                currentAttackIndex = 0;
+                ResetCombo();
             }
         }
 
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
         {
-            if(predicate == "Attack Finished")
-            {
-                return GetCurrentAttackTime() >= 1;
-            }
-
             if(predicate == "Can Do Combo")
             {
                 return CanDoCombo();

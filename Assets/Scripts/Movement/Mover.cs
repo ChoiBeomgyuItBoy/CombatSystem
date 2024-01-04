@@ -52,22 +52,14 @@ namespace CombatSystem.Movement
 
         void IAction.DoAction(string actionID, string[] parameters)
         {
-            if(actionID == "Movement Action")
+            if(actionID == "Free Look")
             {
-                if(parameters[0] == "Free Look")
+                bool parsed = float.TryParse(parameters[0], out float speed);
+
+                if(parsed)
                 {
-                    bool parsed = float.TryParse(parameters[1], out float speed);
-
-                    if(parsed)
-                    {
-                        MoveTo(GetFreeLookDirection(), speed);
-                    }
+                    MoveTo(GetFreeLookDirection(), speed);
                 }
-            }
-
-            if(actionID == "Start Locomotion")
-            {
-                animator.CrossFadeInFixedTime("Locomotion", 0.1f);
             }
         }
     }

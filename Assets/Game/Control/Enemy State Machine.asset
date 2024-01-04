@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedaed16a35737344b2389cf12928266, type: 3}
+  m_Name: Enemy State Machine
+  m_EditorClassIdentifier: 
+  entryState: {fileID: 7802796412512663667}
+  anyState: {fileID: 2284024468905788846}
+  states:
+  - {fileID: 7802796412512663667}
+  - {fileID: 2284024468905788846}
+  - {fileID: 1992343435716590519}
+  - {fileID: 8270341496464018484}
+--- !u!114 &1992343435716590519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c41c226ac830cc4badff91167841243, type: 3}
+  m_Name: ActionState
+  m_EditorClassIdentifier: 
+  uniqueID: beace96c-0576-44b0-8816-837ea6268d18
+  title: Idle State
+  position: {x: 555, y: -30}
+  transitions: []
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Locomotion
+  onTickActions: []
+  onExitActions: []
+--- !u!114 &2284024468905788846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ddedce7bbba8c408e2c6e1570cd3d5, type: 3}
+  m_Name: AnyState
+  m_EditorClassIdentifier: 
+  uniqueID: 02d469be-347e-41be-b03d-cd0c70e533fc
+  title: Any
+  position: {x: 564, y: 165.32}
+  transitions:
+  - rootStateID: 02d469be-347e-41be-b03d-cd0c70e533fc
+    trueStateID: 470fa783-e126-4481-9c59-5d125a97fe73
+    condition:
+      and:
+      - or:
+        - predicate: Damage Taken
+          parameters: []
+          negate: 0
+--- !u!114 &7802796412512663667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248a74bd55c629a458261d2d8fe3a225, type: 3}
+  m_Name: EntryState
+  m_EditorClassIdentifier: 
+  uniqueID: d0f15baa-942e-4ca1-8a82-73fc7063ff38
+  title: Entry
+  position: {x: 312, y: -22}
+  transitions:
+  - rootStateID: d0f15baa-942e-4ca1-8a82-73fc7063ff38
+    trueStateID: beace96c-0576-44b0-8816-837ea6268d18
+    condition:
+      and: []
+--- !u!114 &8270341496464018484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c41c226ac830cc4badff91167841243, type: 3}
+  m_Name: ActionState
+  m_EditorClassIdentifier: 
+  uniqueID: 470fa783-e126-4481-9c59-5d125a97fe73
+  title: Damage State
+  position: {x: 552, y: 70}
+  transitions:
+  - rootStateID: 470fa783-e126-4481-9c59-5d125a97fe73
+    trueStateID: beace96c-0576-44b0-8816-837ea6268d18
+    condition:
+      and:
+      - or:
+        - predicate: Animation Over
+          parameters:
+          - Damage
+          negate: 0
+  onEnterActions:
+  - actionID: Play Random Animation
+    parameters:
+    - Damage 1
+    - Damage 2
+    - Damage 3
+    - Damage 4
+  onTickActions: []
+  onExitActions: []

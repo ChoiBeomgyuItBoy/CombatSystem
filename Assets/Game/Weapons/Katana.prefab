@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageCenter: {fileID: 4339841551848376934}
-  damageRadius: 1
+  damageRadius: 1.3
 --- !u!1001 &3501888760738645231
 PrefabInstance:
   m_ObjectHideFlags: 0

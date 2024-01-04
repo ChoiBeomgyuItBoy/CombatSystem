@@ -17,8 +17,8 @@ MonoBehaviour:
   isLeftHanded: 0
   combo:
   - animationName: Sword Attack 1
-    endTime: 0.508
+    endTime: 0.365
   - animationName: Sword Attack 2
-    endTime: 0.639
+    endTime: 0.396
   - animationName: Sword Attack 3
-    endTime: 0.603
+    endTime: 0.578

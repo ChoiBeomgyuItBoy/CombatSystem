@@ -26,14 +26,14 @@ MonoBehaviour:
           - Attack
           negate: 0
   onEnterActions:
-  - actionID: Start Locomotion
-    parameters: []
+  - actionID: Play Animation
+    parameters:
+    - Locomotion
   - actionID: Reset Combo
     parameters: []
   onTickActions:
-  - actionID: Movement Action
+  - actionID: Free Look
     parameters:
-    - Free Look
     - 1
   onExitActions: []
 --- !u!114 &-4429556588309076187
@@ -57,8 +57,9 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: Attack Finished
-          parameters: []
+        - predicate: Animation Over
+          parameters:
+          - Attack
           negate: 0
   - rootStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
     trueStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
@@ -74,7 +75,7 @@ MonoBehaviour:
           - Attack
           negate: 0
       - or:
-        - predicate: Attack Finished
+        - predicate: Animation Over
           parameters:
           - Attack
           negate: 1
