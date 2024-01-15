@@ -45,8 +45,7 @@ namespace CombatSystem.Control
         {
             if(predicate == "Input Action")
             {
-                string actionName = parameters[0];
-                return IsPressed(actionName, false);
+                return IsPressed(parameters[0], false);
             }
 
             return null;

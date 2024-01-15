@@ -9,13 +9,13 @@ namespace CombatSystem.Combat
         [SerializeField] WeaponData weaponData;
         [SerializeField] Transform rightHand;
         [SerializeField] Transform leftHand;
+        AnimationPlayer animationPlayer;
         Weapon weapon;
-        Motioner motioner;
         int currentAttackIndex = 0;
 
         void Awake()
         {
-            motioner = GetComponent<Motioner>();
+            animationPlayer = GetComponent<AnimationPlayer>();
         }
 
         void Start()
@@ -35,12 +35,12 @@ namespace CombatSystem.Combat
 
         float GetCurrentAttackTime()
         {
-            return motioner.GetNormalizedTime("Attack");
+            return animationPlayer.GetAnimationTime("Attack");
         }
 
         void Attack()
         {
-            motioner.Play(GetCurrentAttack().GetAnimationName());
+            animationPlayer.PlaySmooth(GetCurrentAttack().GetAnimationName());
         }
 
         void CycleCombo()

@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2948939330408793743}
   - component: {fileID: 1428742509520650680}
   - component: {fileID: 3142970437634222817}
-  - component: {fileID: 8414249148445770212}
-  - component: {fileID: 65848879148567355}
+  - component: {fileID: 8169653257090961398}
+  - component: {fileID: 2731752264782333794}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -138,7 +138,7 @@ MonoBehaviour:
   onDamageTaken:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8414249148445770212
+--- !u!114 &8169653257090961398
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 0}
---- !u!114 &65848879148567355
+--- !u!114 &2731752264782333794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

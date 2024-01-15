@@ -8,7 +8,7 @@ namespace CombatSystem.Attributes
     {
         [SerializeField] float maxHealth = 100;
         [SerializeField] float currentHealth = 0;
-        [SerializeField] CallbackEvent onDamageTaken;
+        [SerializeField] LazyEvent onDamageTaken;
 
         public void TakeDamage(float damage)
         {
@@ -38,7 +38,7 @@ namespace CombatSystem.Attributes
         {
             if(predicate == "Damage Taken")
             {
-                return onDamageTaken.Invoked();
+                return onDamageTaken.WasInvoked();
             }
 
             return null;

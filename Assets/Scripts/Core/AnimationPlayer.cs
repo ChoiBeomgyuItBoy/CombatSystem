@@ -3,21 +3,16 @@ using UnityEngine;
 
 namespace CombatSystem.Core
 {
-    public class Motioner : MonoBehaviour, IAction, IPredicateEvaluator
+    public class AnimationPlayer : MonoBehaviour, IAction, IPredicateEvaluator
     {
         [SerializeField] float crossFadeTime = 0.1f;
         Animator animator;
 
-        public void Play(string animationName)
-        {
-            animator.CrossFadeInFixedTime(animationName, crossFadeTime);
-        }
-
-        public float GetNormalizedTime(string animationTag)
+        public float GetAnimationTime(string tag)
         {
             var currentInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-            if(currentInfo.IsTag(animationTag) && !animator.IsInTransition(0))
+            if(currentInfo.IsTag(tag) && !animator.IsInTransition(0))
             {
                 return currentInfo.normalizedTime;
             }
@@ -25,10 +20,9 @@ namespace CombatSystem.Core
             return 0;
         }
 
-        void PlayRandom(string[] animationCandidates)
+        public void PlaySmooth(string name)
         {
-            int randomIndex = Random.Range(0, animationCandidates.Length);
-            Play(animationCandidates[randomIndex]);
+            animator.CrossFadeInFixedTime(name, crossFadeTime);
         }
 
         void Awake()
@@ -40,12 +34,13 @@ namespace CombatSystem.Core
         {
             if(actionID == "Play Animation")
             {
-                Play(parameters[0]);
+                PlaySmooth(parameters[0]);
             }
 
             if(actionID == "Play Random Animation")
             {
-                PlayRandom(parameters);
+                int randomIndex = Random.Range(0, parameters.Length);
+                PlaySmooth(parameters[randomIndex]);
             }
         }
 
@@ -53,7 +48,7 @@ namespace CombatSystem.Core
         {
             if(predicate == "Animation Over")
             {
-                return GetNormalizedTime(parameters[0]) >= 1;
+                return GetAnimationTime(parameters[0]) >= 1;
             }
 
             return null;
