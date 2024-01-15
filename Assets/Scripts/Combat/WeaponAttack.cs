@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 namespace CombatSystem.Combat
@@ -8,6 +7,7 @@ namespace CombatSystem.Combat
     {
         [SerializeField] string animationName;
         [SerializeField] [Range(0, 0.99f)] float endTime;
+        [SerializeField] [Range(0, 1)] float bonusPercentage;
 
         public string GetAnimationName()
         {
@@ -17,6 +17,11 @@ namespace CombatSystem.Combat
         public float GetEndTime()
         {
             return endTime;
+        }
+
+        public float GetBonusPercentage()
+        {
+            return bonusPercentage;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace CombatSystem.Combat
         [SerializeField] Transform damageCenter;
         [SerializeField] float damageRadius = 0.5f;
 
-        public void Hit(GameObject user, float damage)
+        public void Hit(GameObject user, WeaponData weaponData, WeaponAttack attack)
         {
             var hits = Physics.SphereCastAll(damageCenter.position, damageRadius, Vector3.up, 0);
 
@@ -18,9 +18,17 @@ namespace CombatSystem.Combat
 
                 if(health != null && health != user.GetComponent<Health>())
                 {
-                    health.TakeDamage(damage);
+                    health.TakeDamage(GetTotalDamage(weaponData, attack));
                 }
             }
+        }
+
+        float GetTotalDamage(WeaponData weaponData, WeaponAttack attack)
+        {
+            float baseDamage = weaponData.GetBaseDamage();
+            float bonusPercentage = attack.GetBonusPercentage();
+            float bonus = baseDamage * bonusPercentage;
+            return baseDamage + bonus;
         }
 
         void OnDrawGizmosSelected()

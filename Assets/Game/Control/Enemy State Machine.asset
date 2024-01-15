@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 470fa783-e126-4481-9c59-5d125a97fe73
   title: Damage State
-  position: {x: 552, y: 70}
+  position: {x: 563, y: 77}
   transitions:
   - rootStateID: 470fa783-e126-4481-9c59-5d125a97fe73
     trueStateID: beace96c-0576-44b0-8816-837ea6268d18

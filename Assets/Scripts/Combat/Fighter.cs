@@ -75,7 +75,7 @@ namespace CombatSystem.Combat
         // Animation Event
         void Hit()
         {
-            weapon.Hit(gameObject, weaponData.GetBaseDamage());
+            weapon.Hit(gameObject, weaponData, GetCurrentAttack());
         }
 
         void IAction.DoAction(string actionID, string[] parameters)
