@@ -28,7 +28,7 @@ namespace CombatSystem.Combat
             float baseDamage = weaponData.GetBaseDamage();
             float bonusPercentage = attack.GetBonusPercentage();
             float bonus = baseDamage * bonusPercentage;
-            return baseDamage + bonus;
+            return Mathf.Round(baseDamage + bonus);
         }
 
         void OnDrawGizmosSelected()

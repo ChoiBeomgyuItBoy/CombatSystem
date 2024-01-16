@@ -18,7 +18,10 @@ MonoBehaviour:
   combo:
   - animationName: Sword Attack 1
     endTime: 0.365
+    bonusPercentage: 0
   - animationName: Sword Attack 2
-    endTime: 0.396
-  - animationName: Sword Attack 3
     endTime: 0.578
+    bonusPercentage: 0.192
+  - animationName: Sword Attack 3
+    endTime: 0.49
+    bonusPercentage: 0.824

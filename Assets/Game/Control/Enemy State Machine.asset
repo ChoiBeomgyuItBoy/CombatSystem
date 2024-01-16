@@ -33,7 +33,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: beace96c-0576-44b0-8816-837ea6268d18
   title: Idle State
-  position: {x: 555, y: -30}
+  position: {x: 327, y: 83}
   transitions: []
   onEnterActions:
   - actionID: Play Animation
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 02d469be-347e-41be-b03d-cd0c70e533fc
   title: Any
-  position: {x: 564, y: 165.32}
+  position: {x: 341, y: -91.719986}
   transitions:
   - rootStateID: 02d469be-347e-41be-b03d-cd0c70e533fc
     trueStateID: 470fa783-e126-4481-9c59-5d125a97fe73
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: d0f15baa-942e-4ca1-8a82-73fc7063ff38
   title: Entry
-  position: {x: 312, y: -22}
+  position: {x: 349, y: 171.52002}
   transitions:
   - rootStateID: d0f15baa-942e-4ca1-8a82-73fc7063ff38
     trueStateID: beace96c-0576-44b0-8816-837ea6268d18
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 470fa783-e126-4481-9c59-5d125a97fe73
   title: Damage State
-  position: {x: 563, y: 77}
+  position: {x: 327, y: -15}
   transitions:
   - rootStateID: 470fa783-e126-4481-9c59-5d125a97fe73
     trueStateID: beace96c-0576-44b0-8816-837ea6268d18

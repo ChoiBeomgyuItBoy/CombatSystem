@@ -8,14 +8,14 @@ namespace CombatSystem.Attributes
     {
         [SerializeField] float maxHealth = 100;
         [SerializeField] float currentHealth = 0;
-        [SerializeField] LazyEvent onDamageTaken;
+        [SerializeField] LazyEvent<float> onDamageTaken;
 
         public void TakeDamage(float damage)
         {
             if(!IsDead())
             {
                 currentHealth = Mathf.Max(0, currentHealth - damage);
-                StartCoroutine(onDamageTaken?.Invoke());        
+                StartCoroutine(onDamageTaken?.Invoke(damage));        
             }
         }
 

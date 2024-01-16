@@ -37,6 +37,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3263866245073541978}
+  - {fileID: 3587993897171425059}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1384929639412431959
@@ -137,7 +138,19 @@ MonoBehaviour:
   currentHealth: 0
   onDamageTaken:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4440651888873873427}
+        m_TargetAssemblyTypeName: CombatSystem.UI.DamageTextSpawner, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8169653257090961398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,3 +240,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d3ffbb53d382790469e6c8f926efe5f6, type: 3}
   m_PrefabInstance: {fileID: 3080792496243113137}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3575148818296608668
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5771482465836489871}
+    m_Modifications:
+    - target: {fileID: 24320750606745791, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24320750606745791, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24320750606745791, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24320750606745791, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 24320750606745791, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24320750606745791, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24320750606745791, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24320750606745791, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24320750606745791, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24320750606745791, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1406077580142034651, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+      propertyPath: m_Name
+      value: Damage Text Spawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+--- !u!4 &3587993897171425059 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 24320750606745791, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+  m_PrefabInstance: {fileID: 3575148818296608668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4440651888873873427 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 881904760423495567, guid: 72923feb8efb22b4cb936110d4edfaea, type: 3}
+  m_PrefabInstance: {fileID: 3575148818296608668}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5415edb4e4de93141b869887b6c7f756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
