@@ -34,7 +34,7 @@ namespace CombatSystem.Movement
         void MoveTo(Vector3 destination, float speedFraction)
         {
             agent.destination = transform.position + destination;
-            agent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
+           agent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
         }
 
         Vector3 GetFreeLookDirection()
@@ -50,16 +50,30 @@ namespace CombatSystem.Movement
             return right + forward;
         }
 
+        Vector3 GetTargetingDirection()
+        {
+            Vector3 direction = new();
+            Vector2 inputValue = inputReader.GetInputAction("Locomotion").ReadValue<Vector2>();
+            Vector3 right = transform.right * inputValue.x;
+            Vector3 forward = transform.forward * inputValue.y;
+
+            direction += right;
+            direction += forward;
+
+            return direction;
+        }
+
         void IAction.DoAction(string actionID, string[] parameters)
         {
-            if(actionID == "Free Look")
+            switch(actionID)
             {
-                bool parsed = float.TryParse(parameters[0], out float speed);
+                case "Free Look Movement":
+                    MoveTo(GetFreeLookDirection(), float.Parse(parameters[0]));  
+                    break;
 
-                if(parsed)
-                {
-                    MoveTo(GetFreeLookDirection(), speed);
-                }
+                case "Targeting Movement":
+                    MoveTo(GetTargetingDirection(), float.Parse(parameters[0]));
+                    break;
             }
         }
     }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Katana
   m_EditorClassIdentifier: 
   equippedWeaponPrefab: {fileID: 1227218876564722152, guid: 6e1c51fe3e03ad24a9da3857cb2fa657, type: 3}
-  baseDamage: 20
+  baseDamage: 50
   isLeftHanded: 0
   combo:
   - animationName: Sword Attack 1
@@ -24,4 +24,4 @@ MonoBehaviour:
     bonusPercentage: 0.192
   - animationName: Sword Attack 3
     endTime: 0.49
-    bonusPercentage: 0.824
+    bonusPercentage: 1

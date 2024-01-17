@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
   title: Free Look State
-  position: {x: 268, y: 88}
+  position: {x: 290, y: 92}
   transitions:
   - rootStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
     trueStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
@@ -25,17 +25,70 @@ MonoBehaviour:
           parameters:
           - Attack
           negate: 0
+  - rootStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
+    trueStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
+    condition:
+      and:
+      - or:
+        - predicate: Input Action
+          parameters:
+          - This Frame
+          - Target
+          negate: 0
+      - or:
+        - predicate: Select Target
+          parameters: []
+          negate: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
-    - Locomotion
+    - Free Look
   - actionID: Reset Combo
     parameters: []
   onTickActions:
-  - actionID: Free Look
+  - actionID: Movement Action
     parameters:
     - 1
+    - Free Look
   onExitActions: []
+--- !u!114 &-4560724782483339106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c41c226ac830cc4badff91167841243, type: 3}
+  m_Name: ActionState
+  m_EditorClassIdentifier: 
+  uniqueID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
+  title: Targeting State
+  position: {x: 298, y: -27}
+  transitions:
+  - rootStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
+    trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
+    condition:
+      and:
+      - or:
+        - predicate: Input Action
+          parameters:
+          - This Frame
+          - Target
+          negate: 0
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Targeting
+  onTickActions:
+  - actionID: Movement Action
+    parameters:
+    - 1
+    - Targeting
+  onExitActions:
+  - actionID: Cancel Target
+    parameters: []
 --- !u!114 &-4429556588309076187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 7b1841da-627c-4a31-80da-e78d3b1b8091
   title: Attack State
-  position: {x: 539, y: 83}
+  position: {x: 572, y: 91}
   transitions:
   - rootStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
@@ -121,6 +174,7 @@ MonoBehaviour:
   - {fileID: -1723402474268508029}
   - {fileID: -4766437016663962902}
   - {fileID: -4429556588309076187}
+  - {fileID: -4560724782483339106}
 --- !u!114 &7717512463470998862
 MonoBehaviour:
   m_ObjectHideFlags: 0

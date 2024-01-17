@@ -1,6 +1,7 @@
 using UnityEngine;
 using CombatSystem.Core;
 using RainbowAssets.Utils;
+using System.Collections;
 
 namespace CombatSystem.Combat
 {
@@ -80,29 +81,30 @@ namespace CombatSystem.Combat
 
         void IAction.DoAction(string actionID, string[] parameters)
         {
-            if(actionID == "Attack")
+            switch(actionID)
             {
-                Attack();
-            }
+                case "Attack":
+                    Attack();
+                    break;
+                
+                case "Cycle Combo":
+                    CycleCombo();
+                    break;
 
-            if(actionID == "Cycle Combo")
-            {
-                CycleCombo();
-            }
-
-            if(actionID == "Reset Combo")
-            {
-                ResetCombo();
+                case "Reset Combo":
+                    ResetCombo();
+                    break;
             }
         }
 
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
         {
-            if(predicate == "Can Do Combo")
+            switch(predicate)
             {
-                return CanDoCombo();
+                case "Can Do Combo":
+                    return CanDoCombo();
             }
-
+            
             return null;
         }
     }

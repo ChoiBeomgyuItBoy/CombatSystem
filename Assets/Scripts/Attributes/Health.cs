@@ -7,8 +7,8 @@ namespace CombatSystem.Attributes
     public class Health : MonoBehaviour, IPredicateEvaluator
     {
         [SerializeField] float maxHealth = 100;
-        [SerializeField] float currentHealth = 0;
         [SerializeField] LazyEvent<float> onDamageTaken;
+        float currentHealth = 0;
 
         public void TakeDamage(float damage)
         {
@@ -36,9 +36,10 @@ namespace CombatSystem.Attributes
 
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
         {
-            if(predicate == "Damage Taken")
+            switch(predicate)
             {
-                return onDamageTaken.WasInvoked();
+                case "Damage Taken":
+                    return onDamageTaken.WasInvoked();
             }
 
             return null;

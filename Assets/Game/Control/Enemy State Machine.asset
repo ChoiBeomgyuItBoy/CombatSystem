@@ -38,7 +38,7 @@ MonoBehaviour:
   onEnterActions:
   - actionID: Play Animation
     parameters:
-    - Locomotion
+    - Free Look
   onTickActions: []
   onExitActions: []
 --- !u!114 &2284024468905788846

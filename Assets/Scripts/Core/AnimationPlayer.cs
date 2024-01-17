@@ -32,23 +32,25 @@ namespace CombatSystem.Core
 
         void IAction.DoAction(string actionID, string[] parameters)
         {
-            if(actionID == "Play Animation")
+            switch(actionID)
             {
-                PlaySmooth(parameters[0]);
-            }
+                case "Play Animation":
+                    PlaySmooth(parameters[0]);
+                    break;
 
-            if(actionID == "Play Random Animation")
-            {
-                int randomIndex = Random.Range(0, parameters.Length);
-                PlaySmooth(parameters[randomIndex]);
+                case "Play Random Animation":
+                    int randomIndex = Random.Range(0, parameters.Length);
+                    PlaySmooth(parameters[randomIndex]);
+                    break;
             }
         }
 
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
         {
-            if(predicate == "Animation Over")
+            switch(predicate)
             {
-                return GetAnimationTime(parameters[0]) >= 1;
+                case "Animation Over":
+                    return GetAnimationTime(parameters[0]) >= 1;
             }
 
             return null;

@@ -43,9 +43,13 @@ namespace CombatSystem.Control
 
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
         {
-            if(predicate == "Input Action")
+            switch(predicate)
             {
-                return IsPressed(parameters[0], false);
+                case "Input Action":
+                    return IsPressed(parameters[0], false);
+                
+                case "Input Action This Frame":
+                    return IsPressed(parameters[0], true);
             }
 
             return null;
