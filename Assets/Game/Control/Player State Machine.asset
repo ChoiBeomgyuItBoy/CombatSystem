@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
   title: Free Look State
-  position: {x: 290, y: 97}
+  position: {x: 284, y: 87}
   transitions:
   - rootStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
     trueStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
@@ -44,6 +44,8 @@ MonoBehaviour:
     - Free Look
   - actionID: Reset Combo
     parameters: []
+  - actionID: Cancel Target
+    parameters: []
   onTickActions:
   - actionID: Free Look Movement
     parameters:
@@ -63,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
   title: Target State
-  position: {x: 298, y: -19}
+  position: {x: 445, y: -36.559998}
   transitions:
   - rootStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
@@ -74,6 +76,10 @@ MonoBehaviour:
           parameters:
           - Target
           negate: 0
+        - predicate: Target In Range
+          parameters:
+          - Target
+          negate: 1
   onEnterActions:
   - actionID: Play Animation
     parameters:
@@ -81,12 +87,10 @@ MonoBehaviour:
   onTickActions:
   - actionID: Free Look Movement
     parameters:
-    - 1
+    - .6
   - actionID: Face Target
     parameters: []
-  onExitActions:
-  - actionID: Cancel Target
-    parameters: []
+  onExitActions: []
 --- !u!114 &-4429556588309076187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,14 +105,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 7b1841da-627c-4a31-80da-e78d3b1b8091
   title: Attack State
-  position: {x: 596, y: 89}
+  position: {x: 618, y: 84}
   transitions:
   - rootStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
     condition:
       and:
       - or:
-        - predicate: Animation Over
+        - predicate: Current Attack Finished
+          parameters:
+          - Attack
+          negate: 0
+      - or:
+        - predicate: Input Action
+          parameters:
+          - Attack
+          negate: 1
+        - predicate: Current Attack Is Last
           parameters:
           - Attack
           negate: 0
@@ -117,19 +130,19 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: Can Do Combo
+        - predicate: Current Attack Is Last
           parameters: []
-          negate: 0
+          negate: 1
       - or:
         - predicate: Input Action
           parameters:
           - Attack
           negate: 0
       - or:
-        - predicate: Animation Over
+        - predicate: Current Attack Finished
           parameters:
           - Attack
-          negate: 1
+          negate: 0
   onEnterActions:
   - actionID: Attack
     parameters: []

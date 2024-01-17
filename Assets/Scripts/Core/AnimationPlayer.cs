@@ -1,5 +1,5 @@
-using RainbowAssets.Utils;
 using UnityEngine;
+using RainbowAssets.Utils;
 
 namespace CombatSystem.Core
 {
@@ -23,6 +23,11 @@ namespace CombatSystem.Core
         public void PlaySmooth(string name)
         {
             animator.CrossFadeInFixedTime(name, crossFadeTime);
+        }
+
+        public void UpdateParameter(string parameter, float value)
+        {
+            animator.SetFloat(parameter, value, crossFadeTime, Time.deltaTime);
         }
 
         void Awake()

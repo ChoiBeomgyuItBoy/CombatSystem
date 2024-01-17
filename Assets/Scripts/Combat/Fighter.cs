@@ -11,8 +11,8 @@ namespace CombatSystem.Combat
         [SerializeField] WeaponData weaponData;
         [SerializeField] Transform rightHand;
         [SerializeField] Transform leftHand;
-        [SerializeField] float targetRange = 20;
         [SerializeField] CinemachineTargetGroup targetGroup;
+        [SerializeField] float targetRadius = 20;
         AnimationPlayer animationPlayer;
         Health target;
         Weapon weapon;
@@ -80,7 +80,7 @@ namespace CombatSystem.Combat
 
         bool SelectTarget()
         {
-            var hits = Physics.SphereCastAll(transform.position, targetRange, Vector3.up, 0);
+            var hits = Physics.SphereCastAll(transform.position, targetRadius, Vector3.up, 0);
 
             foreach(var hit in hits)
             {
@@ -134,7 +134,7 @@ namespace CombatSystem.Combat
             if(target != null)
             {
                 float targetDistance = (transform.position - target.transform.position).magnitude;
-                return targetDistance <= targetRange;
+                return targetDistance <= targetRadius;
             }
 
             return false;
@@ -143,7 +143,7 @@ namespace CombatSystem.Combat
         void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, targetRange);
+            Gizmos.DrawWireSphere(transform.position, targetRadius);
         }
 
         void IAction.DoAction(string actionID, string[] parameters)
@@ -161,6 +161,7 @@ namespace CombatSystem.Combat
                 case "Reset Combo":
                     ResetCombo();
                     break;
+                    
                 case "Face Target":
                     FaceTarget();
                     break;

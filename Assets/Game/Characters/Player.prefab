@@ -177,3 +177,5 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: a762cdabb2e0b3c4a8bbbf5ce16bddb2, type: 2}
   rightHand: {fileID: 3075955041797519054}
   leftHand: {fileID: 6563671787854371292}
+  targetGroup: {fileID: 0}
+  targetRadius: 15
