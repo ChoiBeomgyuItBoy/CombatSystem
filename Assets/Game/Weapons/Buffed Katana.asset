@@ -23,8 +23,8 @@ MonoBehaviour:
     endTime: 0.45
     bonusPercentage: 0.1
   - animationName: Sword Attack 6
-    endTime: 0.7
+    endTime: 0.8
     bonusPercentage: 0.2
   - animationName: Sword Attack 7
     endTime: 0.99
-    bonusPercentage: 1
+    bonusPercentage: 0.5

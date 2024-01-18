@@ -3,6 +3,7 @@ using Cinemachine;
 using RainbowAssets.Utils;
 using CombatSystem.Core;
 using CombatSystem.Attributes;
+using CombatSystem.Movement;
 
 namespace CombatSystem.Combat
 {
@@ -14,15 +15,18 @@ namespace CombatSystem.Combat
         [SerializeField] CinemachineTargetGroup targetGroup;
         [SerializeField] float targetRadius = 20;
         AnimationPlayer animationPlayer;
+        Mover mover;
         Health target;
         Weapon weapon;
         int currentAttackIndex = 0;
+        bool attackForceApplied = false;
         const float targetGroupRadius = 2;
         const float targetGroupWeight = 1;
 
         void Awake()
         {
             animationPlayer = GetComponent<AnimationPlayer>();
+            mover = GetComponent<Mover>();
         }
 
         void Start()
@@ -47,9 +51,9 @@ namespace CombatSystem.Combat
 
         bool CurrentAttackFinished()
         {
-            float successTime = GetCurrentAttack().GetEndTime();
+            float endTime = GetCurrentAttack().GetEndTime();
 
-            if(GetCurrentAttackTime() < successTime)
+            if(GetCurrentAttackTime() < endTime)
             {
                 return false;
             }
@@ -59,7 +63,29 @@ namespace CombatSystem.Combat
 
         void Attack()
         {
+            attackForceApplied = false;
             animationPlayer.PlaySmooth(GetCurrentAttack().GetAnimationName());
+        }
+
+        void ApplyAttackForce()
+        {
+            mover.Move(Vector3.zero);
+
+            float forceTime = GetCurrentAttack().GetForceTime();
+
+            if(GetCurrentAttackTime() < forceTime)
+            {
+                return;
+            }
+
+            if(attackForceApplied)
+            {
+                return;
+            }
+
+            Vector3 forceMotion = transform.forward * GetCurrentAttack().GetAttackForce();
+            mover.AddForce(forceMotion);
+            attackForceApplied = true;
         }
 
         void CycleCombo()
@@ -152,6 +178,10 @@ namespace CombatSystem.Combat
             {
                 case "Attack":
                     Attack();
+                    break;
+
+                case "Apply Attack Force":
+                    ApplyAttackForce();
                     break;
                 
                 case "Cycle Combo":
