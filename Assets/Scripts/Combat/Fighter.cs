@@ -69,8 +69,6 @@ namespace CombatSystem.Combat
 
         void ApplyAttackForce()
         {
-            mover.Move(Vector3.zero);
-
             float forceTime = GetCurrentAttack().GetForceTime();
 
             if(GetCurrentAttackTime() < forceTime)

@@ -136,6 +136,10 @@ namespace CombatSystem.Movement
                 case "Targeting Movement":
                     MoveTo(GetTargetingDirection(), float.Parse(parameters[0]));
                     break;
+
+                case "Move No Motion":
+                    Move(Vector3.zero);
+                    break;
             }
         }
     }

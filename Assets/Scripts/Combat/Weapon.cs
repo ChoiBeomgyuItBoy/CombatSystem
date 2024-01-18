@@ -1,4 +1,5 @@
 using CombatSystem.Attributes;
+using CombatSystem.Movement;
 using UnityEngine;
 
 namespace CombatSystem.Combat
@@ -18,17 +19,32 @@ namespace CombatSystem.Combat
 
                 if(health != null && health != user.GetComponent<Health>())
                 {
-                    health.TakeDamage(GetTotalDamage(weaponData, attack));
+                    health.TakeDamage(CalculateDamage(weaponData, attack));
+                }
+
+                Mover mover = hit.transform.GetComponent<Mover>();
+
+                if(mover != null && mover != user.GetComponent<Mover>())
+                {
+                    mover.AddForce(CalculateKnockback(user, health.gameObject, attack));
                 }
             }
         }
 
-        float GetTotalDamage(WeaponData weaponData, WeaponAttack attack)
+        float CalculateDamage(WeaponData weaponData, WeaponAttack attack)
         {
             float baseDamage = weaponData.GetBaseDamage();
             float bonusPercentage = attack.GetBonusPercentage();
             float bonus = baseDamage * bonusPercentage;
             return Mathf.Round(baseDamage + bonus);
+        }
+
+        Vector3 CalculateKnockback(GameObject user, GameObject target, WeaponAttack attack)
+        {
+            Vector3 userPosition = user.transform.position;
+            Vector3 targetPosition = target.transform.position;
+            Vector3 direction = (targetPosition - userPosition).normalized;
+            return direction * attack.GetKnockback();
         }
 
         void OnDrawGizmosSelected()
