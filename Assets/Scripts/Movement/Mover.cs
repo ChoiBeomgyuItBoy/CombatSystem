@@ -19,19 +19,6 @@ namespace CombatSystem.Movement
         Vector3 damp;
         float verticalVelocity = 0;
 
-        public void MoveTo(Vector3 destination, float speedFraction)
-        {
-            agent.enabled = true;
-            agent.destination = transform.position + destination;
-            agent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
-        }
-
-        public void Move(Vector3 motion)
-        {
-            agent.enabled = false;
-            controller.Move((motion + GetTotalForce()) * Time.deltaTime);
-        }
-
         public void AddForce(Vector3 force)
         {
             impact += force;
@@ -50,6 +37,19 @@ namespace CombatSystem.Movement
         {
             UpdateParameters();
             CalculateForces();
+        }
+
+        void MoveTo(Vector3 destination, float speedFraction)
+        {
+            agent.enabled = true;
+            agent.destination = transform.position + destination;
+            agent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
+        }
+
+        void Move(Vector3 motion)
+        {
+            agent.enabled = false;
+            controller.Move((motion + GetTotalForce()) * Time.deltaTime);
         }
 
         void UpdateParameters()
@@ -139,6 +139,10 @@ namespace CombatSystem.Movement
 
                 case "Move No Motion":
                     Move(Vector3.zero);
+                    break;
+
+                case "Move No Destination":
+                    MoveTo(Vector3.zero, 0);
                     break;
             }
         }

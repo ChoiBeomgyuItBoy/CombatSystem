@@ -104,7 +104,22 @@ namespace CombatSystem.Combat
 
         bool SelectTarget()
         {
+            Health closestTarget = GetClosestTarget();
+
+            if(closestTarget != null)
+            {
+                SetTarget(closestTarget);
+                return true;
+            }
+
+            return false;
+        }
+
+        Health GetClosestTarget()
+        {
             var hits = Physics.SphereCastAll(transform.position, targetRadius, Vector3.up, 0);
+            float closestTargetDistance = Mathf.Infinity;
+            Health closestTarget = null;
 
             foreach(var hit in hits)
             {
@@ -112,12 +127,27 @@ namespace CombatSystem.Combat
 
                 if(target != null && target != GetComponent<Health>())
                 {
-                    SetTarget(target);
-                    return true;
+                    Renderer renderer = target.GetComponentInChildren<Renderer>();
+
+                    if(!renderer.isVisible)
+                    {
+                        continue;
+                    }
+
+                    Vector2 targetPosition = Camera.main.WorldToViewportPoint(target.transform.position);
+                    Vector2 centerToTarget = targetPosition - new Vector2(0.5f, 0.5f);
+                    
+                    if(centerToTarget.sqrMagnitude > closestTargetDistance)
+                    {
+                        continue;
+                    }
+
+                    closestTargetDistance = centerToTarget.sqrMagnitude;
+                    closestTarget = target;
                 }
             }
 
-            return false;
+            return closestTarget;
         }
 
         void SetTarget(Health target)

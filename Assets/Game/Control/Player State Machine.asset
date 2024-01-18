@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
   title: Target State
-  position: {x: 460, y: -39.839996}
+  position: {x: 482, y: -56}
   transitions:
   - rootStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
@@ -98,7 +98,7 @@ MonoBehaviour:
   onTickActions:
   - actionID: Targeting Movement
     parameters:
-    - .6
+    - .7
   - actionID: Face Target
     parameters: []
   onExitActions: []
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 7b1841da-627c-4a31-80da-e78d3b1b8091
   title: Attack State
-  position: {x: 641, y: 83}
+  position: {x: 654, y: 85}
   transitions:
   - rootStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
@@ -187,6 +187,10 @@ MonoBehaviour:
     parameters: []
   onTickActions:
   - actionID: Face Target
+    parameters: []
+  - actionID: Apply Attack Force
+    parameters: []
+  - actionID: Move No Motion
     parameters: []
   onExitActions:
   - actionID: Cycle Combo

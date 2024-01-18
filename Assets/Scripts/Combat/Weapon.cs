@@ -26,7 +26,7 @@ namespace CombatSystem.Combat
 
                 if(mover != null && mover != user.GetComponent<Mover>())
                 {
-                    mover.AddForce(CalculateKnockback(user, health.gameObject, attack));
+                    mover.AddForce(CalculateKnockback(user, mover.gameObject, attack));
                 }
             }
         }

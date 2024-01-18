@@ -39,6 +39,8 @@ MonoBehaviour:
   - actionID: Play Animation
     parameters:
     - Free Look
+  - actionID: Move No Destination
+    parameters: []
   onTickActions: []
   onExitActions: []
 --- !u!114 &2284024468905788846
@@ -117,5 +119,7 @@ MonoBehaviour:
     - Damage 2
     - Damage 3
     - Damage 4
-  onTickActions: []
+  onTickActions:
+  - actionID: Move No Motion
+    parameters: []
   onExitActions: []
