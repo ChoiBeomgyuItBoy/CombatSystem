@@ -6,15 +6,20 @@ namespace CombatSystem.Combat
     public class WeaponAttack 
     {
         [SerializeField] string animationName;
-        [SerializeField] [Range(0, 100)] float attackForce;
+        [SerializeField] Vector2 knockback;
+        [SerializeField] float attackForce;
         [SerializeField] [Range(0, 0.99f)] float forceTime;
-        [SerializeField] [Range(0, 100)] float knockback;
         [SerializeField] [Range(0, 0.99f)] float endTime;
         [SerializeField] [Range(0, 1)] float bonusPercentage;
 
         public string GetAnimationName()
         {
             return animationName;
+        }
+
+        public Vector2 GetKnockback()
+        {
+            return knockback;
         }
 
         public float GetAttackForce()
@@ -25,11 +30,6 @@ namespace CombatSystem.Combat
         public float GetForceTime()
         {
             return forceTime;
-        }
-
-        public float GetKnockback()
-        {
-            return knockback;
         }
 
         public float GetEndTime()

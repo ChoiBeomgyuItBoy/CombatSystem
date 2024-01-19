@@ -17,26 +17,26 @@ MonoBehaviour:
   isLeftHanded: 0
   combo:
   - animationName: Sword Attack 4
+    knockback: {x: 2, y: 0}
     attackForce: 2
     forceTime: 0.193
-    knockback: 2
     endTime: 0.45
     bonusPercentage: 0
   - animationName: Sword Attack 5
-    attackForce: 2
+    knockback: {x: 2, y: 0}
+    attackForce: 3
     forceTime: 0.363
-    knockback: 2
     endTime: 0.45
     bonusPercentage: 0.1
   - animationName: Sword Attack 6
+    knockback: {x: 2, y: 0}
     attackForce: 2
     forceTime: 0.19
-    knockback: 2
     endTime: 0.8
     bonusPercentage: 0.2
   - animationName: Sword Attack 7
+    knockback: {x: 10, y: 5}
     attackForce: 5
     forceTime: 0.683
-    knockback: 7
     endTime: 0.99
     bonusPercentage: 0.5

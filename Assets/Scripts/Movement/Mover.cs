@@ -6,7 +6,7 @@ using RainbowAssets.Utils;
 
 namespace CombatSystem.Movement
 {
-    public class Mover : MonoBehaviour, IAction
+    public class Mover : MonoBehaviour, IAction, IPredicateEvaluator
     {
         [SerializeField] float maxSpeed = 6;
         [SerializeField] float forceDrag = 0.3f;
@@ -14,7 +14,6 @@ namespace CombatSystem.Movement
         CharacterController controller;
         AnimationPlayer animationPlayer;
         InputReader inputReader;
-        Transform mainCamera;
         Vector3 impact;
         Vector3 damp;
         float verticalVelocity = 0;
@@ -30,7 +29,6 @@ namespace CombatSystem.Movement
             controller = GetComponent<CharacterController>();
             animationPlayer = GetComponent<AnimationPlayer>();
             inputReader = GetComponent<InputReader>();
-            mainCamera = Camera.main.transform;
         }
 
         void Update()
@@ -91,6 +89,8 @@ namespace CombatSystem.Movement
         Vector3 GetFreeLookDirection()
         {
             Vector2 inputValue = GetInputValue();
+            
+            Transform mainCamera = Camera.main.transform;
 
             Vector3 right = (inputValue.x * mainCamera.right).normalized;
             right.y = 0;
@@ -145,6 +145,21 @@ namespace CombatSystem.Movement
                     MoveTo(Vector3.zero, 0);
                     break;
             }
+        }
+
+        bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
+        {
+            switch(predicate)
+            {
+                case "Is Grounded":
+                    return controller.isGrounded;
+
+                case "Has Vertical Force":
+                    float threshold = float.Parse(parameters[0]);
+                    return GetTotalForce().y >= threshold;
+            }
+            
+            return null;
         }
     }
 }

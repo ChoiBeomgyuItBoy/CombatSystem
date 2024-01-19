@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8471345808718486302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c41c226ac830cc4badff91167841243, type: 3}
+  m_Name: ActionState
+  m_EditorClassIdentifier: 
+  uniqueID: 8c2701a8-b226-4191-be36-6d4fab30db25
+  title: Knockdown Entry
+  position: {x: 649, y: -160}
+  transitions:
+  - rootStateID: 8c2701a8-b226-4191-be36-6d4fab30db25
+    trueStateID: 9a00e32f-f150-45ee-8349-3bd13573742c
+    condition:
+      and:
+      - or:
+        - predicate: Animation Over
+          parameters:
+          - Knockdown
+          negate: 0
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Knockdown Entry
+  onTickActions:
+  - actionID: Move No Motion
+    parameters: []
+  onExitActions: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19,6 +52,10 @@ MonoBehaviour:
   - {fileID: 2284024468905788846}
   - {fileID: 1992343435716590519}
   - {fileID: 8270341496464018484}
+  - {fileID: -8471345808718486302}
+  - {fileID: 8544964901739145447}
+  - {fileID: 7304710326786210056}
+  - {fileID: 3753317206798203148}
 --- !u!114 &1992343435716590519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,9 +76,9 @@ MonoBehaviour:
   - actionID: Play Animation
     parameters:
     - Free Look
+  onTickActions:
   - actionID: Move No Destination
     parameters: []
-  onTickActions: []
   onExitActions: []
 --- !u!114 &2284024468905788846
 MonoBehaviour:
@@ -57,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 02d469be-347e-41be-b03d-cd0c70e533fc
   title: Any
-  position: {x: 341, y: -91.719986}
+  position: {x: 399, y: -168.20001}
   transitions:
   - rootStateID: 02d469be-347e-41be-b03d-cd0c70e533fc
     trueStateID: 470fa783-e126-4481-9c59-5d125a97fe73
@@ -67,6 +104,83 @@ MonoBehaviour:
         - predicate: Damage Taken
           parameters: []
           negate: 0
+  - rootStateID: 02d469be-347e-41be-b03d-cd0c70e533fc
+    trueStateID: 8c2701a8-b226-4191-be36-6d4fab30db25
+    condition:
+      and:
+      - or:
+        - predicate: Damage Taken
+          parameters: []
+          negate: 0
+      - or:
+        - predicate: Has Vertical Force
+          parameters:
+          - 3
+          negate: 0
+--- !u!114 &3753317206798203148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c41c226ac830cc4badff91167841243, type: 3}
+  m_Name: ActionState
+  m_EditorClassIdentifier: 
+  uniqueID: 550d6c64-13c6-48d3-a150-51e2a243ddd4
+  title: Stand Up
+  position: {x: 641, y: 110}
+  transitions:
+  - rootStateID: 550d6c64-13c6-48d3-a150-51e2a243ddd4
+    trueStateID: beace96c-0576-44b0-8816-837ea6268d18
+    condition:
+      and:
+      - or:
+        - predicate: Animation Over
+          parameters:
+          - Knockdown
+          negate: 0
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Stand Up
+  onTickActions: []
+  onExitActions: []
+--- !u!114 &7304710326786210056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c41c226ac830cc4badff91167841243, type: 3}
+  m_Name: ActionState
+  m_EditorClassIdentifier: 
+  uniqueID: d2d54727-bd13-4f46-9bdf-e17f913eddee
+  title: Knockdown Land
+  position: {x: 641, y: 21}
+  transitions:
+  - rootStateID: d2d54727-bd13-4f46-9bdf-e17f913eddee
+    trueStateID: 550d6c64-13c6-48d3-a150-51e2a243ddd4
+    condition:
+      and:
+      - or:
+        - predicate: Animation Over
+          parameters:
+          - Knockdown
+          negate: 0
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Knockdown Land
+  onTickActions:
+  - actionID: Move No Motion
+    parameters: []
+  onExitActions: []
 --- !u!114 &7802796412512663667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +226,10 @@ MonoBehaviour:
           parameters:
           - Damage
           negate: 0
+      - or:
+        - predicate: Is Grounded
+          parameters: []
+          negate: 0
   onEnterActions:
   - actionID: Play Random Animation
     parameters:
@@ -119,6 +237,38 @@ MonoBehaviour:
     - Damage 2
     - Damage 3
     - Damage 4
+  onTickActions:
+  - actionID: Move No Motion
+    parameters: []
+  onExitActions: []
+--- !u!114 &8544964901739145447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c41c226ac830cc4badff91167841243, type: 3}
+  m_Name: ActionState
+  m_EditorClassIdentifier: 
+  uniqueID: 9a00e32f-f150-45ee-8349-3bd13573742c
+  title: Knockdown Fall
+  position: {x: 649, y: -63}
+  transitions:
+  - rootStateID: 9a00e32f-f150-45ee-8349-3bd13573742c
+    trueStateID: d2d54727-bd13-4f46-9bdf-e17f913eddee
+    condition:
+      and:
+      - or:
+        - predicate: Is Grounded
+          parameters: []
+          negate: 0
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Knockdown Fall
   onTickActions:
   - actionID: Move No Motion
     parameters: []

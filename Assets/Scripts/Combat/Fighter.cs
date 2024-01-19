@@ -13,7 +13,7 @@ namespace CombatSystem.Combat
         [SerializeField] Transform rightHand;
         [SerializeField] Transform leftHand;
         [SerializeField] CinemachineTargetGroup targetGroup;
-        [SerializeField] float targetRadius = 20;
+        [SerializeField] float targetingRange = 20;
         AnimationPlayer animationPlayer;
         Mover mover;
         Health target;
@@ -104,7 +104,7 @@ namespace CombatSystem.Combat
 
         bool SelectTarget()
         {
-            Health closestTarget = GetClosestTarget();
+            Health closestTarget = GetClosestTargetOnScreen();
 
             if(closestTarget != null)
             {
@@ -115,9 +115,9 @@ namespace CombatSystem.Combat
             return false;
         }
 
-        Health GetClosestTarget()
+        Health GetClosestTargetOnScreen()
         {
-            var hits = Physics.SphereCastAll(transform.position, targetRadius, Vector3.up, 0);
+            var hits = Physics.SphereCastAll(transform.position, targetingRange, Vector3.up, 0);
             float closestTargetDistance = Mathf.Infinity;
             Health closestTarget = null;
 
@@ -188,7 +188,7 @@ namespace CombatSystem.Combat
             if(target != null)
             {
                 float targetDistance = (transform.position - target.transform.position).magnitude;
-                return targetDistance <= targetRadius;
+                return targetDistance <= targetingRange;
             }
 
             return false;
@@ -197,7 +197,7 @@ namespace CombatSystem.Combat
         void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, targetRadius);
+            Gizmos.DrawWireSphere(transform.position, targetingRange);
         }
 
         void IAction.DoAction(string actionID, string[] parameters)

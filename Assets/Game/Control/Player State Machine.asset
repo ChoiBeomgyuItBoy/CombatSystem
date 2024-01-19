@@ -98,7 +98,7 @@ MonoBehaviour:
   onTickActions:
   - actionID: Targeting Movement
     parameters:
-    - .7
+    - .8
   - actionID: Face Target
     parameters: []
   onExitActions: []

@@ -6,12 +6,12 @@ namespace CombatSystem.Combat
 {
     public class Weapon : MonoBehaviour 
     { 
-        [SerializeField] Transform damageCenter;
-        [SerializeField] float damageRadius = 0.5f;
+        [SerializeField] Transform hitboxCenter;
+        [SerializeField] float hitboxRadius = 0.5f;
 
         public void Hit(GameObject user, WeaponData weaponData, WeaponAttack attack)
         {
-            var hits = Physics.SphereCastAll(damageCenter.position, damageRadius, Vector3.up, 0);
+            var hits = Physics.SphereCastAll(hitboxCenter.position, hitboxRadius, Vector3.up, 0);
 
             foreach(var hit in hits)
             {
@@ -44,13 +44,18 @@ namespace CombatSystem.Combat
             Vector3 userPosition = user.transform.position;
             Vector3 targetPosition = target.transform.position;
             Vector3 direction = (targetPosition - userPosition).normalized;
-            return direction * attack.GetKnockback();
+
+            direction.y += attack.GetKnockback().y;
+            direction.x *= attack.GetKnockback().x;
+            direction.z *= attack.GetKnockback().x;
+
+            return direction;
         }
 
         void OnDrawGizmosSelected()
         {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(damageCenter.position, damageRadius);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(hitboxCenter.position, hitboxRadius);
         }
     }
 }
