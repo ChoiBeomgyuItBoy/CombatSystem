@@ -3661,7 +3661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1199571896240748562, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: maxHealth
-      value: 9999
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1206996169494188012, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6410,6 +6410,10 @@ PrefabInstance:
     - target: {fileID: 8106205261837214253, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.10415414
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400402937913602218, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8426684746115909460, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalPosition.x

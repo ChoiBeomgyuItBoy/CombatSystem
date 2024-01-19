@@ -127,6 +127,11 @@ namespace CombatSystem.Combat
 
                 if(target != null && target != GetComponent<Health>())
                 {
+                    if(target.IsDead())
+                    {
+                        continue;
+                    }
+
                     Renderer renderer = target.GetComponentInChildren<Renderer>();
 
                     if(!renderer.isVisible)
@@ -154,6 +159,8 @@ namespace CombatSystem.Combat
         {
             this.target = target;
 
+            target.onDie.AddListener(CancelTarget);
+
             if(targetGroup != null)
             {
                 targetGroup.AddMember(target.transform, targetGroupWeight, targetGroupRadius);
@@ -168,6 +175,8 @@ namespace CombatSystem.Combat
                 {
                     targetGroup.RemoveMember(target.transform);
                 }
+
+                target.onDie.RemoveListener(CancelTarget);
 
                 target = null;
             }

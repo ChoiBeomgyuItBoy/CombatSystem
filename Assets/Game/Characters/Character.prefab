@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba099d0c2320e1429cc54f0ce4d0f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   onDamageTaken:
     m_PersistentCalls:
       m_Calls:
@@ -151,6 +151,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8169653257090961398
 MonoBehaviour:
   m_ObjectHideFlags: 0

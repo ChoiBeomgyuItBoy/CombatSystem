@@ -8,6 +8,7 @@ namespace CombatSystem.Attributes
     {
         [SerializeField] float maxHealth = 100;
         [SerializeField] LazyEvent<float> onDamageTaken;
+        public LazyEvent onDie;
         float currentHealth = 0;
 
         public void TakeDamage(float damage)
@@ -15,7 +16,12 @@ namespace CombatSystem.Attributes
             if(!IsDead())
             {
                 currentHealth = Mathf.Max(0, currentHealth - damage);
-                StartCoroutine(onDamageTaken?.Invoke(damage));        
+                StartCoroutine(onDamageTaken?.Invoke(damage));     
+
+                if(IsDead())
+                {
+                    StartCoroutine(onDie?.Invoke());
+                }   
             }
         }
 
@@ -24,7 +30,7 @@ namespace CombatSystem.Attributes
             return currentHealth / maxHealth;
         }
 
-        bool IsDead()
+        public bool IsDead()
         {
             return currentHealth == 0;
         }
@@ -38,8 +44,11 @@ namespace CombatSystem.Attributes
         {
             switch(predicate)
             {
-                case "Damage Taken":
+                case "On Damage Taken":
                     return onDamageTaken.WasInvoked();
+
+                case "On Die":
+                    return onDie.WasInvoked();
             }
 
             return null;

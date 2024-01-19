@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 8c2701a8-b226-4191-be36-6d4fab30db25
   title: Knockdown Entry
-  position: {x: 649, y: -160}
+  position: {x: 631.7067, y: -227.88033}
   transitions:
   - rootStateID: 8c2701a8-b226-4191-be36-6d4fab30db25
     trueStateID: 9a00e32f-f150-45ee-8349-3bd13573742c
@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 8544964901739145447}
   - {fileID: 7304710326786210056}
   - {fileID: 3753317206798203148}
+  - {fileID: 5384638786563717717}
 --- !u!114 &1992343435716590519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: beace96c-0576-44b0-8816-837ea6268d18
   title: Idle State
-  position: {x: 327, y: 83}
+  position: {x: 479.00006, y: -31.651506}
   transitions: []
   onEnterActions:
   - actionID: Play Animation
@@ -94,14 +95,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 02d469be-347e-41be-b03d-cd0c70e533fc
   title: Any
-  position: {x: 399, y: -168.20001}
+  position: {x: 471.00012, y: -334.54684}
   transitions:
   - rootStateID: 02d469be-347e-41be-b03d-cd0c70e533fc
     trueStateID: 470fa783-e126-4481-9c59-5d125a97fe73
     condition:
       and:
       - or:
-        - predicate: Damage Taken
+        - predicate: On Damage Taken
           parameters: []
           negate: 0
   - rootStateID: 02d469be-347e-41be-b03d-cd0c70e533fc
@@ -109,13 +110,21 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: Damage Taken
+        - predicate: On Damage Taken
           parameters: []
           negate: 0
       - or:
         - predicate: Has Vertical Force
           parameters:
           - 3
+          negate: 0
+  - rootStateID: 02d469be-347e-41be-b03d-cd0c70e533fc
+    trueStateID: 2fdb3bed-5924-4cc2-975a-24a0f69015ce
+    condition:
+      and:
+      - or:
+        - predicate: On Die
+          parameters: []
           negate: 0
 --- !u!114 &3753317206798203148
 MonoBehaviour:
@@ -130,8 +139,8 @@ MonoBehaviour:
   m_Name: ActionState
   m_EditorClassIdentifier: 
   uniqueID: 550d6c64-13c6-48d3-a150-51e2a243ddd4
-  title: Stand Up
-  position: {x: 641, y: 110}
+  title: Stand Up State
+  position: {x: 626.10004, y: -128.80005}
   transitions:
   - rootStateID: 550d6c64-13c6-48d3-a150-51e2a243ddd4
     trueStateID: beace96c-0576-44b0-8816-837ea6268d18
@@ -148,6 +157,28 @@ MonoBehaviour:
     - Stand Up
   onTickActions: []
   onExitActions: []
+--- !u!114 &5384638786563717717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c41c226ac830cc4badff91167841243, type: 3}
+  m_Name: ActionState
+  m_EditorClassIdentifier: 
+  uniqueID: 2fdb3bed-5924-4cc2-975a-24a0f69015ce
+  title: Dead State
+  position: {x: 781, y: -327}
+  transitions: []
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Dead
+  onTickActions: []
+  onExitActions: []
 --- !u!114 &7304710326786210056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: d2d54727-bd13-4f46-9bdf-e17f913eddee
   title: Knockdown Land
-  position: {x: 641, y: 21}
+  position: {x: 881.0003, y: -131.80005}
   transitions:
   - rootStateID: d2d54727-bd13-4f46-9bdf-e17f913eddee
     trueStateID: 550d6c64-13c6-48d3-a150-51e2a243ddd4
@@ -178,7 +209,7 @@ MonoBehaviour:
     parameters:
     - Knockdown Land
   onTickActions:
-  - actionID: Move No Motion
+  - actionID: Move No Destination
     parameters: []
   onExitActions: []
 --- !u!114 &7802796412512663667
@@ -195,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: d0f15baa-942e-4ca1-8a82-73fc7063ff38
   title: Entry
-  position: {x: 349, y: 171.52002}
+  position: {x: 502.00006, y: 61.600014}
   transitions:
   - rootStateID: d0f15baa-942e-4ca1-8a82-73fc7063ff38
     trueStateID: beace96c-0576-44b0-8816-837ea6268d18
@@ -215,7 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 470fa783-e126-4481-9c59-5d125a97fe73
   title: Damage State
-  position: {x: 327, y: -15}
+  position: {x: 361, y: -180}
   transitions:
   - rootStateID: 470fa783-e126-4481-9c59-5d125a97fe73
     trueStateID: beace96c-0576-44b0-8816-837ea6268d18
@@ -255,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 9a00e32f-f150-45ee-8349-3bd13573742c
   title: Knockdown Fall
-  position: {x: 649, y: -63}
+  position: {x: 900.96765, y: -220.00002}
   transitions:
   - rootStateID: 9a00e32f-f150-45ee-8349-3bd13573742c
     trueStateID: d2d54727-bd13-4f46-9bdf-e17f913eddee

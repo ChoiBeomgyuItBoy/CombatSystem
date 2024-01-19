@@ -26,7 +26,7 @@ namespace CombatSystem.Combat
 
                 if(mover != null && mover != user.GetComponent<Mover>())
                 {
-                    mover.AddForce(CalculateKnockback(user, mover.gameObject, attack));
+                    mover.AddForce(CalculateKnockback(user.transform, mover.transform, attack));
                 }
             }
         }
@@ -39,11 +39,9 @@ namespace CombatSystem.Combat
             return Mathf.Round(baseDamage + bonus);
         }
 
-        Vector3 CalculateKnockback(GameObject user, GameObject target, WeaponAttack attack)
+        Vector3 CalculateKnockback(Transform user, Transform target, WeaponAttack attack)
         {
-            Vector3 userPosition = user.transform.position;
-            Vector3 targetPosition = target.transform.position;
-            Vector3 direction = (targetPosition - userPosition).normalized;
+            Vector3 direction = (target.position - user.position).normalized;
 
             direction.y += attack.GetKnockback().y;
             direction.x *= attack.GetKnockback().x;
