@@ -64,8 +64,8 @@ MonoBehaviour:
   m_Name: ActionState
   m_EditorClassIdentifier: 
   uniqueID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
-  title: Target State
-  position: {x: 482, y: -56}
+  title: Targeting State
+  position: {x: 500, y: -42}
   transitions:
   - rootStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 07371f81-119a-48d4-b6a6-71ce2bb4b8c0
   title: Any
-  position: {x: 306, y: 221.96}
+  position: {x: 292, y: 222}
   transitions: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: b78e0e5b-0023-4ef8-a7fd-36a28680fefe
   title: Entry
-  position: {x: 306, y: 182}
+  position: {x: 292, y: 180}
   transitions:
   - rootStateID: b78e0e5b-0023-4ef8-a7fd-36a28680fefe
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690

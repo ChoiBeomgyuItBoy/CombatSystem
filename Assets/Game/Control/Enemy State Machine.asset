@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 8c2701a8-b226-4191-be36-6d4fab30db25
   title: Knockdown Entry
-  position: {x: 631.7067, y: -227.88033}
+  position: {x: 721.7, y: -339.00003}
   transitions:
   - rootStateID: 8c2701a8-b226-4191-be36-6d4fab30db25
     trueStateID: 9a00e32f-f150-45ee-8349-3bd13573742c
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: beace96c-0576-44b0-8816-837ea6268d18
   title: Idle State
-  position: {x: 479.00006, y: -31.651506}
+  position: {x: 514.00006, y: -140.45003}
   transitions: []
   onEnterActions:
   - actionID: Play Animation
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 550d6c64-13c6-48d3-a150-51e2a243ddd4
   title: Stand Up State
-  position: {x: 626.10004, y: -128.80005}
+  position: {x: 730.0001, y: -238.00003}
   transitions:
   - rootStateID: 550d6c64-13c6-48d3-a150-51e2a243ddd4
     trueStateID: beace96c-0576-44b0-8816-837ea6268d18
@@ -171,12 +171,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 2fdb3bed-5924-4cc2-975a-24a0f69015ce
   title: Dead State
-  position: {x: 781, y: -327}
+  position: {x: 220.80005, y: -339}
   transitions: []
   onEnterActions:
   - actionID: Play Animation
     parameters:
     - Dead
+  - actionID: Move No Motion
+    parameters: []
   onTickActions: []
   onExitActions: []
 --- !u!114 &7304710326786210056
@@ -193,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: d2d54727-bd13-4f46-9bdf-e17f913eddee
   title: Knockdown Land
-  position: {x: 881.0003, y: -131.80005}
+  position: {x: 992, y: -238.00003}
   transitions:
   - rootStateID: d2d54727-bd13-4f46-9bdf-e17f913eddee
     trueStateID: 550d6c64-13c6-48d3-a150-51e2a243ddd4
@@ -226,7 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: d0f15baa-942e-4ca1-8a82-73fc7063ff38
   title: Entry
-  position: {x: 502.00006, y: 61.600014}
+  position: {x: 522, y: -51.34998}
   transitions:
   - rootStateID: d0f15baa-942e-4ca1-8a82-73fc7063ff38
     trueStateID: beace96c-0576-44b0-8816-837ea6268d18
@@ -246,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 470fa783-e126-4481-9c59-5d125a97fe73
   title: Damage State
-  position: {x: 361, y: -180}
+  position: {x: 479.00006, y: -240.30005}
   transitions:
   - rootStateID: 470fa783-e126-4481-9c59-5d125a97fe73
     trueStateID: beace96c-0576-44b0-8816-837ea6268d18
@@ -286,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 9a00e32f-f150-45ee-8349-3bd13573742c
   title: Knockdown Fall
-  position: {x: 900.96765, y: -220.00002}
+  position: {x: 984.1001, y: -331.00006}
   transitions:
   - rootStateID: 9a00e32f-f150-45ee-8349-3bd13573742c
     trueStateID: d2d54727-bd13-4f46-9bdf-e17f913eddee

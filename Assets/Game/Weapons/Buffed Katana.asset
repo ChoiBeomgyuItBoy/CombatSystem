@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Buffed Katana
   m_EditorClassIdentifier: 
   equippedWeaponPrefab: {fileID: 1227218876564722152, guid: 6e1c51fe3e03ad24a9da3857cb2fa657, type: 3}
-  baseDamage: 500
+  baseDamage: 100
   isLeftHanded: 0
   combo:
   - animationName: Sword Attack 4
@@ -29,7 +29,7 @@ MonoBehaviour:
     endTime: 0.45
     bonusPercentage: 0.1
   - animationName: Sword Attack 6
-    knockback: {x: 2, y: 0}
+    knockback: {x: 4, y: 12}
     attackForce: 3
     forceTime: 0.19
     endTime: 0.8
