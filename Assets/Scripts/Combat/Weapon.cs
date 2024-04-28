@@ -22,11 +22,11 @@ namespace CombatSystem.Combat
                     health.TakeDamage(CalculateDamage(weaponData, attack));
                 }
 
-                Mover mover = hit.transform.GetComponent<Mover>();
+                ForceReceiver forceReceiver = hit.transform.GetComponent<ForceReceiver>();
 
-                if(mover != null && mover != user.GetComponent<Mover>())
+                if(forceReceiver != null && forceReceiver != user.GetComponent<ForceReceiver>())
                 {
-                    mover.AddForce(CalculateKnockback(user.transform, mover.transform, attack));
+                    forceReceiver.AddForce(CalculateKnockback(user.transform, forceReceiver.transform, attack));
                 }
             }
         }

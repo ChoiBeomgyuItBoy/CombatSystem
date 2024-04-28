@@ -4,6 +4,7 @@ using RainbowAssets.Utils;
 using CombatSystem.Core;
 using CombatSystem.Attributes;
 using CombatSystem.Movement;
+using CombatSystem.Control;
 
 namespace CombatSystem.Combat
 {
@@ -15,9 +16,11 @@ namespace CombatSystem.Combat
         [SerializeField] CinemachineTargetGroup targetGroup;
         [SerializeField] float targetingRange = 20;
         AnimationPlayer animationPlayer;
+        InputReader inputReader;
+        ForceReceiver forceReceiver;
         Mover mover;
-        Health target;
         Weapon weapon;
+        Health target;
         int currentAttackIndex = 0;
         bool attackForceApplied = false;
         const float targetGroupRadius = 2;
@@ -26,6 +29,8 @@ namespace CombatSystem.Combat
         void Awake()
         {
             animationPlayer = GetComponent<AnimationPlayer>();
+            inputReader = GetComponent<InputReader>();
+            forceReceiver = GetComponent<ForceReceiver>();
             mover = GetComponent<Mover>();
         }
 
@@ -82,7 +87,7 @@ namespace CombatSystem.Combat
             }
 
             Vector3 forceMotion = transform.forward * GetCurrentAttack().GetAttackForce();
-            mover.AddForce(forceMotion);
+            forceReceiver.AddForce(forceMotion);
             attackForceApplied = true;
         }
 
@@ -203,11 +208,26 @@ namespace CombatSystem.Combat
             return false;
         }
 
+        Vector3 GetTargetingDirection()
+        {
+            Vector2 inputValue = inputReader.GetInputValue();
+
+            Vector3 direction = new();
+            Vector3 right = transform.right * inputValue.x;
+            Vector3 forward = transform.forward * inputValue.y;
+
+            direction += right;
+            direction += forward;
+
+            return direction;
+        }
+
         void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, targetingRange);
         }
+
 
         void IAction.DoAction(string actionID, string[] parameters)
         {
@@ -236,6 +256,10 @@ namespace CombatSystem.Combat
                 case "Cancel Target":
                     CancelTarget();
                     break;
+
+                case "Targeting Movement":
+                    mover.MoveTo(GetTargetingDirection(), float.Parse(parameters[0]));
+                        break;
             }
         }
 

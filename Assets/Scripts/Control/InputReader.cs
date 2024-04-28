@@ -21,6 +21,17 @@ namespace CombatSystem.Control
             return action;
         }
 
+        public Vector2 GetInputValue()
+        {
+            return GetInputAction("Locomotion").ReadValue<Vector2>();
+        }
+
+        void Awake()
+        {
+            controls = new Controls();
+            controls.Player.Enable();
+        }
+
         bool IsPressed(string actionName, bool thisFrame)
         {
             InputAction action = GetInputAction(actionName);
@@ -33,12 +44,6 @@ namespace CombatSystem.Control
             {
                 return action.IsPressed();
             }
-        }
-
-        void Awake()
-        {
-            controls = new Controls();
-            controls.Player.Enable();
         }
 
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
