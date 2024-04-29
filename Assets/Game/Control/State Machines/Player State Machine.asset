@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
   title: Targeting State
-  position: {x: 500, y: -42}
+  position: {x: 508, y: -31}
   transitions:
   - rootStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
@@ -190,7 +190,7 @@ MonoBehaviour:
     parameters: []
   - actionID: Apply Attack Force
     parameters: []
-  - actionID: Move No Motion
+  - actionID: Apply Motion Zero
     parameters: []
   onExitActions:
   - actionID: Cycle Combo

@@ -1,0 +1,62 @@
+GridBackground {
+    --grid-background-color: rgb(40, 40, 40);
+    --line-color: rgba(0, 0, 0, 0.2);
+    --thick-line-color: rgba(0, 0, 0, 0.5);
+    --spacing: 15;
+}
+
+Port > Label {
+    display: none;
+}
+
+#divider {
+    min-height: 1px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: rgba(0, 0, 0, 0.31);
+    border-right-color: rgba(0, 0, 0, 0.31);
+    border-top-color: rgba(0, 0, 0, 0.31);
+    border-bottom-color: rgba(0, 0, 0, 0.31);
+}
+
+#status-border {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.node #input {
+    height: 15px;
+    min-height: 15px;
+}
+
+.rootNode #input {
+    background-color: rgb(109, 104, 117);
+}
+
+.actionNode #input {
+    background-color: rgb(214, 49, 74);
+}
+
+.compositeNode #input {
+    background-color: rgb(94, 183, 116);
+}
+
+.decoratorNode #input {
+    background-color: rgb(105, 125, 204);
+}
+
+.runningStatus #status-border {
+    background-color: rgb(241, 241, 185);
+}
+
+.successStatus #status-border {
+    background-color: rgb(60, 183, 0);
+}
+
+.failureStatus #status-border {
+    background-color: rgb(106, 22, 22);
+}

@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1260431234991923188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b80b585178d2045b1b5f40e1fad244, type: 3}
+  m_Name: Sequence
+  m_EditorClassIdentifier: 
+  uniqueID: 23425453-9abb-4e82-8ab4-10f5ec22c8ae
+  description: Patrol Sequence
+  position: {x: 257.00006, y: -188.00005}
+  children:
+  - {fileID: -1178120728496171534}
+--- !u!114 &-1178120728496171534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa6c2b24d86ac04e9da1035890e4e1b, type: 3}
+  m_Name: ActionNode
+  m_EditorClassIdentifier: 
+  uniqueID: 7da30de0-0fef-4468-8f2d-2fddd95f0fb8
+  description: Move To Waypoint
+  position: {x: 234, y: -47}
+  onEnterActions:
+  - actionID: Move to Waypoint
+    parameters: []
+  onTickActions: []
+  onExitActions:
+  - actionID: Cycle Waypoint
+    parameters: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: At Waypoint
+          parameters: []
+          negate: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c77c0598f94b3f4f91cca746a7f996e, type: 3}
+  m_Name: AI Behaviour Tree
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 2371137459187076935}
+  nodes:
+  - {fileID: 2371137459187076935}
+  - {fileID: -1260431234991923188}
+  - {fileID: -1178120728496171534}
+  rootNodeOffset: {x: 250, y: 0}
+--- !u!114 &2371137459187076935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d85566c974f07459aee2e34c869a17, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  uniqueID: 0e5a435a-533e-46f0-8039-2276392b0cab
+  description: 
+  position: {x: 248.93639, y: -331.90112}
+  child: {fileID: -1260431234991923188}

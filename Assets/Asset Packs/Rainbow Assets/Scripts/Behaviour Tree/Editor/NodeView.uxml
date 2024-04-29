@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Asset%20Packs/Rainbow%20Assets/Scripts/Behaviour%20Tree/Editor/BehaviourTreeEditor.uss?fileID=7433441132597879392&amp;guid=fc7ac7cba180b7648929eefa24f4411b&amp;type=3#BehaviourTreeEditor" />
+    <ui:VisualElement name="status-border" style="flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0;" />
+    <ui:VisualElement name="node-border" style="border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(79, 75, 75); font-size: 15px; -unity-text-align: upper-center; min-width: 150px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
+        <ui:VisualElement name="contents">
+            <ui:VisualElement name="top">
+                <ui:VisualElement name="input" style="align-items: center;" />
+                <ui:VisualElement name="divider" class="vertical" />
+                <ui:VisualElement name="title" style="-unity-font-style: bold; -unity-text-align: upper-center; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px;">
+                    <ui:Label name="title-label" text="Sequence" class="unity-text-element unity-label" />
+                    <ui:VisualElement name="title-button-container">
+                        <ui:VisualElement name="collapse-button">
+                            <ui:VisualElement name="icon" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Label tabindex="-1" text="Example Node Description" parse-escape-sequences="true" display-tooltip-when-elided="true" name="description" style="font-size: 13px; -unity-text-align: upper-center; padding-top: 4px; padding-right: 4px; padding-bottom: 4px; padding-left: 4px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; max-width: 150px; white-space: normal;" />
+                <ui:VisualElement name="divider" class="horizontal" />
+                <ui:VisualElement name="output" style="align-items: center;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="selection-border" picking-mode="Ignore" style="position: absolute; left: 0; top: 0; bottom: 0; right: 0;" />
+</ui:UXML>

@@ -30,7 +30,7 @@ MonoBehaviour:
     parameters:
     - Knockdown Entry
   onTickActions:
-  - actionID: Move No Motion
+  - actionID: Apply Motion Zero
     parameters: []
   onExitActions: []
 --- !u!114 &11400000
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aedaed16a35737344b2389cf12928266, type: 3}
-  m_Name: Enemy State Machine
+  m_Name: AI State Machine
   m_EditorClassIdentifier: 
   entryState: {fileID: 7802796412512663667}
   anyState: {fileID: 2284024468905788846}
@@ -271,7 +271,7 @@ MonoBehaviour:
     - Damage 3
     - Damage 4
   onTickActions:
-  - actionID: Move No Motion
+  - actionID: Apply Motion Zero
     parameters: []
   onExitActions: []
 --- !u!114 &8544964901739145447
@@ -303,6 +303,6 @@ MonoBehaviour:
     parameters:
     - Knockdown Fall
   onTickActions:
-  - actionID: Move No Motion
+  - actionID: Apply Motion Zero
     parameters: []
   onExitActions: []

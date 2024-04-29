@@ -6,6 +6,7 @@ namespace CombatSystem.Movement
 {
     public class FreeLooker : MonoBehaviour, IAction
     {
+        [SerializeField] [Range(0,1)] float freeLookSpeedFraction = 0.6f;
         Mover mover;
         InputReader inputReader;        
 
@@ -35,7 +36,7 @@ namespace CombatSystem.Movement
             switch(actionID)
             {
                 case "Free Look Movement":
-                    mover.MoveTo(GetFreeLookDirection(), float.Parse(parameters[0]));  
+                    mover.MoveTo(GetFreeLookDirection(), freeLookSpeedFraction, false);  
                     break;
             }
 

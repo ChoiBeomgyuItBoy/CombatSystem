@@ -15,6 +15,7 @@ namespace CombatSystem.Combat
         [SerializeField] Transform leftHand;
         [SerializeField] CinemachineTargetGroup targetGroup;
         [SerializeField] float targetingRange = 20;
+        [SerializeField] [Range(0,1)] float targetingSpeedFraction = 0.3f;
         AnimationPlayer animationPlayer;
         InputReader inputReader;
         ForceReceiver forceReceiver;
@@ -222,6 +223,11 @@ namespace CombatSystem.Combat
             return direction;
         }
 
+        void TargetingMovement()
+        {
+            mover.MoveTo(GetTargetingDirection(), targetingSpeedFraction, false);
+        }
+
         void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
@@ -258,8 +264,8 @@ namespace CombatSystem.Combat
                     break;
 
                 case "Targeting Movement":
-                    mover.MoveTo(GetTargetingDirection(), float.Parse(parameters[0]));
-                        break;
+                    TargetingMovement();
+                    break;
             }
         }
 

@@ -8,15 +8,26 @@ namespace CombatSystem.Movement
     public class Mover : MonoBehaviour, IAction
     {
         [SerializeField] float maxSpeed = 6;
-        [SerializeField] float destinationTolerance = 1;
         NavMeshAgent agent;
         AnimationPlayer animationPlayer;
 
-        public void MoveTo(Vector3 destination, float speedFraction)
+        public void MoveTo(Vector3 destination, float speedFraction, bool AIMovement)
         {
             agent.enabled = true;
-            agent.destination = transform.position + destination;
+            agent.isStopped = false;
+
+            if(!AIMovement)
+            {
+                destination += transform.position;
+            }
+
+            agent.destination = destination;
             agent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
+        }
+
+        public bool AtDestination(Vector3 destination, float tolerance)
+        {
+            return Vector3.Distance(transform.position, destination) < tolerance;
         }
 
         void Awake()
@@ -56,8 +67,8 @@ namespace CombatSystem.Movement
         {
             switch(actionID)
             {
-                case "Move No Destination":
-                    MoveTo(Vector3.zero, 0);
+                case "Cancel Movement":
+                    agent.isStopped = true;
                     break;
             }
         }

@@ -918,7 +918,7 @@ MonoBehaviour:
   - {fileID: 532498504141249494}
   - {fileID: 8069377665913060413}
   m_Instructions:
-  - m_FullHash: -1304015446
+  - m_FullHash: -1269438207
     m_VirtualCamera: {fileID: 532498504141249494}
     m_ActivateAfter: 0
     m_MinDuration: 0
@@ -937,16 +937,16 @@ MonoBehaviour:
       m_RotationOrder: 4
   m_CustomBlends: {fileID: 0}
   m_ParentHash:
-  - m_Hash: -1304015446
+  - m_Hash: -1269438207
     m_ParentHash: 756556552
-  - m_Hash: -485028945
-    m_ParentHash: -1304015446
-  - m_Hash: 2139604625
-    m_ParentHash: -1304015446
-  - m_Hash: -1790377274
-    m_ParentHash: -1304015446
-  - m_Hash: 1325611224
-    m_ParentHash: -1304015446
+  - m_Hash: -62026189
+    m_ParentHash: -1269438207
+  - m_Hash: -1843164744
+    m_ParentHash: -1269438207
+  - m_Hash: 891412631
+    m_ParentHash: -1269438207
+  - m_Hash: 755175736
+    m_ParentHash: -1269438207
   - m_Hash: -28193148
     m_ParentHash: 756556552
   - m_Hash: 1733861182
@@ -1004,6 +1004,18 @@ MonoBehaviour:
   - m_Hash: -113505635
     m_ParentHash: 756556552
   - m_Hash: 1614109479
+    m_ParentHash: 756556552
+  - m_Hash: -884758994
+    m_ParentHash: 756556552
+  - m_Hash: 1283628806
+    m_ParentHash: 756556552
+  - m_Hash: 533894610
+    m_ParentHash: 756556552
+  - m_Hash: -1292065500
+    m_ParentHash: 756556552
+  - m_Hash: 1684585544
+    m_ParentHash: 756556552
+  - m_Hash: 121164414
     m_ParentHash: 756556552
 --- !u!1 &8116143482812627675
 GameObject:
@@ -1282,6 +1294,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 4801484423726953837}
+    - targetCorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 3087434313322123128}
     - targetCorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       insertIndex: -1
@@ -1315,6 +1330,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
   m_PrefabInstance: {fileID: 6848333475368475211}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4801484423726953837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8687721661119128560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df149d1f6e93d364db79a2401f3ae1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachine: {fileID: 11400000, guid: a881a50a165ea734096b6c612d8b1ca5, type: 2}
 --- !u!114 &3087434313322123128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,6 +1355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16c9ff8c8f1df049b0b6d1eba261a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  freeLookSpeedFraction: 0.6
 --- !u!114 &7951206869717268858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,3 +1385,4 @@ MonoBehaviour:
   leftHand: {fileID: 6563671787854371292}
   targetGroup: {fileID: 6166532866636124502}
   targetingRange: 20
+  targetingSpeedFraction: 0.3

@@ -1,5 +1,5 @@
 using CombatSystem.Attributes;
-using CombatSystem.Movement;
+using CombatSystem.Core;
 using UnityEngine;
 
 namespace CombatSystem.Combat
