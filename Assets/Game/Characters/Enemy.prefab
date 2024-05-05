@@ -180,6 +180,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5717782372771093248}
+    - targetCorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7631315107574109392}
   m_SourcePrefab: {fileID: 100100000, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
 --- !u!114 &1199571896240748562 stripped
 MonoBehaviour:
@@ -237,6 +240,35 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   patrolSpeedFraction: 0.4
   waypointTolerance: 2
+  waypointDwellTime: 3
+--- !u!114 &7631315107574109392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063063611088874312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c85f67d9a3d13445887f6205298f96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: a832d4c136ed64c4d992fd741a8ddd30, type: 2}
+  rightHand: {fileID: 5665098896560225910}
+  leftHand: {fileID: 4550708243073356132}
+  targetGroup: {fileID: 0}
+  targetingRange: 20
+  targetingSpeedFraction: 0.3
+--- !u!4 &4550708243073356132 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 296379630448870295, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+  m_PrefabInstance: {fileID: 4268197199965672179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5665098896560225910 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8477419175867362437, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+  m_PrefabInstance: {fileID: 4268197199965672179}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7720227509028064892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5771482465836489871, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}

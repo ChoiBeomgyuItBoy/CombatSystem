@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1260431234991923188
+--- !u!114 &-8894691778470887057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b80b585178d2045b1b5f40e1fad244, type: 3}
   m_Name: Sequence
   m_EditorClassIdentifier: 
-  uniqueID: 23425453-9abb-4e82-8ab4-10f5ec22c8ae
-  description: Patrol Sequence
-  position: {x: 257.00006, y: -188.00005}
+  uniqueID: a83f3dfb-2f41-4bbc-9737-6f2149cc23f1
+  description: Attack Sequence
+  position: {x: 403.85, y: 252.00002}
+  priority: 0
   children:
-  - {fileID: -1178120728496171534}
---- !u!114 &-1178120728496171534
+  - {fileID: -1853822377194779028}
+  abortCondition:
+    and:
+    - or:
+      - predicate: Target In Range
+        parameters: []
+        negate: 1
+--- !u!114 &-6318200736086464434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26,16 +33,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa6c2b24d86ac04e9da1035890e4e1b, type: 3}
-  m_Name: ActionNode
+  m_Script: {fileID: 11500000, guid: f3d85566c974f07459aee2e34c869a17, type: 3}
+  m_Name: RootNode
   m_EditorClassIdentifier: 
-  uniqueID: 7da30de0-0fef-4468-8f2d-2fddd95f0fb8
+  uniqueID: 43b56627-31ce-4871-b00d-14938e8d1ebd
+  description: 
+  position: {x: 250, y: 0}
+  priority: 0
+  child: {fileID: 4784020635163290285}
+  abortCondition:
+    and: []
+--- !u!114 &-5172249129818689147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: b3f195c8-8d8f-4440-9d2e-b5d608b06992
   description: Move To Waypoint
-  position: {x: 234, y: -47}
+  position: {x: -60, y: 391}
+  priority: 0
   onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Locomotion
+  onTickActions:
   - actionID: Move to Waypoint
     parameters: []
-  onTickActions: []
   onExitActions:
   - actionID: Cycle Waypoint
     parameters: []
@@ -47,6 +77,59 @@ MonoBehaviour:
         - predicate: At Waypoint
           parameters: []
           negate: 0
+--- !u!114 &-5130841997898359522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 0b94e956-bcbb-4453-bc44-05e7391bdec5
+  description: Wait for Dwell Time
+  position: {x: 160, y: 383}
+  priority: 0
+  onEnterActions:
+  - actionID: Play Random Animation
+    parameters:
+    - Idle 1
+    - Idle 2
+  onTickActions: []
+  onExitActions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Can Patrol
+          parameters: []
+          negate: 0
+--- !u!114 &-1853822377194779028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: f466d04c-898e-43f3-9118-3260517b1c59
+  description: Chase Target
+  position: {x: 399.75012, y: 383}
+  priority: 0
+  onEnterActions: []
+  onTickActions:
+  - actionID: Move To Target
+    parameters: []
+  onExitActions: []
+  statusConditions: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,13 +142,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c77c0598f94b3f4f91cca746a7f996e, type: 3}
   m_Name: AI Behaviour Tree
   m_EditorClassIdentifier: 
-  rootNode: {fileID: 2371137459187076935}
+  rootNode: {fileID: -6318200736086464434}
   nodes:
-  - {fileID: 2371137459187076935}
-  - {fileID: -1260431234991923188}
-  - {fileID: -1178120728496171534}
+  - {fileID: -6318200736086464434}
+  - {fileID: 4784020635163290285}
+  - {fileID: 6152840740901662884}
+  - {fileID: -5172249129818689147}
+  - {fileID: -5130841997898359522}
+  - {fileID: -8894691778470887057}
+  - {fileID: -1853822377194779028}
   rootNodeOffset: {x: 250, y: 0}
---- !u!114 &2371137459187076935
+--- !u!114 &4784020635163290285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,10 +161,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3d85566c974f07459aee2e34c869a17, type: 3}
-  m_Name: RootNode
+  m_Script: {fileID: 11500000, guid: 943c39989e6f3ed46b7f81cfe26422a5, type: 3}
+  m_Name: Selector
   m_EditorClassIdentifier: 
-  uniqueID: 0e5a435a-533e-46f0-8039-2276392b0cab
-  description: 
-  position: {x: 248.93639, y: -331.90112}
-  child: {fileID: -1260431234991923188}
+  uniqueID: ac93c9c0-84dc-4e0b-a3d6-e557a4be3fc4
+  description: Behaviour Selector
+  position: {x: 252, y: 122}
+  priority: 0
+  children:
+  - {fileID: 6152840740901662884}
+  - {fileID: -8894691778470887057}
+  abortCondition:
+    and: []
+  selectionType: 1
+--- !u!114 &6152840740901662884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b80b585178d2045b1b5f40e1fad244, type: 3}
+  m_Name: Sequence
+  m_EditorClassIdentifier: 
+  uniqueID: c3319265-7df9-4f22-8616-20e91b874021
+  description: Patrol Sequence
+  position: {x: 88, y: 244}
+  priority: 1
+  children:
+  - {fileID: -5172249129818689147}
+  - {fileID: -5130841997898359522}
+  abortCondition:
+    and:
+    - or:
+      - predicate: Select Target
+        parameters: []
+        negate: 0

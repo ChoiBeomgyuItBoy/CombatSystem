@@ -39,6 +39,16 @@ namespace RainbowAssets.BehaviourTree.Editor
             return outputPort.ConnectTo(child.inputPort);
         }
 
+        public void SortChildren()
+        {
+            CompositeNode compositeNode = node as CompositeNode;
+
+            if(compositeNode != null)
+            {
+                compositeNode.SortChildrenByPosition();
+            }
+        }
+
         public void DrawStatus()
         {
             RemoveFromClassList("runningStatus");

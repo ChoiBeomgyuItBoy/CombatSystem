@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
   title: Free Look State
-  position: {x: 284, y: 87}
+  position: {x: 300, y: 101}
   transitions:
   - rootStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
     trueStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
@@ -41,15 +41,14 @@ MonoBehaviour:
   onEnterActions:
   - actionID: Play Animation
     parameters:
-    - Free Look
+    - Locomotion
   - actionID: Reset Combo
     parameters: []
   - actionID: Cancel Target
     parameters: []
   onTickActions:
   - actionID: Free Look Movement
-    parameters:
-    - 1
+    parameters: []
   onExitActions: []
 --- !u!114 &-4560724782483339106
 MonoBehaviour:
@@ -65,7 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
   title: Targeting State
-  position: {x: 508, y: -31}
+  position: {x: 511, y: -42}
   transitions:
   - rootStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
@@ -116,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 7b1841da-627c-4a31-80da-e78d3b1b8091
   title: Attack State
-  position: {x: 654, y: 85}
+  position: {x: 672, y: 102}
   transitions:
   - rootStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690

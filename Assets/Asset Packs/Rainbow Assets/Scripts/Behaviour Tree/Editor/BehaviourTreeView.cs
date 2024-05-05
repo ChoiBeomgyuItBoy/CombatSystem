@@ -229,6 +229,17 @@ namespace RainbowAssets.BehaviourTree.Editor
                 }
             }
 
+            var movedElements = graphViewChange.movedElements;
+
+            if (movedElements != null)
+            {
+                foreach(var node in nodes)
+                {
+                    NodeView nodeView = node as NodeView;
+                    nodeView.SortChildren();
+                }
+            }
+
             return graphViewChange;
         }
 

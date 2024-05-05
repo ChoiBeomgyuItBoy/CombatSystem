@@ -22,6 +22,7 @@ namespace CombatSystem.Combat
         Mover mover;
         Weapon weapon;
         Health target;
+        GameObject player;
         int currentAttackIndex = 0;
         bool attackForceApplied = false;
         const float targetGroupRadius = 2;
@@ -33,6 +34,7 @@ namespace CombatSystem.Combat
             inputReader = GetComponent<InputReader>();
             forceReceiver = GetComponent<ForceReceiver>();
             mover = GetComponent<Mover>();
+            player = GameObject.FindWithTag("Player");
         }
 
         void Start()
@@ -110,7 +112,16 @@ namespace CombatSystem.Combat
 
         bool SelectTarget()
         {
-            Health closestTarget = GetClosestTargetOnScreen();
+            Health closestTarget;
+
+            if(tag == "Player")
+            {
+                closestTarget = GetClosestTargetOnScreen();
+            }
+            else
+            {
+                closestTarget = GetPlayerAsTarget();
+            }
 
             if(closestTarget != null)
             {
@@ -159,6 +170,18 @@ namespace CombatSystem.Combat
             }
 
             return closestTarget;
+        }
+
+        Health GetPlayerAsTarget()
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+            if(distanceToPlayer < targetingRange)
+            {
+                return player.GetComponent<Health>();
+            }
+
+            return null;
         }
 
         void SetTarget(Health target)
@@ -228,12 +251,16 @@ namespace CombatSystem.Combat
             mover.MoveTo(GetTargetingDirection(), targetingSpeedFraction, false);
         }
 
+        void MoveToTarget()
+        {
+            mover.MoveTo(target.transform.position, targetingSpeedFraction, true);
+        }
+
         void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, targetingRange);
         }
-
 
         void IAction.DoAction(string actionID, string[] parameters)
         {
@@ -265,6 +292,10 @@ namespace CombatSystem.Combat
 
                 case "Targeting Movement":
                     TargetingMovement();
+                    break;
+
+                case "Move To Target":
+                    MoveToTarget();
                     break;
             }
         }

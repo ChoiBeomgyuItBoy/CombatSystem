@@ -75,6 +75,9 @@ namespace CombatSystem.Movement
 
                 case "Can Patrol":
                     return waypointDwellTime < timeSinceArrivedAtWaypoint;
+
+                case "Has Patrol Path":
+                    return patrolPath != null;
             }
 
             return null;

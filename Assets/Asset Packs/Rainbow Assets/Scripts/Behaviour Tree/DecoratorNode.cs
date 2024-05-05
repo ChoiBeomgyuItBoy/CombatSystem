@@ -1,3 +1,4 @@
+using RainbowAssets.Utils;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace RainbowAssets.BehaviourTree
     public abstract class DecoratorNode : Node
     {
         [SerializeField] Node child;
+        [SerializeField] Condition abortCondition;
 
         public override Node Clone()
         {
@@ -19,6 +21,20 @@ namespace RainbowAssets.BehaviourTree
         public Node GetChild()
         {
             return child;
+        }
+
+        public override Status Tick()
+        {
+            if(!abortCondition.IsEmpty() && abortCondition.Check(controller.GetComponents<IPredicateEvaluator>()))
+            {
+                child.Abort();
+
+                Abort();
+
+                return Status.Failure;
+            }
+
+            return base.Tick();
         }
 
 #if UNITY_EDITOR

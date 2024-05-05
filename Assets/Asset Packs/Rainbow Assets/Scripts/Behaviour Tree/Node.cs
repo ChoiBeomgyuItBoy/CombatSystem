@@ -8,6 +8,7 @@ namespace RainbowAssets.BehaviourTree
         [SerializeField] string uniqueID;
         [SerializeField] string description;
         [SerializeField] Vector2 position;
+        [SerializeField] int priority;
         Status status = Status.Running;
         bool started = false;
         protected BehaviourTreeController controller;
@@ -47,9 +48,9 @@ namespace RainbowAssets.BehaviourTree
             return status;
         }
 
-        public bool Started()
+        public int GetPriority()
         {
-            return started;
+            return priority;
         }
 
 #if UNITY_EDITOR
@@ -61,7 +62,14 @@ namespace RainbowAssets.BehaviourTree
         }
 #endif
 
-        public Status Tick()
+        public void Abort()
+        {
+            OnExit();
+            started = false;
+            status = Status.Failure;
+        }
+
+        public virtual Status Tick()
         {
             if (!started)
             {

@@ -8,6 +8,11 @@ namespace RainbowAssets.Utils
     {
         [SerializeField] Disjunction[] and;
 
+        public bool IsEmpty()
+        {
+            return and.Length == 0;
+        }
+
         public bool Check(IEnumerable<IPredicateEvaluator> evaluators)
         {
             foreach(var disjunction in and)
