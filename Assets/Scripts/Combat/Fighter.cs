@@ -114,7 +114,7 @@ namespace CombatSystem.Combat
         {
             Health closestTarget;
 
-            if(tag == "Player")
+            if(CompareTag("Player"))
             {
                 closestTarget = GetClosestTargetOnScreen();
             }
@@ -217,20 +217,26 @@ namespace CombatSystem.Combat
             {
                 Vector3 lookDirection = target.transform.position - transform.position;
                 lookDirection.y = 0;
-                transform.rotation = Quaternion.LookRotation(lookDirection);
+
+                if(lookDirection != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.LookRotation(lookDirection);
+                }
             }
         }
 
-        bool TargetInRange()
+        bool TargetInRange(float range)
         {
             if(target != null)
             {
                 float targetDistance = (transform.position - target.transform.position).magnitude;
-                return targetDistance <= targetingRange;
+                return targetDistance <= range;
             }
 
             return false;
         }
+
+
 
         Vector3 GetTargetingDirection()
         {
@@ -313,8 +319,11 @@ namespace CombatSystem.Combat
                 case "Select Target":
                     return SelectTarget();
 
-                case "Target In Range":
-                    return TargetInRange();
+                case "Target In Targeting Range":
+                    return TargetInRange(targetingRange);
+                
+                case "Target In Attack Range":
+                    return TargetInRange(weaponData.GetRange());
             }
 
             return null;

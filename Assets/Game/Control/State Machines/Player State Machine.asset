@@ -75,7 +75,7 @@ MonoBehaviour:
           parameters:
           - Target
           negate: 0
-        - predicate: Target In Range
+        - predicate: Target In Targeting Range
           parameters:
           - Target
           negate: 1

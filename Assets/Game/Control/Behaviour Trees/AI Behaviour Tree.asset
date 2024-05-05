@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: Sequence
   m_EditorClassIdentifier: 
   uniqueID: a83f3dfb-2f41-4bbc-9737-6f2149cc23f1
-  description: Attack Sequence
-  position: {x: 403.85, y: 252.00002}
+  description: Chase Sequence
+  position: {x: 461, y: 252}
   priority: 0
   children:
   - {fileID: -1853822377194779028}
+  - {fileID: 2701376643077850189}
   abortCondition:
     and:
     - or:
-      - predicate: Target In Range
+      - predicate: Target In Targeting Range
         parameters: []
         negate: 1
 --- !u!114 &-6318200736086464434
@@ -57,7 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: b3f195c8-8d8f-4440-9d2e-b5d608b06992
   description: Move To Waypoint
-  position: {x: -60, y: 391}
+  position: {x: -33.485, y: 388.00003}
   priority: 0
   onEnterActions:
   - actionID: Play Animation
@@ -65,6 +66,10 @@ MonoBehaviour:
     - Locomotion
   onTickActions:
   - actionID: Move to Waypoint
+    parameters: []
+  - actionID: Cancel Movement
+    parameters: []
+  - actionID: Cancel Target
     parameters: []
   onExitActions:
   - actionID: Cycle Waypoint
@@ -91,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 0b94e956-bcbb-4453-bc44-05e7391bdec5
   description: Wait for Dwell Time
-  position: {x: 160, y: 383}
+  position: {x: 158, y: 387}
   priority: 0
   onEnterActions:
   - actionID: Play Random Animation
@@ -122,14 +127,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: f466d04c-898e-43f3-9118-3260517b1c59
   description: Chase Target
-  position: {x: 399.75012, y: 383}
+  position: {x: 375, y: 396}
   priority: 0
-  onEnterActions: []
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Locomotion
   onTickActions:
   - actionID: Move To Target
     parameters: []
   onExitActions: []
-  statusConditions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Target In Attack Range
+          parameters: []
+          negate: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +166,67 @@ MonoBehaviour:
   - {fileID: -5130841997898359522}
   - {fileID: -8894691778470887057}
   - {fileID: -1853822377194779028}
+  - {fileID: 1422539465447904945}
+  - {fileID: 2701376643077850189}
   rootNodeOffset: {x: 250, y: 0}
+--- !u!114 &1422539465447904945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 9ca8d539-36ca-486e-a6f6-87da17b09cc2
+  description: Attack
+  position: {x: 600, y: 535}
+  priority: 0
+  onEnterActions:
+  - actionID: Attack
+    parameters: []
+  onTickActions: []
+  onExitActions:
+  - actionID: Cycle Combo
+    parameters: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Current Attack Finished
+          parameters: []
+          negate: 0
+--- !u!114 &2701376643077850189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3928e589b6b404ea43e81221128b4c, type: 3}
+  m_Name: Loop
+  m_EditorClassIdentifier: 
+  uniqueID: 39461813-7a88-455f-9b7d-3891d36d98d7
+  description: 
+  position: {x: 624, y: 404}
+  priority: 0
+  child: {fileID: 1422539465447904945}
+  abortCondition:
+    and:
+    - or:
+      - predicate: Current Attack Is Last
+        parameters: []
+        negate: 0
+    - or:
+      - predicate: Target In Attack Range
+        parameters: []
+        negate: 1
 --- !u!114 &4784020635163290285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,7 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: ac93c9c0-84dc-4e0b-a3d6-e557a4be3fc4
   description: Behaviour Selector
-  position: {x: 252, y: 122}
+  position: {x: 252.00002, y: 110}
   priority: 0
   children:
   - {fileID: 6152840740901662884}

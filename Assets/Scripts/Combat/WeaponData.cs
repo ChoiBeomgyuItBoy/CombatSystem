@@ -7,12 +7,18 @@ namespace CombatSystem.Combat
     {
         [SerializeField] Weapon equippedWeaponPrefab;
         [SerializeField] float baseDamage = 20;
+        [SerializeField] float range = 5;
         [SerializeField] bool isLeftHanded = false;
         [SerializeField] WeaponAttack[] combo;
 
         public float GetBaseDamage()
         {
             return baseDamage;
+        }
+
+        public float GetRange()
+        {
+            return range;
         }
 
         public WeaponAttack GetAttack(int index)
