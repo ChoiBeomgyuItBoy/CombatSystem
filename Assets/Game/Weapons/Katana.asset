@@ -14,24 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equippedWeaponPrefab: {fileID: 1227218876564722152, guid: 6e1c51fe3e03ad24a9da3857cb2fa657, type: 3}
   baseDamage: 50
-  range: 1
+  range: 2
   isLeftHanded: 0
   combo:
   - animationName: Sword Attack 1
-    knockback: {x: 0, y: 0}
+    knockback: {x: 2, y: 0}
     attackForce: 0
-    forceTime: 0
+    forceTime: 0.274
     endTime: 0.505
     bonusPercentage: 0
   - animationName: Sword Attack 2
-    knockback: {x: 0, y: 0}
+    knockback: {x: 3, y: 0}
     attackForce: 0
-    forceTime: 0
+    forceTime: 0.27
     endTime: 0.532
     bonusPercentage: 0.192
   - animationName: Sword Attack 3
-    knockback: {x: 0, y: 0}
+    knockback: {x: 4, y: 0}
     attackForce: 0
-    forceTime: 0
+    forceTime: 0.255
     endTime: 0.99
     bonusPercentage: 1

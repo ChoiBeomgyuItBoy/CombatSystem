@@ -49,6 +49,9 @@ namespace CombatSystem.Attributes
 
                 case "On Die":
                     return onDie.WasInvoked();
+
+                case "Is Dead":
+                    return IsDead();
             }
 
             return null;

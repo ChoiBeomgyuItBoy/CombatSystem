@@ -61,9 +61,9 @@ namespace CombatSystem.Core
                 case "Is Grounded":
                     return controller.isGrounded;
 
-                case "Has Vertical Force":
+                case "Has Impact Magnitude":
                     float threshold = float.Parse(parameters[0]);
-                    return GetTotalForce().y >= threshold;
+                    return impact.magnitude >= threshold;
             }
                 
             return null;

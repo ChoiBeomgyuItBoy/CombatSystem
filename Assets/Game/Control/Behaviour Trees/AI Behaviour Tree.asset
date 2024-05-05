@@ -25,6 +25,10 @@ MonoBehaviour:
       - predicate: Target In Targeting Range
         parameters: []
         negate: 1
+    - or:
+      - predicate: Current Attack Finished
+        parameters: []
+        negate: 0
 --- !u!114 &-6318200736086464434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,15 +65,15 @@ MonoBehaviour:
   position: {x: -33.485, y: 388.00003}
   priority: 0
   onEnterActions:
+  - actionID: Cancel Movement
+    parameters: []
+  - actionID: Cancel Target
+    parameters: []
   - actionID: Play Animation
     parameters:
     - Locomotion
   onTickActions:
   - actionID: Move to Waypoint
-    parameters: []
-  - actionID: Cancel Movement
-    parameters: []
-  - actionID: Cancel Target
     parameters: []
   onExitActions:
   - actionID: Cycle Waypoint
@@ -127,12 +131,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: f466d04c-898e-43f3-9118-3260517b1c59
   description: Chase Target
-  position: {x: 375, y: 396}
+  position: {x: 391, y: 396}
   priority: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
     - Locomotion
+  - actionID: Reset Combo
+    parameters: []
   onTickActions:
   - actionID: Move To Target
     parameters: []
@@ -183,12 +189,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 9ca8d539-36ca-486e-a6f6-87da17b09cc2
   description: Attack
-  position: {x: 600, y: 535}
+  position: {x: 625, y: 562.16}
   priority: 0
   onEnterActions:
   - actionID: Attack
     parameters: []
-  onTickActions: []
+  onTickActions:
+  - actionID: Face Target
+    parameters: []
   onExitActions:
   - actionID: Cycle Combo
     parameters: []
@@ -213,18 +221,24 @@ MonoBehaviour:
   m_Name: Loop
   m_EditorClassIdentifier: 
   uniqueID: 39461813-7a88-455f-9b7d-3891d36d98d7
-  description: 
-  position: {x: 624, y: 404}
+  description: Attack Loop
+  position: {x: 642, y: 404}
   priority: 0
   child: {fileID: 1422539465447904945}
   abortCondition:
     and:
     - or:
+      - predicate: Target In Attack Range
+        parameters: []
+        negate: 1
       - predicate: Current Attack Is Last
         parameters: []
         negate: 0
     - or:
-      - predicate: Target In Attack Range
+      - predicate: Current Attack Finished
+        parameters: []
+        negate: 0
+      - predicate: Current Attack Is Last
         parameters: []
         negate: 1
 --- !u!114 &4784020635163290285

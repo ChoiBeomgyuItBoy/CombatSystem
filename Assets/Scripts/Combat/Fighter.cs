@@ -5,6 +5,7 @@ using CombatSystem.Core;
 using CombatSystem.Attributes;
 using CombatSystem.Movement;
 using CombatSystem.Control;
+using UnityEngine.Playables;
 
 namespace CombatSystem.Combat
 {
@@ -21,9 +22,9 @@ namespace CombatSystem.Combat
         ForceReceiver forceReceiver;
         Mover mover;
         Weapon weapon;
-        Health target;
+        [SerializeField] Health target;
         GameObject player;
-        int currentAttackIndex = 0;
+        [SerializeField] int currentAttackIndex = 0;
         bool attackForceApplied = false;
         const float targetGroupRadius = 2;
         const float targetGroupWeight = 1;
@@ -178,7 +179,14 @@ namespace CombatSystem.Combat
 
             if(distanceToPlayer < targetingRange)
             {
-                return player.GetComponent<Health>();
+                Health playerHealth = player.GetComponent<Health>();
+
+                if(playerHealth.IsDead())
+                {
+                    return null;
+                }
+
+                return playerHealth;
             }
 
             return null;
@@ -235,8 +243,6 @@ namespace CombatSystem.Combat
 
             return false;
         }
-
-
 
         Vector3 GetTargetingDirection()
         {
