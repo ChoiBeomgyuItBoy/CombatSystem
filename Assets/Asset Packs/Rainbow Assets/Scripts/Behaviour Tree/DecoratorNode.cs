@@ -23,14 +23,17 @@ namespace RainbowAssets.BehaviourTree
             return child;
         }
 
+        public override void Abort()
+        {
+            child.Abort();
+            base.Abort();
+        }
+
         public override Status Tick()
         {
             if(!abortCondition.IsEmpty() && abortCondition.Check(controller.GetComponents<IPredicateEvaluator>()))
             {
-                child.Abort();
-
                 Abort();
-
                 return Status.Failure;
             }
 

@@ -253,12 +253,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c85f67d9a3d13445887f6205298f96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: a832d4c136ed64c4d992fd741a8ddd30, type: 2}
+  weaponData: {fileID: 0}
   rightHand: {fileID: 5665098896560225910}
   leftHand: {fileID: 4550708243073356132}
   targetGroup: {fileID: 0}
   targetingRange: 20
   targetingSpeedFraction: 0.3
+  target: {fileID: 0}
+  currentAttackIndex: 0
 --- !u!4 &4550708243073356132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 296379630448870295, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
