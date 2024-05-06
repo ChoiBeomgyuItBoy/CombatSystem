@@ -5,7 +5,6 @@ using CombatSystem.Core;
 using CombatSystem.Attributes;
 using CombatSystem.Movement;
 using CombatSystem.Control;
-using UnityEngine.Playables;
 
 namespace CombatSystem.Combat
 {
@@ -17,6 +16,7 @@ namespace CombatSystem.Combat
         [SerializeField] CinemachineTargetGroup targetGroup;
         [SerializeField] float targetingRange = 20;
         [SerializeField] [Range(0,1)] float targetingSpeedFraction = 0.3f;
+        [SerializeField] float suspicionTime = 3;
         AnimationPlayer animationPlayer;
         InputReader inputReader;
         ForceReceiver forceReceiver;
@@ -24,7 +24,8 @@ namespace CombatSystem.Combat
         Weapon weapon;
         [SerializeField] Health target;
         GameObject player;
-        [SerializeField] int currentAttackIndex = 0;
+        int currentAttackIndex = 0;
+        float timeSinceLastSawTarget = Mathf.Infinity;
         bool attackForceApplied = false;
         const float targetGroupRadius = 2;
         const float targetGroupWeight = 1;
@@ -41,6 +42,11 @@ namespace CombatSystem.Combat
         void Start()
         {
             weapon = weaponData.Spawn(rightHand, leftHand);
+        }
+
+        void Update()
+        {
+            timeSinceLastSawTarget += Time.deltaTime;
         }
 
         WeaponAttack GetCurrentAttack()
@@ -238,7 +244,15 @@ namespace CombatSystem.Combat
             if(target != null)
             {
                 float targetDistance = (transform.position - target.transform.position).magnitude;
-                return targetDistance <= range;
+
+                bool inRange =  targetDistance <= range;
+
+                if(inRange)
+                {
+                    timeSinceLastSawTarget = 0;
+                }
+
+                return inRange;
             }
 
             return false;
@@ -330,6 +344,10 @@ namespace CombatSystem.Combat
                 
                 case "Target In Attack Range":
                     return TargetInRange(weaponData.GetRange());
+
+                case "Suspicion Time Finished":
+                    return suspicionTime < timeSinceLastSawTarget;
+
             }
 
             return null;

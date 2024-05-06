@@ -73,7 +73,7 @@ namespace CombatSystem.Movement
                 case "At Waypoint":
                     return AtWaypoint();
 
-                case "Can Patrol":
+                case "Dwell Time Finished":
                     return waypointDwellTime < timeSinceArrivedAtWaypoint;
 
                 case "Has Patrol Path":
