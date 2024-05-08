@@ -21,7 +21,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 6acb059dc9dbcd449947d8a13789e7ee, type: 2}
-  m_Tag: Knockdown
+  m_Tag: Stand
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 

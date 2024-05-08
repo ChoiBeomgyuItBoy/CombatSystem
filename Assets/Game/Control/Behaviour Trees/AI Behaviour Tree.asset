@@ -25,6 +25,31 @@ MonoBehaviour:
       - predicate: Target In Targeting Range
         parameters: []
         negate: 1
+--- !u!114 &-6391837482643163466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b80b585178d2045b1b5f40e1fad244, type: 3}
+  m_Name: Sequence
+  m_EditorClassIdentifier: 
+  uniqueID: 0d46a631-d6f6-47d4-ac92-ee5461e11b81
+  description: Knockdown Sequence
+  position: {x: 1662.6261, y: 233.14912}
+  priority: 0
+  children:
+  - {fileID: 2188412288555749410}
+  - {fileID: 3530502216129297405}
+  - {fileID: 1257269783449214162}
+  - {fileID: 8294959450762681043}
+  - {fileID: -5174156530798113680}
+  - {fileID: 1545375685465312531}
+  abortCondition:
+    and: []
 --- !u!114 &-6318200736086464434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,11 +64,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 43b56627-31ce-4871-b00d-14938e8d1ebd
   description: 
-  position: {x: 540.42, y: -546.8108}
+  position: {x: 748, y: -585.81635}
   priority: 0
   child: {fileID: 8405625846950773725}
   abortCondition:
     and: []
+--- !u!114 &-5767101357777649108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 32adc54a-9739-4566-afa7-dbac563093ff
+  description: Check if Impact Magnitude < 8
+  position: {x: 964.1502, y: 389.00003}
+  priority: 0
+  onEnterActions: []
+  onTickActions: []
+  onExitActions: []
+  statusConditions:
+  - status: 2
+    condition:
+      and:
+      - or:
+        - predicate: Has Impact Magnitude
+          parameters:
+          - 8
+          negate: 0
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Has Impact Magnitude
+          parameters:
+          - 8
+          negate: 1
 --- !u!114 &-5466954830304288259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,6 +128,28 @@ MonoBehaviour:
       - predicate: On Damage Taken
         parameters: []
         negate: 0
+--- !u!114 &-5174156530798113680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943c39989e6f3ed46b7f81cfe26422a5, type: 3}
+  m_Name: Selector
+  m_EditorClassIdentifier: 
+  uniqueID: a503825c-30ed-4b6d-bf28-c570e1a4f9fb
+  description: Dead Selector
+  position: {x: 2049, y: 413}
+  priority: 0
+  children:
+  - {fileID: 6301621095754054197}
+  - {fileID: -5166349936687010143}
+  abortCondition:
+    and: []
+  selectionType: 0
 --- !u!114 &-5172249129818689147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: b3f195c8-8d8f-4440-9d2e-b5d608b06992
   description: Move To Waypoint
-  position: {x: -33.485, y: 388.00003}
+  position: {x: -15, y: 394}
   priority: 0
   onEnterActions:
   - actionID: Cancel Movement
@@ -105,6 +188,29 @@ MonoBehaviour:
         - predicate: At Waypoint
           parameters: []
           negate: 0
+--- !u!114 &-5166349936687010143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 3d95e77f-56ee-4428-bfb1-8121e9f07fc7
+  description: Dead Loop
+  position: {x: 2168, y: 543.16}
+  priority: 0
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Dead Loop
+  onTickActions: []
+  onExitActions: []
+  statusConditions: []
 --- !u!114 &-5130841997898359522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 0b94e956-bcbb-4453-bc44-05e7391bdec5
   description: Wait for Dwell Time
-  position: {x: 158, y: 387}
+  position: {x: 167, y: 394}
   priority: 0
   onEnterActions:
   - actionID: Play Random Animation
@@ -133,10 +239,31 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: Can Patrol
+        - predicate: Dwell Time Finished
           parameters: []
           negate: 0
---- !u!114 &-4868015803572065149
+--- !u!114 &-3882840076128564867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b80b585178d2045b1b5f40e1fad244, type: 3}
+  m_Name: Sequence
+  m_EditorClassIdentifier: 
+  uniqueID: a4a7fba3-e90f-44f8-87a7-09b5ac25ce15
+  description: Knockback Sequence
+  position: {x: 1061, y: 248}
+  priority: 0
+  children:
+  - {fileID: -5767101357777649108}
+  - {fileID: 3407869554933926359}
+  abortCondition:
+    and: []
+--- !u!114 &-3234831812922042020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,17 +275,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3928e589b6b404ea43e81221128b4c, type: 3}
   m_Name: Loop
   m_EditorClassIdentifier: 
-  uniqueID: 8d784fee-5383-46fc-8ff0-1b239d46fd1f
+  uniqueID: aa25f882-8eef-4927-b9eb-c6d86d1e7450
   description: Damage Loop
-  position: {x: 557, y: -17.459305}
+  position: {x: 1398.9998, y: -30.470905}
   priority: 0
-  child: {fileID: 2984912054849832882}
+  child: {fileID: 8763485855992065924}
   abortCondition:
     and:
     - or:
       - predicate: Animation Over
         parameters:
         - Damage
+        negate: 0
+      - predicate: Animation Over
+        parameters:
+        - Stand
         negate: 0
 --- !u!114 &-3065079760961666212
 MonoBehaviour:
@@ -174,7 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 10453afa-f1a5-4468-ae0a-6f62a925b81d
   description: Die
-  position: {x: 626, y: -291}
+  position: {x: 954.0775, y: -294.99997}
   priority: 0
   onEnterActions:
   - actionID: Play Animation
@@ -231,11 +362,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 662ed49c-2f45-40f3-a72f-2e23c9e6588c
   description: Behaviour Selector
-  position: {x: 406.99988, y: -170}
+  position: {x: 739.6372, y: -205}
   priority: 1
   children:
   - {fileID: -5466954830304288259}
-  - {fileID: -4868015803572065149}
+  - {fileID: -3234831812922042020}
   abortCondition:
     and: []
   selectionType: 1
@@ -263,13 +394,58 @@ MonoBehaviour:
   - {fileID: 1422539465447904945}
   - {fileID: 2701376643077850189}
   - {fileID: -1708105002057340823}
-  - {fileID: 2984912054849832882}
   - {fileID: -5466954830304288259}
-  - {fileID: -4868015803572065149}
   - {fileID: 8405625846950773725}
   - {fileID: -3065079760961666212}
   - {fileID: 7301774416542155770}
+  - {fileID: 3647280899877788980}
+  - {fileID: -3882840076128564867}
+  - {fileID: -5767101357777649108}
+  - {fileID: 3407869554933926359}
+  - {fileID: -6391837482643163466}
+  - {fileID: 2188412288555749410}
+  - {fileID: 3530502216129297405}
+  - {fileID: 8763485855992065924}
+  - {fileID: -3234831812922042020}
+  - {fileID: 1257269783449214162}
+  - {fileID: 8294959450762681043}
+  - {fileID: 1545375685465312531}
+  - {fileID: -5174156530798113680}
+  - {fileID: -5166349936687010143}
+  - {fileID: 6301621095754054197}
   rootNodeOffset: {x: 250, y: 0}
+--- !u!114 &1257269783449214162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 62ac6be6-ddfe-46c1-b4ae-7e7fea1d01ed
+  description: Knockdown Fall
+  position: {x: 1712.9999, y: 397}
+  priority: 0
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Knockdown Fall
+  onTickActions:
+  - actionID: Apply Motion Zero
+    parameters: []
+  onExitActions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Is Grounded
+          parameters: []
+          negate: 0
 --- !u!114 &1422539465447904945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +478,65 @@ MonoBehaviour:
       - or:
         - predicate: Current Attack Finished
           parameters: []
+          negate: 0
+--- !u!114 &1545375685465312531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 2a8a7ab9-ba0d-4496-b9d5-34da91c89e3f
+  description: Stand Up
+  position: {x: 2233.3972, y: 405}
+  priority: 0
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Stand Up
+  onTickActions: []
+  onExitActions: []
+  statusConditions: []
+--- !u!114 &2188412288555749410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: ec448a0b-1c7d-42f8-9b47-8d5fbe33cee8
+  description: Check if Impact Magnitude > 8
+  position: {x: 1383, y: 397}
+  priority: 0
+  onEnterActions: []
+  onTickActions: []
+  onExitActions: []
+  statusConditions:
+  - status: 2
+    condition:
+      and:
+      - or:
+        - predicate: Has Impact Magnitude
+          parameters:
+          - 8
+          negate: 1
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Has Impact Magnitude
+          parameters:
+          - 8
           negate: 0
 --- !u!114 &2701376643077850189
 MonoBehaviour:
@@ -336,7 +571,7 @@ MonoBehaviour:
       - predicate: Current Attack Is Last
         parameters: []
         negate: 1
---- !u!114 &2984912054849832882
+--- !u!114 &3407869554933926359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -348,9 +583,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
   m_Name: CustomAction
   m_EditorClassIdentifier: 
-  uniqueID: 77ea2db4-7a24-478c-8bc4-da6a9db773b2
-  description: Take Damage
-  position: {x: 571, y: 101.999985}
+  uniqueID: 0f839507-2332-48e7-9649-1b7478440b1d
+  description: Knockback
+  position: {x: 1147, y: 397}
   priority: 0
   onEnterActions:
   - actionID: Play Random Animation
@@ -358,6 +593,7 @@ MonoBehaviour:
     - Damage 1
     - Damage 2
     - Damage 3
+    - Damage 4
   onTickActions:
   - actionID: Face Target
     parameters: []
@@ -370,6 +606,68 @@ MonoBehaviour:
       and:
       - or:
         - predicate: On Damage Taken
+          parameters: []
+          negate: 0
+--- !u!114 &3530502216129297405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 0a75ad89-cd5e-495e-aef8-ba68c689c0fe
+  description: Knockdown Entry
+  position: {x: 1547, y: 397}
+  priority: 0
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Knockdown Entry
+  onTickActions:
+  - actionID: Apply Motion Zero
+    parameters: []
+  onExitActions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Animation Over
+          parameters:
+          - Knockdown
+          negate: 0
+--- !u!114 &3647280899877788980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 57657e1b-441f-40c4-a659-3d4320491c65
+  description: Wait for Suspicion Time
+  position: {x: -202, y: 386}
+  priority: 0
+  onEnterActions:
+  - actionID: Cancel Movement
+    parameters: []
+  onTickActions: []
+  onExitActions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Suspicion Time Finished
           parameters: []
           negate: 0
 --- !u!114 &4784020635163290285
@@ -411,6 +709,7 @@ MonoBehaviour:
   position: {x: 102, y: 251}
   priority: 1
   children:
+  - {fileID: 3647280899877788980}
   - {fileID: -5172249129818689147}
   - {fileID: -5130841997898359522}
   abortCondition:
@@ -419,6 +718,40 @@ MonoBehaviour:
       - predicate: Select Target
         parameters: []
         negate: 0
+--- !u!114 &6301621095754054197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 48ccb239-6619-4091-99be-d17e6bea5e80
+  description: Check if Dead
+  position: {x: 1963, y: 543.68}
+  priority: 0
+  onEnterActions: []
+  onTickActions: []
+  onExitActions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Is Dead
+          parameters: []
+          negate: 1
+  - status: 2
+    condition:
+      and:
+      - or:
+        - predicate: Is Dead
+          parameters: []
+          negate: 0
 --- !u!114 &7301774416542155770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,7 +766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 2cf39b43-4b54-4ab2-91e3-63c47bc62e21
   description: Behaviour Loop
-  position: {x: 409, y: -298.55008}
+  position: {x: 748.00006, y: -327}
   priority: 1
   child: {fileID: -1708105002057340823}
   abortCondition:
@@ -442,6 +775,42 @@ MonoBehaviour:
       - predicate: On Die
         parameters: []
         negate: 0
+    - or:
+      - predicate: Has Impact Magnitude
+        parameters:
+        - 8
+        negate: 1
+--- !u!114 &8294959450762681043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: def2ac53-aaf9-40cf-9f3c-e9de8daaa94d
+  description: Knockdown Land
+  position: {x: 1877, y: 404}
+  priority: 0
+  onEnterActions:
+  - actionID: Play Animation
+    parameters:
+    - Knockdown Land
+  onTickActions: []
+  onExitActions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Animation Over
+          parameters:
+          - Knockdown
+          negate: 0
 --- !u!114 &8405625846950773725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: c2a87741-f125-448f-be01-0c4dfa399a72
   description: Master Selector
-  position: {x: 539, y: -437}
+  position: {x: 748.0001, y: -455.92413}
   priority: 0
   children:
   - {fileID: 7301774416542155770}
@@ -464,3 +833,25 @@ MonoBehaviour:
   abortCondition:
     and: []
   selectionType: 1
+--- !u!114 &8763485855992065924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943c39989e6f3ed46b7f81cfe26422a5, type: 3}
+  m_Name: Selector
+  m_EditorClassIdentifier: 
+  uniqueID: c77f2d31-5006-412e-9f00-43389ebd5b09
+  description: Damage Selector
+  position: {x: 1390.9998, y: 96.90915}
+  priority: 0
+  children:
+  - {fileID: -3882840076128564867}
+  - {fileID: -6391837482643163466}
+  abortCondition:
+    and: []
+  selectionType: 0

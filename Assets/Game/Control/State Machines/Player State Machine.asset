@@ -87,11 +87,6 @@ MonoBehaviour:
         - predicate: Is Dead
           parameters: []
           negate: 0
-      - or:
-        - predicate: Animation Over
-          parameters:
-          - Knockdown
-          negate: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
@@ -393,12 +388,11 @@ MonoBehaviour:
       - or:
         - predicate: Animation Over
           parameters:
-          - Knockdown
+          - Stand
           negate: 0
       - or:
         - predicate: Target In Targeting Range
-          parameters:
-          - Knockdown
+          parameters: []
           negate: 1
   - rootStateID: 878c8e5b-efe6-4f07-97ff-813682974b1a
     trueStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
@@ -407,7 +401,7 @@ MonoBehaviour:
       - or:
         - predicate: Animation Over
           parameters:
-          - Knockdown
+          - Stand
           negate: 0
       - or:
         - predicate: Target In Targeting Range
@@ -464,7 +458,7 @@ MonoBehaviour:
   m_Name: ActionState
   m_EditorClassIdentifier: 
   uniqueID: 275fc7c0-1403-4bd9-b307-d7fb9a7575e3
-  title: Damage State
+  title: Knockback State
   position: {x: 153, y: -26}
   transitions:
   - rootStateID: 275fc7c0-1403-4bd9-b307-d7fb9a7575e3
