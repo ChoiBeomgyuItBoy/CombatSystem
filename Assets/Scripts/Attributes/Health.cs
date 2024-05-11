@@ -4,18 +4,13 @@ using UnityEngine;
 
 namespace CombatSystem.Attributes
 {
-    public class Health : MonoBehaviour, IPredicateEvaluator
+    public class Health : MonoBehaviour, IAction, IPredicateEvaluator
     {
         [SerializeField] float maxHealth = 100;
         [SerializeField] LazyEvent<float> onDamageTaken;
         public LazyEvent onDie;
         float currentHealth = 0;
         bool isInvulnerable = false;
-
-        public void SetInvulnerable(bool isInvulnerable)
-        {
-            this.isInvulnerable = isInvulnerable;
-        }
 
         public void TakeDamage(float damage)
         {
@@ -44,6 +39,25 @@ namespace CombatSystem.Attributes
         void Awake()
         {
             currentHealth = maxHealth;
+        }
+
+        void SetInvulnerable(bool isInvulnerable)
+        {
+            this.isInvulnerable = isInvulnerable;
+        }
+
+        void IAction.DoAction(string actionID, string[] parameters)
+        {
+            switch(actionID)
+            {
+                case "Set Invulnerability":
+                    SetInvulnerable(true);
+                    break;
+
+                case "Cancel Invulnerability":
+                    SetInvulnerable(false);
+                    break;
+            }
         }
 
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)

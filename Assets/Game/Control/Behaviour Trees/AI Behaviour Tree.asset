@@ -18,6 +18,7 @@ MonoBehaviour:
   priority: 0
   children:
   - {fileID: -1853822377194779028}
+  - {fileID: 2701376643077850189}
   abortCondition:
     and:
     - or:
@@ -344,7 +345,7 @@ MonoBehaviour:
   - actionID: Reset Combo
     parameters: []
   onTickActions:
-  - actionID: Move To Target
+  - actionID: Targeting Movement
     parameters: []
   onExitActions: []
   statusConditions:

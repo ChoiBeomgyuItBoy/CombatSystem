@@ -30,6 +30,11 @@ namespace CombatSystem.Movement
             return Vector3.Distance(transform.position, destination) < tolerance;
         }
 
+        public Vector3 GetLocalVelocity()
+        {
+            return transform.InverseTransformDirection(agent.velocity);
+        }
+
         void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
@@ -50,17 +55,17 @@ namespace CombatSystem.Movement
 
         float GetMovementMagnitude()
         {
-            return transform.InverseTransformDirection(agent.velocity).magnitude;
+            return GetLocalVelocity().magnitude;
         }
 
         float GetForwardVelocity()
         {
-            return transform.InverseTransformDirection(agent.velocity).z;
+            return GetLocalVelocity().z;
         }
 
         float GetRightVelocity()
         {
-            return transform.InverseTransformDirection(agent.velocity).x;
+            return GetLocalVelocity().x;
         }
 
         void IAction.DoAction(string actionID, string[] parameters)
