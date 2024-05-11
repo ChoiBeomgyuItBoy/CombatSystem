@@ -18,7 +18,6 @@ MonoBehaviour:
   priority: 0
   children:
   - {fileID: -1853822377194779028}
-  - {fileID: 2701376643077850189}
   abortCondition:
     and:
     - or:
@@ -49,7 +48,11 @@ MonoBehaviour:
   - {fileID: -5174156530798113680}
   - {fileID: 1545375685465312531}
   abortCondition:
-    and: []
+    and:
+    - or:
+      - predicate: On Damage Taken
+        parameters: []
+        negate: 0
 --- !u!114 &-6318200736086464434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +265,11 @@ MonoBehaviour:
   - {fileID: -5767101357777649108}
   - {fileID: 3407869554933926359}
   abortCondition:
-    and: []
+    and:
+    - or:
+      - predicate: On Damage Taken
+        parameters: []
+        negate: 0
 --- !u!114 &-3234831812922042020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,14 +607,7 @@ MonoBehaviour:
   - actionID: Apply Motion Zero
     parameters: []
   onExitActions: []
-  statusConditions:
-  - status: 1
-    condition:
-      and:
-      - or:
-        - predicate: On Damage Taken
-          parameters: []
-          negate: 0
+  statusConditions: []
 --- !u!114 &3530502216129297405
 MonoBehaviour:
   m_ObjectHideFlags: 0

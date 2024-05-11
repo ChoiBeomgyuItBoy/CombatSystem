@@ -44,7 +44,7 @@ namespace CombatSystem.Movement
 
         void MoveToCurrentWaypoint()
         {
-            mover.MoveTo(GetCurentWaypoint(), patrolSpeedFraction, true);
+            mover.MoveTo(GetCurentWaypoint(), patrolSpeedFraction);
         }
 
         void CycleWaypoint()

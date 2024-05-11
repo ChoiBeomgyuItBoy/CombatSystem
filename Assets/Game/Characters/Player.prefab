@@ -1390,4 +1390,8 @@ MonoBehaviour:
   targetGroup: {fileID: 6166532866636124502}
   targetingRange: 20
   targetingSpeedFraction: 0.3
-  chaseDistance: 20
+  suspicionTime: 3
+  dodgeCooldownTime: 0.8
+  dodgeDuration: 0.65
+  dodgeSpeedFraction: 0.5
+  target: {fileID: 0}

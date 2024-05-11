@@ -10,10 +10,16 @@ namespace CombatSystem.Attributes
         [SerializeField] LazyEvent<float> onDamageTaken;
         public LazyEvent onDie;
         float currentHealth = 0;
+        bool isInvulnerable = false;
+
+        public void SetInvulnerable(bool isInvulnerable)
+        {
+            this.isInvulnerable = isInvulnerable;
+        }
 
         public void TakeDamage(float damage)
         {
-            if(!IsDead())
+            if(!IsDead() && !isInvulnerable)
             {
                 currentHealth = Mathf.Max(0, currentHealth - damage);
                 StartCoroutine(onDamageTaken?.Invoke(damage));     

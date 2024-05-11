@@ -183,6 +183,20 @@ MonoBehaviour:
           parameters:
           - Attack
           negate: 0
+  - rootStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
+    trueStateID: 3c1b4db4-94aa-47f2-9bb4-594f7d01c1aa
+    condition:
+      and:
+      - or:
+        - predicate: Input Action
+          parameters:
+          - Dodge
+          negate: 0
+      - or:
+        - predicate: Dodge Cooldown Finished
+          parameters:
+          - Dodge
+          negate: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
@@ -338,6 +352,42 @@ MonoBehaviour:
           parameters:
           - 8
           negate: 1
+--- !u!114 &-689650441415031001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c41c226ac830cc4badff91167841243, type: 3}
+  m_Name: ActionState
+  m_EditorClassIdentifier: 
+  uniqueID: 3c1b4db4-94aa-47f2-9bb4-594f7d01c1aa
+  title: Dodge State
+  position: {x: 510, y: 258.68}
+  transitions:
+  - rootStateID: 3c1b4db4-94aa-47f2-9bb4-594f7d01c1aa
+    trueStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
+    condition:
+      and:
+      - or:
+        - predicate: Dodge Cooldown Finished
+          parameters: []
+          negate: 1
+  onEnterActions:
+  - actionID: Start Dodge
+    parameters: []
+  - actionID: Play Animation
+    parameters:
+    - Dodging
+  onTickActions:
+  - actionID: Dodge Movement
+    parameters: []
+  - actionID: Face Target
+    parameters: []
+  onExitActions: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,6 +415,7 @@ MonoBehaviour:
   - {fileID: -7710654307947419803}
   - {fileID: 288852036151214733}
   - {fileID: 4555890129427161250}
+  - {fileID: -689650441415031001}
 --- !u!114 &288852036151214733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,7 +599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: b78e0e5b-0023-4ef8-a7fd-36a28680fefe
   title: Entry
-  position: {x: 308.00006, y: 199.17798}
+  position: {x: 68, y: 98}
   transitions:
   - rootStateID: b78e0e5b-0023-4ef8-a7fd-36a28680fefe
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690

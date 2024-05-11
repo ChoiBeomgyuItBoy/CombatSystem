@@ -11,12 +11,12 @@ namespace CombatSystem.Movement
         NavMeshAgent agent;
         AnimationPlayer animationPlayer;
 
-        public void MoveTo(Vector3 destination, float speedFraction, bool AIMovement)
+        public void MoveTo(Vector3 destination, float speedFraction)
         {
             agent.enabled = true;
             agent.isStopped = false;
 
-            if(!AIMovement)
+            if(CompareTag("Player"))
             {
                 destination += transform.position;
             }

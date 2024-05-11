@@ -17,6 +17,9 @@ namespace CombatSystem.Combat
         [SerializeField] float targetingRange = 20;
         [SerializeField] [Range(0,1)] float targetingSpeedFraction = 0.3f;
         [SerializeField] float suspicionTime = 3;
+        [SerializeField] float dodgeCooldownTime = 2;
+        [SerializeField] [Range(0,1)] float dodgeDuration = 2;
+        [SerializeField] [Range(0,1)] float dodgeSpeedFraction = 0.6f;
         AnimationPlayer animationPlayer;
         InputReader inputReader;
         ForceReceiver forceReceiver;
@@ -24,8 +27,11 @@ namespace CombatSystem.Combat
         Weapon weapon;
         [SerializeField] Health target;
         GameObject player;
+        Vector2 dodgeInputValue;
         int currentAttackIndex = 0;
         float timeSinceLastSawTarget = Mathf.Infinity;
+        float timeSinceLastDodge = Mathf.Infinity;
+        float remainingDodgeTime = 0;
         bool attackForceApplied = false;
         const float targetGroupRadius = 2;
         const float targetGroupWeight = 1;
@@ -47,6 +53,7 @@ namespace CombatSystem.Combat
         void Update()
         {
             timeSinceLastSawTarget += Time.deltaTime;
+            timeSinceLastDodge += Time.deltaTime;
         }
 
         WeaponAttack GetCurrentAttack()
@@ -261,8 +268,8 @@ namespace CombatSystem.Combat
         Vector3 GetTargetingDirection()
         {
             Vector2 inputValue = inputReader.GetInputValue();
-
             Vector3 direction = new();
+
             Vector3 right = transform.right * inputValue.x;
             Vector3 forward = transform.forward * inputValue.y;
 
@@ -274,12 +281,47 @@ namespace CombatSystem.Combat
 
         void TargetingMovement()
         {
-            mover.MoveTo(GetTargetingDirection(), targetingSpeedFraction, false);
+            mover.MoveTo(GetTargetingDirection(), targetingSpeedFraction);
         }
 
         void MoveToTarget()
         {
-            mover.MoveTo(target.transform.position, targetingSpeedFraction, true);
+            mover.MoveTo(target.transform.position, targetingSpeedFraction);
+        }
+
+        void StartDodge()
+        {
+            remainingDodgeTime = dodgeDuration;
+            dodgeInputValue = inputReader.GetInputValue();
+            GetComponent<Health>().SetInvulnerable(true);
+        }
+
+        Vector3 GetDodgeDirection()
+        {
+            Vector3 direction = new();
+
+            Vector3 right = transform.right * dodgeInputValue.x * dodgeDuration;
+            Vector3 forward = transform.forward * dodgeInputValue.y * dodgeDuration;
+
+            remainingDodgeTime -= Time.deltaTime;
+
+            if(remainingDodgeTime > 0)
+            {
+                direction += right;
+                direction += forward;
+            }
+            else
+            {
+                timeSinceLastDodge = 0;
+                GetComponent<Health>().SetInvulnerable(false);
+            }
+
+            return direction;
+        }
+
+        void DodgeMovement()
+        {
+            mover.MoveTo(GetDodgeDirection(), dodgeSpeedFraction);
         }
 
         void OnDrawGizmosSelected()
@@ -323,6 +365,14 @@ namespace CombatSystem.Combat
                 case "Move To Target":
                     MoveToTarget();
                     break;
+
+                case "Start Dodge":
+                    StartDodge();
+                    break;
+
+                case "Dodge Movement":
+                    DodgeMovement();
+                    break;
             }
         }
 
@@ -347,6 +397,9 @@ namespace CombatSystem.Combat
 
                 case "Suspicion Time Finished":
                     return suspicionTime < timeSinceLastSawTarget;
+
+                case "Dodge Cooldown Finished":
+                    return dodgeCooldownTime < timeSinceLastDodge;
 
             }
 

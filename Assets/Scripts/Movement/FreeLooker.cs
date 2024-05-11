@@ -36,7 +36,7 @@ namespace CombatSystem.Movement
             switch(actionID)
             {
                 case "Free Look Movement":
-                    mover.MoveTo(GetFreeLookDirection(), freeLookSpeedFraction, false);  
+                    mover.MoveTo(GetFreeLookDirection(), freeLookSpeedFraction);  
                     break;
             }
 
