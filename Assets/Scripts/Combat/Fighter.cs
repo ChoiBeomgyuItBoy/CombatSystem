@@ -41,7 +41,7 @@ namespace CombatSystem.Combat
 
         void Start()
         {
-            weapon = weaponData.Spawn(rightHand, leftHand);
+            weapon = weaponData.Spawn(rightHand, leftHand, animationPlayer);
         }
 
         void Update()

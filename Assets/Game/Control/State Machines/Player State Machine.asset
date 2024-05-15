@@ -382,17 +382,12 @@ MonoBehaviour:
   - actionID: Play Animation
     parameters:
     - Dodging
-  - actionID: Set Invulnerability
-    parameters:
-    - Dodging
   onTickActions:
   - actionID: Dodge Movement
     parameters: []
   - actionID: Face Target
     parameters: []
-  onExitActions:
-  - actionID: Cancel Invulnerability
-    parameters: []
+  onExitActions: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: a83f3dfb-2f41-4bbc-9737-6f2149cc23f1
   description: Chase Sequence
-  position: {x: 477, y: 261}
+  position: {x: 477, y: 259}
   priority: 0
   children:
   - {fileID: -1853822377194779028}
@@ -168,11 +168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: b3f195c8-8d8f-4440-9d2e-b5d608b06992
   description: Move To Waypoint
-  position: {x: -15, y: 394}
+  position: {x: -9, y: 394}
   priority: 0
   onEnterActions:
-  - actionID: Cancel Movement
-    parameters: []
   - actionID: Cancel Target
     parameters: []
   - actionID: Play Animation
@@ -232,10 +230,12 @@ MonoBehaviour:
   position: {x: 167, y: 394}
   priority: 0
   onEnterActions:
+  - actionID: Cancel Movement
+    parameters: []
   - actionID: Play Random Animation
     parameters:
-    - Idle 1
-    - Idle 2
+    - Yawn
+    - Bored
   onTickActions: []
   onExitActions: []
   statusConditions:
@@ -341,7 +341,7 @@ MonoBehaviour:
   onEnterActions:
   - actionID: Play Animation
     parameters:
-    - Locomotion
+    - Targeting
   - actionID: Reset Combo
     parameters: []
   onTickActions:
@@ -579,6 +579,10 @@ MonoBehaviour:
       - predicate: Current Attack Is Last
         parameters: []
         negate: 1
+    - or:
+      - predicate: Current Attack Finished
+        parameters: []
+        negate: 0
 --- !u!114 &3407869554933926359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,7 +689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: ac93c9c0-84dc-4e0b-a3d6-e557a4be3fc4
   description: Movement Selector
-  position: {x: 252.00002, y: 110}
+  position: {x: 253.00002, y: 118}
   priority: 1
   children:
   - {fileID: 6152840740901662884}

@@ -30,6 +30,25 @@ namespace CombatSystem.Core
             animator.SetFloat(parameter, value, crossFadeTime, Time.deltaTime);
         }
 
+        public void SetAnimatorOverride(AnimatorOverrideController animatorOverride)
+        {
+            var defaultAnimator = GetDefaultAnimator(animator);
+
+            if(animatorOverride != null)
+            {
+                animator.runtimeAnimatorController = animatorOverride;
+            }
+            else if(defaultAnimator != null)
+            {
+                animator.runtimeAnimatorController = defaultAnimator.runtimeAnimatorController;
+            }
+        }
+
+        AnimatorOverrideController GetDefaultAnimator(Animator animator)
+        {
+            return animator.runtimeAnimatorController as AnimatorOverrideController;
+        }
+
         void Awake()
         {
             animator = GetComponent<Animator>();

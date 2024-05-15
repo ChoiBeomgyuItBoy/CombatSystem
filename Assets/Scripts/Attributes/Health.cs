@@ -12,6 +12,11 @@ namespace CombatSystem.Attributes
         float currentHealth = 0;
         bool isInvulnerable = false;
 
+        public void SetInvulnerable(bool isInvulnerable)
+        {
+            this.isInvulnerable = isInvulnerable;
+        }
+
         public void TakeDamage(float damage)
         {
             if(!IsDead() && !isInvulnerable)
@@ -39,11 +44,6 @@ namespace CombatSystem.Attributes
         void Awake()
         {
             currentHealth = maxHealth;
-        }
-
-        void SetInvulnerable(bool isInvulnerable)
-        {
-            this.isInvulnerable = isInvulnerable;
         }
 
         void IAction.DoAction(string actionID, string[] parameters)

@@ -1,3 +1,4 @@
+using CombatSystem.Core;
 using UnityEngine;
 
 namespace CombatSystem.Combat
@@ -6,6 +7,7 @@ namespace CombatSystem.Combat
     public class WeaponData : ScriptableObject
     {
         [SerializeField] Weapon equippedWeaponPrefab;
+        [SerializeField] AnimatorOverrideController animatorOverride;
         [SerializeField] float baseDamage = 20;
         [SerializeField] float range = 5;
         [SerializeField] bool isLeftHanded = false;
@@ -31,7 +33,7 @@ namespace CombatSystem.Combat
             return combo.Length;
         }
 
-        public Weapon Spawn(Transform rightHand, Transform leftHand)
+        public Weapon Spawn(Transform rightHand, Transform leftHand, AnimationPlayer animationPlayer)
         {
             Weapon weaponInstance = null;
 
@@ -46,6 +48,8 @@ namespace CombatSystem.Combat
                     weaponInstance = Instantiate(equippedWeaponPrefab, rightHand);
                 }
             } 
+
+            animationPlayer.SetAnimatorOverride(animatorOverride);
 
             return weaponInstance;
         }
