@@ -193,6 +193,11 @@ MonoBehaviour:
           - Dodge
           negate: 0
       - or:
+        - predicate: Input Action
+          parameters:
+          - Locomotion
+          negate: 0
+      - or:
         - predicate: Dodge Cooldown Finished
           parameters:
           - Dodge

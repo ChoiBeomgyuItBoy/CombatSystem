@@ -1787,7 +1787,7 @@ PrefabInstance:
     - target: {fileID: 7631315107574109392, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: weaponData
       value: 
-      objectReference: {fileID: 11400000, guid: e965b39d6ff6ea44f9b1c414f1159c03, type: 2}
+      objectReference: {fileID: 11400000, guid: c535fb02919de1d49b5a5c83948c48d2, type: 2}
     - target: {fileID: 7631315107574109392, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: dodgeDuration
       value: 1
@@ -2904,7 +2904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4081738893590250565, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: dodgeDuration
-      value: 0.6
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 4081738893590250565, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: dodgeCooldownTime
@@ -2972,7 +2972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464611287337446962, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00000015389857
+      value: -0.00000015389857
       objectReference: {fileID: 0}
     - target: {fileID: 4466238142720750200, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3296,11 +3296,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7712694054656906571, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001892863
+      value: 0.00000001892863
       objectReference: {fileID: 0}
     - target: {fileID: 7712694054656906571, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000034324152
+      value: -0.0000000034324152
       objectReference: {fileID: 0}
     - target: {fileID: 7772272323495508552, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalPosition.x
