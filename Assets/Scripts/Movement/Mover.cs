@@ -73,7 +73,12 @@ namespace CombatSystem.Movement
             switch(actionID)
             {
                 case "Cancel Movement":
-                    agent.isStopped = true;
+                
+                    if(agent.isActiveAndEnabled)
+                    {
+                        agent.isStopped = true;
+                    }
+
                     break;
             }
         }

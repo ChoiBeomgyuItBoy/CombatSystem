@@ -16,7 +16,11 @@ namespace CombatSystem.Combat
         [SerializeField] CinemachineTargetGroup targetGroup;
         [SerializeField] float targetingRange = 20;
         [SerializeField] [Range(0,1)] float targetingSpeedFraction = 0.3f;
-        [SerializeField] float suspicionTime = 3;
+        [SerializeField] [Range(0,1)] float chaseSpeedFraction = 1;
+        [SerializeField] float suspicionDuration = 3;
+        [SerializeField] float targetingMoveDistance = 5;
+        [SerializeField] float targetingPointTolerance = 2;
+        [SerializeField] float targetingDuration = 5;
         [SerializeField] Health target;
         AnimationPlayer animationPlayer;
         InputReader inputReader;
@@ -24,11 +28,20 @@ namespace CombatSystem.Combat
         Mover mover;
         Weapon weapon;
         GameObject player;
+        Vector3 currentTargetingPoint;
         int currentAttackIndex = 0;
         float timeSinceLastSawTarget = Mathf.Infinity;
+        float timeSinceStartedTargeting = Mathf.Infinity;
         bool attackForceApplied = false;
         const float targetGroupRadius = 2;
         const float targetGroupWeight = 1;
+        readonly Vector3[] targetingPoints = new Vector3[]
+        {
+            Vector3.left,
+            Vector3.back,
+            Vector3.forward,
+            Vector3.right
+        };
 
         void Awake()
         {
@@ -47,6 +60,7 @@ namespace CombatSystem.Combat
         void Update()
         {
             timeSinceLastSawTarget += Time.deltaTime;
+            timeSinceStartedTargeting += Time.deltaTime;
         }
 
         WeaponAttack GetCurrentAttack()
@@ -260,26 +274,49 @@ namespace CombatSystem.Combat
 
         Vector3 GetTargetingDirection()
         {
+            Vector3 direction = Vector3.zero;
+
             if(CompareTag("Player"))
             {
                 Vector2 inputValue = inputReader.GetInputValue();
-                Vector3 direction = new();
-
                 Vector3 right = transform.right * inputValue.x;
                 Vector3 forward = transform.forward * inputValue.y;
 
                 direction += right;
                 direction += forward;
-
-                return direction;
+            }
+            else
+            {
+                direction = currentTargetingPoint;
             }
 
-            return target.transform.position;
+            return direction;
+        }
+
+        void StartTargeting()
+        {
+            timeSinceStartedTargeting = 0;
         }
 
         void TargetingMovement()
         {
             mover.MoveTo(GetTargetingDirection(), targetingSpeedFraction);
+        }
+
+        void ChooseRandomTargetingPoint()
+        {
+            int randomOption = new System.Random().Next(0, targetingPoints.Length - 1);
+            currentTargetingPoint = transform.position + targetingPoints[randomOption] * targetingMoveDistance;
+        }
+
+        bool AtTargetingPoint()
+        {
+            return mover.AtDestination(currentTargetingPoint, targetingPointTolerance);
+        }
+
+        void ChaseMovement()
+        {
+            mover.MoveTo(target.transform.position, chaseSpeedFraction);
         }
 
         void OnDrawGizmosSelected()
@@ -319,6 +356,18 @@ namespace CombatSystem.Combat
                 case "Targeting Movement":
                     TargetingMovement();
                     break;
+
+                case "Start Targeting":
+                    StartTargeting();
+                    break;
+
+                case "Choose Random Targeting Point":
+                    ChooseRandomTargetingPoint();
+                    break;
+
+                case "Chase Movement":
+                    ChaseMovement();
+                    break;
             }
         }
 
@@ -341,8 +390,14 @@ namespace CombatSystem.Combat
                 case "Target In Attack Range":
                     return TargetInRange(weaponData.GetRange());
 
+                case "At Targeting Point":
+                    return AtTargetingPoint();
+
                 case "Suspicion Time Finished":
-                    return suspicionTime < timeSinceLastSawTarget;
+                    return suspicionDuration < timeSinceLastSawTarget;
+
+                case "Targeting Time Finished":
+                    return targetingDuration < timeSinceStartedTargeting;
             }
 
             return null;

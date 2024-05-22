@@ -828,6 +828,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.8260388
       objectReference: {fileID: 0}
+    - target: {fileID: 2706309686962042469, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
+      propertyPath: moveDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2706309686962042469, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
+      propertyPath: randomMoveSpeedFraction
+      value: 0.307
+      objectReference: {fileID: 0}
     - target: {fileID: 3065009085014491192, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.04615859
@@ -3119,12 +3127,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5882296972809275587, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
+      propertyPath: weaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: c535fb02919de1d49b5a5c83948c48d2, type: 2}
+    - target: {fileID: 5882296972809275587, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: dodgeDistance
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5882296972809275587, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: targetingSpeedFraction
-      value: 0.634
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5948030565588969316, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalPosition.x

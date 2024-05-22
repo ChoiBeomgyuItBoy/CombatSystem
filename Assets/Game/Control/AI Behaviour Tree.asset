@@ -14,17 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: a83f3dfb-2f41-4bbc-9737-6f2149cc23f1
   description: Chase Sequence
-  position: {x: 477, y: 259}
+  position: {x: 501, y: 377}
   priority: 0
   children:
   - {fileID: -1853822377194779028}
   - {fileID: 2701376643077850189}
   abortCondition:
-    and:
-    - or:
-      - predicate: Target In Targeting Range
-        parameters: []
-        negate: 1
+    and: []
 --- !u!114 &-6391837482643163466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +318,42 @@ MonoBehaviour:
   onTickActions: []
   onExitActions: []
   statusConditions: []
+--- !u!114 &-2445061964473986094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 0b3ae774-6d1a-4623-a2f2-c02de46a9ec3
+  description: 
+  position: {x: 793, y: 533.64}
+  priority: 0
+  onEnterActions:
+  - actionID: Choose Random Direction
+    parameters: []
+  - actionID: Play Animation
+    parameters:
+    - Targeting
+  onTickActions:
+  - actionID: Random Movement
+    parameters: []
+  - actionID: Face Target
+    parameters: []
+  onExitActions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: At Random Destination
+          parameters: []
+          negate: 0
 --- !u!114 &-1853822377194779028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: f466d04c-898e-43f3-9118-3260517b1c59
   description: Chase Target
-  position: {x: 391, y: 396}
+  position: {x: 385, y: 502.5098}
   priority: 0
   onEnterActions:
   - actionID: Play Animation
@@ -421,6 +453,9 @@ MonoBehaviour:
   - {fileID: -5174156530798113680}
   - {fileID: -5166349936687010143}
   - {fileID: 6301621095754054197}
+  - {fileID: 4904722443321041011}
+  - {fileID: -2445061964473986094}
+  - {fileID: 5253075229432979903}
   rootNodeOffset: {x: 250, y: 0}
 --- !u!114 &1257269783449214162
 MonoBehaviour:
@@ -468,7 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 9ca8d539-36ca-486e-a6f6-87da17b09cc2
   description: Attack
-  position: {x: 579.65, y: 524.35}
+  position: {x: 562.99994, y: 643.0371}
   priority: 0
   onEnterActions:
   - actionID: Attack
@@ -560,7 +595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 39461813-7a88-455f-9b7d-3891d36d98d7
   description: Attack Loop
-  position: {x: 601.7276, y: 396}
+  position: {x: 570.99994, y: 517}
   priority: 0
   child: {fileID: 1422539465447904945}
   abortCondition:
@@ -693,10 +728,54 @@ MonoBehaviour:
   priority: 1
   children:
   - {fileID: 6152840740901662884}
-  - {fileID: -8894691778470887057}
+  - {fileID: 4904722443321041011}
   abortCondition:
     and: []
   selectionType: 1
+--- !u!114 &4904722443321041011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943c39989e6f3ed46b7f81cfe26422a5, type: 3}
+  m_Name: Selector
+  m_EditorClassIdentifier: 
+  uniqueID: 5e4ee057-6cba-4597-a257-9f285c883d39
+  description: 
+  position: {x: 629, y: 235}
+  priority: 0
+  children:
+  - {fileID: -8894691778470887057}
+  abortCondition:
+    and:
+    - or:
+      - predicate: Target In Targeting Range
+        parameters: []
+        negate: 1
+  selectionType: 2
+--- !u!114 &5253075229432979903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3928e589b6b404ea43e81221128b4c, type: 3}
+  m_Name: Loop
+  m_EditorClassIdentifier: 
+  uniqueID: 6aed4eca-4275-408d-b923-9a5373379b02
+  description: 
+  position: {x: 735, y: 385}
+  priority: 0
+  child: {fileID: 0}
+  abortCondition:
+    and: []
 --- !u!114 &6152840740901662884
 MonoBehaviour:
   m_ObjectHideFlags: 0
