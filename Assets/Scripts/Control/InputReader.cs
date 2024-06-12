@@ -30,6 +30,9 @@ namespace CombatSystem.Control
         {
             controls = new Controls();
             controls.Player.Enable();
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         bool IsPressed(string actionName, bool thisFrame)

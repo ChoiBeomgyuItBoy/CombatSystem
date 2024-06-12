@@ -13,14 +13,39 @@ MonoBehaviour:
   m_Name: Sequence
   m_EditorClassIdentifier: 
   uniqueID: a83f3dfb-2f41-4bbc-9737-6f2149cc23f1
-  description: Chase Sequence
-  position: {x: 501, y: 377}
+  description: Targeting Sequence
+  position: {x: 432, y: 378}
   priority: 0
   children:
-  - {fileID: -1853822377194779028}
-  - {fileID: 2701376643077850189}
+  - {fileID: -6735275671551728652}
+  - {fileID: -1427858624211829717}
   abortCondition:
     and: []
+--- !u!114 &-6735275671551728652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 54955de9-9c3b-4d8a-841e-79418f844562
+  description: Start Targeting
+  position: {x: 273, y: 542}
+  priority: 0
+  onEnterActions:
+  - actionID: Start Targeting
+    parameters: []
+  onTickActions: []
+  onExitActions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and: []
 --- !u!114 &-6391837482643163466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,10 +340,12 @@ MonoBehaviour:
   - actionID: Play Animation
     parameters:
     - Dead Entry
+  - actionID: Cancel Movement
+    parameters: []
   onTickActions: []
   onExitActions: []
   statusConditions: []
---- !u!114 &-2445061964473986094
+--- !u!114 &-2205044298231158326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,20 +357,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
   m_Name: CustomAction
   m_EditorClassIdentifier: 
-  uniqueID: 0b3ae774-6d1a-4623-a2f2-c02de46a9ec3
-  description: 
-  position: {x: 793, y: 533.64}
+  uniqueID: 6a212ec2-19a1-4016-92e7-22b13d2d5521
+  description: Chase Target
+  position: {x: 661, y: 566}
   priority: 0
   onEnterActions:
-  - actionID: Choose Random Direction
-    parameters: []
   - actionID: Play Animation
     parameters:
     - Targeting
-  onTickActions:
-  - actionID: Random Movement
+  - actionID: Reset Combo
     parameters: []
-  - actionID: Face Target
+  onTickActions:
+  - actionID: Chase Movement
     parameters: []
   onExitActions: []
   statusConditions:
@@ -351,7 +376,7 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: At Random Destination
+        - predicate: Target In Attack Range
           parameters: []
           negate: 0
 --- !u!114 &-1853822377194779028
@@ -367,8 +392,8 @@ MonoBehaviour:
   m_Name: CustomAction
   m_EditorClassIdentifier: 
   uniqueID: f466d04c-898e-43f3-9118-3260517b1c59
-  description: Chase Target
-  position: {x: 385, y: 502.5098}
+  description: Target Movement
+  position: {x: 437, y: 710}
   priority: 0
   onEnterActions:
   - actionID: Play Animation
@@ -376,16 +401,22 @@ MonoBehaviour:
     - Targeting
   - actionID: Reset Combo
     parameters: []
+  - actionID: Choose Random Targeting Point
+    parameters: []
   onTickActions:
   - actionID: Targeting Movement
     parameters: []
-  onExitActions: []
+  - actionID: Face Target
+    parameters: []
+  onExitActions:
+  - actionID: Cancel Movement
+    parameters: []
   statusConditions:
   - status: 1
     condition:
       and:
       - or:
-        - predicate: Target In Attack Range
+        - predicate: At Targeting Point
           parameters: []
           negate: 0
 --- !u!114 &-1708105002057340823
@@ -410,6 +441,29 @@ MonoBehaviour:
   abortCondition:
     and: []
   selectionType: 1
+--- !u!114 &-1427858624211829717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3928e589b6b404ea43e81221128b4c, type: 3}
+  m_Name: Loop
+  m_EditorClassIdentifier: 
+  uniqueID: 99f16b64-71fa-4282-a689-f5e45a8e399e
+  description: Targeting Loop
+  position: {x: 440, y: 534}
+  priority: 0
+  child: {fileID: -1853822377194779028}
+  abortCondition:
+    and:
+    - or:
+      - predicate: Targeting Time Finished
+        parameters: []
+        negate: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,8 +508,10 @@ MonoBehaviour:
   - {fileID: -5166349936687010143}
   - {fileID: 6301621095754054197}
   - {fileID: 4904722443321041011}
-  - {fileID: -2445061964473986094}
-  - {fileID: 5253075229432979903}
+  - {fileID: 6238139369065955955}
+  - {fileID: -2205044298231158326}
+  - {fileID: -1427858624211829717}
+  - {fileID: -6735275671551728652}
   rootNodeOffset: {x: 250, y: 0}
 --- !u!114 &1257269783449214162
 MonoBehaviour:
@@ -503,13 +559,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 9ca8d539-36ca-486e-a6f6-87da17b09cc2
   description: Attack
-  position: {x: 562.99994, y: 643.0371}
+  position: {x: 852.99976, y: 678.9999}
   priority: 0
   onEnterActions:
   - actionID: Attack
     parameters: []
+  - actionID: Cancel Movement
+    parameters: []
   onTickActions:
   - actionID: Face Target
+    parameters: []
+  - actionID: Apply Motion Zero
+    parameters: []
+  - actionID: Apply Attack Force
     parameters: []
   onExitActions:
   - actionID: Cycle Combo
@@ -595,7 +657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 39461813-7a88-455f-9b7d-3891d36d98d7
   description: Attack Loop
-  position: {x: 570.99994, y: 517}
+  position: {x: 845.0001, y: 534.0001}
   priority: 0
   child: {fileID: 1422539465447904945}
   abortCondition:
@@ -745,11 +807,12 @@ MonoBehaviour:
   m_Name: Selector
   m_EditorClassIdentifier: 
   uniqueID: 5e4ee057-6cba-4597-a257-9f285c883d39
-  description: 
-  position: {x: 629, y: 235}
+  description: Random Target Action
+  position: {x: 645, y: 243}
   priority: 0
   children:
   - {fileID: -8894691778470887057}
+  - {fileID: 6238139369065955955}
   abortCondition:
     and:
     - or:
@@ -757,25 +820,6 @@ MonoBehaviour:
         parameters: []
         negate: 1
   selectionType: 2
---- !u!114 &5253075229432979903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3928e589b6b404ea43e81221128b4c, type: 3}
-  m_Name: Loop
-  m_EditorClassIdentifier: 
-  uniqueID: 6aed4eca-4275-408d-b923-9a5373379b02
-  description: 
-  position: {x: 735, y: 385}
-  priority: 0
-  child: {fileID: 0}
-  abortCondition:
-    and: []
 --- !u!114 &6152840740901662884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +846,27 @@ MonoBehaviour:
       - predicate: Select Target
         parameters: []
         negate: 0
+--- !u!114 &6238139369065955955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b80b585178d2045b1b5f40e1fad244, type: 3}
+  m_Name: Sequence
+  m_EditorClassIdentifier: 
+  uniqueID: 58b8f9c4-1fff-4107-98f6-1933c673d377
+  description: Chase Sequence
+  position: {x: 731, y: 389}
+  priority: 0
+  children:
+  - {fileID: -2205044298231158326}
+  - {fileID: 2701376643077850189}
+  abortCondition:
+    and: []
 --- !u!114 &6301621095754054197
 MonoBehaviour:
   m_ObjectHideFlags: 0

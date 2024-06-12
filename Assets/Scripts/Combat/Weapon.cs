@@ -9,7 +9,7 @@ namespace CombatSystem.Combat
         [SerializeField] Transform hitboxCenter;
         [SerializeField] float hitboxRadius = 0.5f;
 
-        public void Hit(GameObject user, WeaponData weaponData, WeaponAttack attack)
+        public void Hit(GameObject user, float damage, Vector2 knockback)
         {
             var hits = Physics.SphereCastAll(hitboxCenter.position, hitboxRadius, Vector3.up, 0);
 
@@ -19,33 +19,25 @@ namespace CombatSystem.Combat
 
                 if(health != null && health != user.GetComponent<Health>())
                 {
-                    health.TakeDamage(CalculateDamage(weaponData, attack));
+                    health.TakeDamage(damage);
                 }
 
                 ForceReceiver forceReceiver = hit.transform.GetComponent<ForceReceiver>();
 
                 if(forceReceiver != null && forceReceiver != user.GetComponent<ForceReceiver>())
                 {
-                    forceReceiver.AddForce(CalculateKnockback(user.transform, forceReceiver.transform, attack));
+                    forceReceiver.AddForce(GetKnockbackDirection(user.transform, forceReceiver.transform, knockback));
                 }
             }
         }
 
-        float CalculateDamage(WeaponData weaponData, WeaponAttack attack)
-        {
-            float baseDamage = weaponData.GetBaseDamage();
-            float bonusPercentage = attack.GetBonusPercentage();
-            float bonus = baseDamage * bonusPercentage;
-            return Mathf.Round(baseDamage + bonus);
-        }
-
-        Vector3 CalculateKnockback(Transform user, Transform target, WeaponAttack attack)
+        Vector3 GetKnockbackDirection(Transform user, Transform target, Vector2 knockback)
         {
             Vector3 direction = (target.position - user.position).normalized;
 
-            direction.y += attack.GetKnockback().y;
-            direction.x *= attack.GetKnockback().x;
-            direction.z *= attack.GetKnockback().x;
+            direction.y += knockback.y;
+            direction.x *= knockback.x;
+            direction.z *= knockback.x;
 
             return direction;
         }

@@ -259,8 +259,11 @@ MonoBehaviour:
   targetGroup: {fileID: 0}
   targetingRange: 20
   targetingSpeedFraction: 0.3
-  suspicionTime: 3
-  randomMoveDistance: 5
+  chaseSpeedFraction: 1
+  suspicionDuration: 3
+  targetingMoveDistance: 5
+  targetingPointTolerance: 2
+  targetingDuration: 5
   target: {fileID: 0}
 --- !u!4 &4550708243073356132 stripped
 Transform:

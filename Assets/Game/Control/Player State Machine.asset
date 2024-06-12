@@ -213,6 +213,8 @@ MonoBehaviour:
     parameters: []
   - actionID: Face Target
     parameters: []
+  - actionID: Select Target
+    parameters: []
   onExitActions: []
 --- !u!114 &-4429556588309076187
 MonoBehaviour:

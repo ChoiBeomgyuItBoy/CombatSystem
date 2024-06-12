@@ -26,7 +26,6 @@ namespace CombatSystem.Combat
         InputReader inputReader;
         ForceReceiver forceReceiver;
         Mover mover;
-        Weapon weapon;
         GameObject player;
         Vector3 currentTargetingPoint;
         int currentAttackIndex = 0;
@@ -54,13 +53,19 @@ namespace CombatSystem.Combat
 
         void Start()
         {
-            weapon = weaponData.Spawn(rightHand, leftHand, animationPlayer);
+            EquipWeapon();
         }
 
         void Update()
         {
             timeSinceLastSawTarget += Time.deltaTime;
             timeSinceStartedTargeting += Time.deltaTime;
+        }
+
+        void EquipWeapon()
+        {
+            weaponData = weaponData.Clone();
+            weaponData.Spawn(gameObject, rightHand, leftHand, animationPlayer);
         }
 
         WeaponAttack GetCurrentAttack()
@@ -128,7 +133,7 @@ namespace CombatSystem.Combat
         // Animation Event
         void Hit()
         {
-            weapon.Hit(gameObject, weaponData, GetCurrentAttack());
+            weaponData.Hit(currentAttackIndex, target);
         }
 
         bool SelectTarget()
@@ -161,23 +166,23 @@ namespace CombatSystem.Combat
 
             foreach(var hit in hits)
             {
-                Health target = hit.transform.GetComponent<Health>();
+                Health currentTarget = hit.transform.GetComponent<Health>();
 
-                if(target != null && target != GetComponent<Health>())
+                if(currentTarget != null && currentTarget != GetComponent<Health>())
                 {
-                    if(target.IsDead())
+                    if(currentTarget.IsDead())
                     {
                         continue;
                     }
 
-                    Renderer renderer = target.GetComponentInChildren<Renderer>();
+                    Renderer renderer = currentTarget.GetComponentInChildren<Renderer>();
 
                     if(!renderer.isVisible)
                     {
                         continue;
                     }
 
-                    Vector2 targetPosition = Camera.main.WorldToViewportPoint(target.transform.position);
+                    Vector2 targetPosition = Camera.main.WorldToViewportPoint(currentTarget.transform.position);
                     Vector2 centerToTarget = targetPosition - new Vector2(0.5f, 0.5f);
                     
                     if(centerToTarget.sqrMagnitude > closestTargetDistance)
@@ -186,7 +191,7 @@ namespace CombatSystem.Combat
                     }
 
                     closestTargetDistance = centerToTarget.sqrMagnitude;
-                    closestTarget = target;
+                    closestTarget = currentTarget;
                 }
             }
 
@@ -398,7 +403,7 @@ namespace CombatSystem.Combat
 
                 case "Targeting Time Finished":
                     return targetingDuration < timeSinceStartedTargeting;
-            }
+            } 
 
             return null;
         }

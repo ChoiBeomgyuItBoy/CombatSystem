@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4f23ace626f10499494d32d1670af6, type: 3}
   m_Name: Heavy Sword
   m_EditorClassIdentifier: 
-  equippedWeaponPrefab: {fileID: 7939566059700012945, guid: db3524f5fa11bab42bf449742a51ac5f, type: 3}
+  equippedWeapon: {fileID: 7939566059700012945, guid: db3524f5fa11bab42bf449742a51ac5f, type: 3}
+  projectile: {fileID: 0}
   animatorOverride: {fileID: 22100000, guid: be4afc291dc2f4f48bfb633eaa15354e, type: 2}
   baseDamage: 100
-  range: 2
+  range: 3
   isLeftHanded: 0
   combo:
   - animationName: Heavy Sword Attack 1

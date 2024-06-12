@@ -928,7 +928,7 @@ MonoBehaviour:
     m_MinDuration: 0
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 0.5
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -939,19 +939,17 @@ MonoBehaviour:
   m_ParentHash:
   - m_Hash: -1269438207
     m_ParentHash: 756556552
-  - m_Hash: -62026189
-    m_ParentHash: -1269438207
-  - m_Hash: -1843164744
+  - m_Hash: 958578140
     m_ParentHash: -1269438207
   - m_Hash: 891412631
     m_ParentHash: -1269438207
   - m_Hash: 755175736
     m_ParentHash: -1269438207
-  - m_Hash: -28193148
+  - m_Hash: 940309781
     m_ParentHash: 756556552
-  - m_Hash: 1733861182
+  - m_Hash: -1593660241
     m_ParentHash: 756556552
-  - m_Hash: 274706344
+  - m_Hash: -704275399
     m_ParentHash: 756556552
   - m_Hash: 864118181
     m_ParentHash: 756556552
@@ -963,7 +961,7 @@ MonoBehaviour:
     m_ParentHash: 756556552
   - m_Hash: -1671883663
     m_ParentHash: 756556552
-  - m_Hash: 853483624
+  - m_Hash: 544283533
     m_ParentHash: -1671883663
   - m_Hash: 268938033
     m_ParentHash: -1671883663
@@ -997,13 +995,13 @@ MonoBehaviour:
     m_ParentHash: -1671883663
   - m_Hash: 1972345125
     m_ParentHash: -1671883663
-  - m_Hash: -1908721141
+  - m_Hash: 1214319002
     m_ParentHash: 756556552
-  - m_Hash: 389180337
+  - m_Hash: -781690848
     m_ParentHash: 756556552
-  - m_Hash: -113505635
+  - m_Hash: 1063663884
     m_ParentHash: 756556552
-  - m_Hash: 1614109479
+  - m_Hash: -1502648138
     m_ParentHash: 756556552
   - m_Hash: -884758994
     m_ParentHash: 756556552
@@ -1013,9 +1011,29 @@ MonoBehaviour:
     m_ParentHash: 756556552
   - m_Hash: -1292065500
     m_ParentHash: 756556552
-  - m_Hash: 1684585544
+  - m_Hash: 500969720
+    m_ParentHash: 756556552
+  - m_Hash: 1029687071
     m_ParentHash: 756556552
   - m_Hash: 121164414
+    m_ParentHash: 756556552
+  - m_Hash: 1605919556
+    m_ParentHash: 756556552
+  - m_Hash: -1632547755
+    m_ParentHash: 756556552
+  - m_Hash: -1528076219
+    m_ParentHash: -1632547755
+  - m_Hash: 2015062473
+    m_ParentHash: -1632547755
+  - m_Hash: -287670361
+    m_ParentHash: -1632547755
+  - m_Hash: 1873956758
+    m_ParentHash: -1632547755
+  - m_Hash: -949184228
+    m_ParentHash: 756556552
+  - m_Hash: 1583728806
+    m_ParentHash: 756556552
+  - m_Hash: 694351920
     m_ParentHash: 756556552
 --- !u!1 &8116143482812627675
 GameObject:
@@ -1393,7 +1411,11 @@ MonoBehaviour:
   targetGroup: {fileID: 6166532866636124502}
   targetingRange: 20
   targetingSpeedFraction: 0.3
-  suspicionTime: 3
+  chaseSpeedFraction: 1
+  suspicionDuration: 3
+  targetingMoveDistance: 5
+  targetingPointTolerance: 2
+  targetingDuration: 5
   target: {fileID: 0}
 --- !u!114 &4081738893590250565
 MonoBehaviour:
