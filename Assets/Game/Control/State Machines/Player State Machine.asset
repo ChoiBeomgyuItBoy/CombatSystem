@@ -486,7 +486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 674eed9a-07fd-47c1-83a7-4645d5c5fa2e
   title: Dead Entry
-  position: {x: -339, y: -26}
+  position: {x: -333, y: -18}
   transitions:
   - rootStateID: 674eed9a-07fd-47c1-83a7-4645d5c5fa2e
     trueStateID: 6814dd82-98e9-4299-90f4-d2987bc285aa
@@ -553,6 +553,8 @@ MonoBehaviour:
     - Damage 2
     - Damage 3
     - Damage 4
+  - actionID: Reset Combo
+    parameters: []
   onTickActions:
   - actionID: Apply Motion Zero
     parameters: []
@@ -573,7 +575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 6dec52fc-0c63-4e90-ba98-22e281661543
   title: Knockdown Entry
-  position: {x: -81, y: -114}
+  position: {x: -65, y: -110}
   transitions:
   - rootStateID: 6dec52fc-0c63-4e90-ba98-22e281661543
     trueStateID: 52685c2a-729e-488c-8e7f-67b8e10f7d6e
@@ -588,6 +590,8 @@ MonoBehaviour:
   - actionID: Play Animation
     parameters:
     - Knockdown Entry
+  - actionID: Reset Combo
+    parameters: []
   onTickActions:
   - actionID: Apply Motion Zero
     parameters: []

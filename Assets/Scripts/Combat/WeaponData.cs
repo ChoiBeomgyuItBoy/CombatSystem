@@ -14,10 +14,10 @@ namespace CombatSystem.Combat
         [SerializeField] float range = 5;
         [SerializeField] bool isLeftHanded = false;
         [SerializeField] WeaponAttack[] combo;
-        Weapon weaponInstance;
         GameObject user;
         Transform rightHand;
         Transform leftHand;
+        Weapon weaponInstance;
 
         public WeaponData Clone()
         {
@@ -45,13 +45,17 @@ namespace CombatSystem.Combat
             this.rightHand = rightHand;
             this.leftHand = leftHand;
 
-            weaponInstance = Instantiate(equippedWeapon, GetHand());
+            if(equippedWeapon != null)
+            {
+                weaponInstance = Instantiate(equippedWeapon, GetHand());
+            }
+
             animationPlayer.SetAnimatorOverride(animatorOverride);
         }
  
         public void Hit(int comboIndex, Health target)
         {
-            float damage = CalculateDamage(comboIndex);
+            float damage = GetTotalDamage(comboIndex);
             Vector3 knockback = GetAttack(comboIndex).GetKnockback();
 
             if(projectile != null)
@@ -74,11 +78,16 @@ namespace CombatSystem.Combat
             }
             else
             {
-                projectileInstance.SetData(user, damage, knockback, user.transform.position + user.transform.forward * range);
+                projectileInstance.SetData(user, damage, knockback, GetProjectilePoint());
             }
         }
 
-        float CalculateDamage(int comboIndex)
+        Vector3 GetProjectilePoint()
+        {
+            return user.transform.position + user.transform.forward * range;
+        }
+
+        float GetTotalDamage(int comboIndex)
         {
             float bonusPercentage = GetAttack(comboIndex).GetBonusPercentage();
             float bonusDamage = baseDamage * bonusPercentage;

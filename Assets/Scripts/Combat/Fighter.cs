@@ -64,8 +64,11 @@ namespace CombatSystem.Combat
 
         void EquipWeapon()
         {
-            weaponData = weaponData.Clone();
-            weaponData.Spawn(gameObject, rightHand, leftHand, animationPlayer);
+            if(weaponData != null)
+            {
+                weaponData = weaponData.Clone();
+                weaponData.Spawn(gameObject, rightHand, leftHand, animationPlayer);
+            }
         }
 
         WeaponAttack GetCurrentAttack()

@@ -1,6 +1,7 @@
 using CombatSystem.Attributes;
 using CombatSystem.Core;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CombatSystem.Combat
 {
@@ -8,6 +9,7 @@ namespace CombatSystem.Combat
     { 
         [SerializeField] Transform hitboxCenter;
         [SerializeField] float hitboxRadius = 0.5f;
+        [SerializeField] UnityEvent onHit;
 
         public void Hit(GameObject user, float damage, Vector2 knockback)
         {
@@ -19,14 +21,28 @@ namespace CombatSystem.Combat
 
                 if(health != null && health != user.GetComponent<Health>())
                 {
+                    if(health.IsDead())
+                    {
+                        continue;
+                    }
+
+                    if(health.IsInvulnerable())
+                    {
+                        continue;
+                    }
+
+                    ForceReceiver forceReceiver = hit.transform.GetComponent<ForceReceiver>();
+
+                    if(forceReceiver != null && forceReceiver != user.GetComponent<ForceReceiver>())
+                    {
+                        Vector3 knockbackDirection = GetKnockbackDirection(user.transform, forceReceiver.transform, knockback);
+
+                        forceReceiver.AddForce(knockbackDirection);
+                    }
+
                     health.TakeDamage(damage);
-                }
 
-                ForceReceiver forceReceiver = hit.transform.GetComponent<ForceReceiver>();
-
-                if(forceReceiver != null && forceReceiver != user.GetComponent<ForceReceiver>())
-                {
-                    forceReceiver.AddForce(GetKnockbackDirection(user.transform, forceReceiver.transform, knockback));
+                    onHit.Invoke();
                 }
             }
         }

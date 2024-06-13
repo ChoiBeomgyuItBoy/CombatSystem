@@ -1,6 +1,7 @@
 using CombatSystem.Attributes;
 using CombatSystem.Core;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CombatSystem.Combat
 {
@@ -8,7 +9,9 @@ namespace CombatSystem.Combat
     {
         [SerializeField] float speed = 3;
         [SerializeField] float maxLifeTime = 10;
+        [SerializeField] float lifeAfterHit = 0.5f;
         [SerializeField] bool isHoming = false;
+        [SerializeField] UnityEvent onHit;
         GameObject instigator;
         float damage;
         Vector2 knockback;
@@ -46,17 +49,29 @@ namespace CombatSystem.Combat
 
             if(health != null && health != instigator.GetComponent<Health>())
             {
+                if(health.IsDead())
+                {
+                    return;
+                }
+
+                if(health.IsInvulnerable())
+                {
+                    return;
+                }
+
+                ForceReceiver forceReceiver = other.GetComponent<ForceReceiver>();
+
+                if(forceReceiver != null && forceReceiver != instigator.GetComponent<ForceReceiver>())
+                {
+                    Vector3 knockbackDirection = GetKnockbackDirection(forceReceiver.transform);
+
+                    forceReceiver.AddForce(knockbackDirection);
+                }
+
                 health.TakeDamage(damage);
+
+                DestroySequence();
             }
-
-            ForceReceiver forceReceiver = other.GetComponent<ForceReceiver>();
-
-            if(forceReceiver != null && forceReceiver != instigator.GetComponent<ForceReceiver>())
-            {
-                forceReceiver.AddForce(GetKnockbackDirection(forceReceiver.transform));
-            }
-
-            Destroy(gameObject);
         }
 
         void SetData(GameObject instigator, float damage, Vector2 knockback, Health target=null, Vector3 targetPoint=default)
@@ -68,6 +83,13 @@ namespace CombatSystem.Combat
             this.targetPoint = targetPoint;
 
             Destroy(gameObject, maxLifeTime);
+        }
+
+        void DestroySequence()
+        {
+            speed = 0;
+            onHit.Invoke();
+            Destroy(gameObject, lifeAfterHit);
         }
 
         Vector3 GetAimDirection()

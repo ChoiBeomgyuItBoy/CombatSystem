@@ -12,6 +12,11 @@ namespace CombatSystem.Attributes
         float currentHealth = 0;
         bool isInvulnerable = false;
 
+        public bool IsInvulnerable()
+        {
+            return isInvulnerable;
+        }
+
         public void SetInvulnerable(bool isInvulnerable)
         {
             this.isInvulnerable = isInvulnerable;

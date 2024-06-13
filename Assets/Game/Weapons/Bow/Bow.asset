@@ -16,7 +16,7 @@ MonoBehaviour:
   projectile: {fileID: 7444301861938601231, guid: 9f4b233f2f1d9524c8431cb50f1c00fb, type: 3}
   animatorOverride: {fileID: 0}
   baseDamage: 20
-  range: 10
+  range: 15
   isLeftHanded: 1
   combo:
   - animationName: Bow Attack 1
