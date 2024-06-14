@@ -1,7 +1,6 @@
 using CombatSystem.Attributes;
 using CombatSystem.Core;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace CombatSystem.Combat
 {
@@ -9,7 +8,7 @@ namespace CombatSystem.Combat
     { 
         [SerializeField] Transform hitboxCenter;
         [SerializeField] float hitboxRadius = 0.5f;
-        [SerializeField] UnityEvent onHit;
+        [SerializeField] GameObject hitEffect;
 
         public void Hit(GameObject user, float damage, Vector2 knockback)
         {
@@ -42,7 +41,10 @@ namespace CombatSystem.Combat
 
                     health.TakeDamage(damage);
 
-                    onHit.Invoke();
+                    if(hitEffect != null)
+                    {
+                        Instantiate(hitEffect, transform.position, transform.rotation);
+                    }
                 }
             }
         }

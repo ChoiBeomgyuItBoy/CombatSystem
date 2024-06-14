@@ -29,11 +29,21 @@ namespace CombatSystem.Movement
             timeSinceLastDodge += Time.deltaTime;
         }
 
-        void StartDodge()
+        void StartDodge(Vector3 direction)
         {
             health.SetInvulnerable(true);
             remainingDodgeTime = dodgeDuration;
-            lastFrameDirection = inputReader.GetInputValue();
+            lastFrameDirection = direction;
+        }
+
+        void StartDirectionalDodge()
+        {
+            StartDodge(inputReader.GetInputValue());
+        }
+
+        void StartFixedDodge()
+        {
+            StartDodge(Vector2.up);
         }
 
         void DodgeMovement()
@@ -68,9 +78,13 @@ namespace CombatSystem.Movement
         {
             switch(actionID)
             {
-                case "Start Dodge":
-                    StartDodge();
+                case "Start Directional Dodge":
+                    StartDirectionalDodge();
                     break;
+
+                case "Start Fixed Dodge":
+                    StartFixedDodge();
+                     break;
 
                 case "Dodge Movement":
                     DodgeMovement();

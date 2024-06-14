@@ -1,7 +1,6 @@
 using CombatSystem.Attributes;
 using CombatSystem.Core;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace CombatSystem.Combat
 {
@@ -11,7 +10,7 @@ namespace CombatSystem.Combat
         [SerializeField] float maxLifeTime = 10;
         [SerializeField] float lifeAfterHit = 0.5f;
         [SerializeField] bool isHoming = false;
-        [SerializeField] UnityEvent onHit;
+        [SerializeField] GameObject hitEffect;
         GameObject instigator;
         float damage;
         Vector2 knockback;
@@ -88,7 +87,12 @@ namespace CombatSystem.Combat
         void DestroySequence()
         {
             speed = 0;
-            onHit.Invoke();
+
+            if(hitEffect != null)
+            {
+                Instantiate(hitEffect, transform.position, transform.rotation);
+            }
+            
             Destroy(gameObject, lifeAfterHit);
         }
 

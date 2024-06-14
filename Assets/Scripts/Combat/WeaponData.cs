@@ -66,6 +66,13 @@ namespace CombatSystem.Combat
             {
                 weaponInstance.Hit(user, damage, knockback);
             }
+
+            GameObject attackEffect = GetAttack(comboIndex).GetAttackEffect();
+
+            if(attackEffect != null)
+            {
+                Instantiate(attackEffect, GetHand().position, GetHand().rotation);
+            }
         }
 
         void LaunchProjectile(Health target, float damage, Vector3 knockback)

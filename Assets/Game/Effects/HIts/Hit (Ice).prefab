@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2370154472370115291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5406673317046123603}
+  - component: {fileID: 4420163716728441379}
+  m_Layer: 0
+  m_Name: Hit (Ice)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5406673317046123603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370154472370115291}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1126585660438624812}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4420163716728441379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370154472370115291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be841f1977e91064fa699a3366f05519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reference: {fileID: 1126585660438624811}
+--- !u!1001 &285429499867537522
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5406673317046123603}
+    m_Modifications:
+    - target: {fileID: 440862829124972084, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 440862829889911739, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 888444077320411736, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 888444077320411739, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_Name
+      value: CFXR4 Sword Hit ICE (Cross)
+      objectReference: {fileID: 0}
+    - target: {fileID: 888444077320411742, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 888444077320411742, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 888444077320411742, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 888444077320411742, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 888444077320411742, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 888444077320411742, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 888444077320411742, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 888444077320411742, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 888444077320411742, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 888444077320411742, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483606515637889335, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_Range
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483606515637889335, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617965839569401951, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+--- !u!198 &1126585660438624811 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 888444077320411737, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+  m_PrefabInstance: {fileID: 285429499867537522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1126585660438624812 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 888444077320411742, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+  m_PrefabInstance: {fileID: 285429499867537522}
+  m_PrefabAsset: {fileID: 0}

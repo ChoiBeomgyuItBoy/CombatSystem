@@ -25,3 +25,4 @@ MonoBehaviour:
     forceTime: 0
     endTime: 0.9
     bonusPercentage: 0
+    attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
