@@ -8,7 +8,6 @@ namespace CombatSystem.Combat
     {
         [SerializeField] float speed = 3;
         [SerializeField] float maxLifeTime = 10;
-        [SerializeField] float lifeAfterHit = 0.5f;
         [SerializeField] bool isHoming = false;
         [SerializeField] GameObject hitEffect;
         GameObject instigator;
@@ -93,7 +92,7 @@ namespace CombatSystem.Combat
                 Instantiate(hitEffect, transform.position, transform.rotation);
             }
             
-            Destroy(gameObject, lifeAfterHit);
+            Destroy(gameObject);
         }
 
         Vector3 GetAimDirection()

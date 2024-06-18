@@ -30,11 +30,6 @@ namespace CombatSystem.Movement
             return Vector3.Distance(transform.position, destination) < tolerance;
         }
 
-        public Vector3 GetLocalVelocity()
-        {
-            return transform.InverseTransformDirection(agent.velocity);
-        }
-
         void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
@@ -68,17 +63,25 @@ namespace CombatSystem.Movement
             return GetLocalVelocity().x;
         }
 
+        Vector3 GetLocalVelocity()
+        {
+            return transform.InverseTransformDirection(agent.velocity);
+        }
+
         void IAction.DoAction(string actionID, string[] parameters)
         {
             switch(actionID)
             {
                 case "Cancel Movement":
-                
                     if(agent.isActiveAndEnabled)
                     {
                         agent.isStopped = true;
                     }
 
+                    break;
+
+                case "Move No Destination":
+                    MoveTo(Vector3.zero, 0);
                     break;
             }
         }

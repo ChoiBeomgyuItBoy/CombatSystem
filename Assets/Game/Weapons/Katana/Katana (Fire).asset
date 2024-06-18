@@ -20,30 +20,37 @@ MonoBehaviour:
   isLeftHanded: 0
   combo:
   - animationName: Light Sword Attack 4
-    knockback: {x: 1, y: 0}
-    attackForce: 3
-    forceTime: 0.193
-    endTime: 0.45
-    bonusPercentage: 0
+    knockback: {x: 2, y: 0}
+    attackForce: 2
+    forceTime: 0.1
+    endTime: 0.5
+    bonusPercentage: 0.1
     attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
   - animationName: Light Sword Attack 5
-    knockback: {x: 2, y: 3}
-    attackForce: 3
-    forceTime: 0.363
+    knockback: {x: 2, y: 0}
+    attackForce: 2
+    forceTime: 0.2
     endTime: 0.5
+    bonusPercentage: 0.15
+    attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
+  - animationName: Light Sword Attack 8
+    knockback: {x: 2, y: 0}
+    attackForce: 2
+    forceTime: 0.1
+    endTime: 0.4
     bonusPercentage: 0.2
     attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
-  - animationName: Light Sword Attack 6
-    knockback: {x: 3, y: 4}
-    attackForce: 3
-    forceTime: 0.19
-    endTime: 0.9
-    bonusPercentage: 0.3
+  - animationName: Light Sword Attack 9
+    knockback: {x: 0, y: 0}
+    attackForce: 0
+    forceTime: 0
+    endTime: 0.4
+    bonusPercentage: 0.25
     attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
-  - animationName: Light Sword Attack 7
-    knockback: {x: 13, y: 10}
-    attackForce: 5
-    forceTime: 0.683
-    endTime: 0.99
+  - animationName: Light Sword Attack 12
+    knockback: {x: 10, y: 5}
+    attackForce: 4
+    forceTime: 0.2
+    endTime: 0.6
     bonusPercentage: 0.4
-    attackEffect: {fileID: 885083363062775776, guid: 04a3ace5acb9d4b45831cbe7c8d80891, type: 3}
+    attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}

@@ -559,7 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 9ca8d539-36ca-486e-a6f6-87da17b09cc2
   description: Attack
-  position: {x: 852.99976, y: 678.9999}
+  position: {x: 825, y: 679}
   priority: 0
   onEnterActions:
   - actionID: Attack

@@ -20,7 +20,7 @@ MonoBehaviour:
   isLeftHanded: 1
   combo:
   - animationName: Bow Attack 1
-    knockback: {x: 15, y: 5}
+    knockback: {x: 10, y: 5}
     attackForce: 0
     forceTime: 0
     endTime: 0.9

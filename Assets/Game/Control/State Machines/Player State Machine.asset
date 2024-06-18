@@ -470,7 +470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 878c8e5b-efe6-4f07-97ff-813682974b1a
   title: Stand Up State
-  position: {x: 303, y: -118}
+  position: {x: 301.99997, y: -115.000015}
   transitions:
   - rootStateID: 878c8e5b-efe6-4f07-97ff-813682974b1a
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
@@ -497,7 +497,7 @@ MonoBehaviour:
       - or:
         - predicate: Target In Targeting Range
           parameters:
-          - Knockdown
+          - 
           negate: 0
   onEnterActions:
   - actionID: Play Animation
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 6dec52fc-0c63-4e90-ba98-22e281661543
   title: Knockdown Entry
-  position: {x: -65, y: -110}
+  position: {x: -91.00013, y: -109.99998}
   transitions:
   - rootStateID: 6dec52fc-0c63-4e90-ba98-22e281661543
     trueStateID: 52685c2a-729e-488c-8e7f-67b8e10f7d6e
