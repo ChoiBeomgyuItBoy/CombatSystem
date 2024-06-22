@@ -20,6 +20,8 @@ MonoBehaviour:
   - actionID: Play Animation
     parameters:
     - Locomotion
+  - actionID: Move No Destination
+    parameters: []
   onTickActions: []
   onExitActions: []
   statusConditions: []

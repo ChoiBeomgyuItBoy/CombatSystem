@@ -30,7 +30,7 @@ MonoBehaviour:
     knockback: {x: 2, y: 0}
     attackForce: 2
     forceTime: 0.2
-    endTime: 0.5
+    endTime: 0.52
     bonusPercentage: 0.15
     attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
   - animationName: Light Sword Attack 8
@@ -44,7 +44,7 @@ MonoBehaviour:
     knockback: {x: 0, y: 0}
     attackForce: 0
     forceTime: 0
-    endTime: 0.4
+    endTime: 0.42
     bonusPercentage: 0.25
     attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
   - animationName: Light Sword Attack 12

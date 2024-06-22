@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
   title: Free Look State
-  position: {x: 303, y: 114}
+  position: {x: 310.00003, y: 111.99997}
   transitions:
   - rootStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
     trueStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
@@ -152,6 +152,14 @@ MonoBehaviour:
           parameters:
           - Dodge
           negate: 0
+  - rootStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
+    trueStateID: 3ccad979-8d90-41de-b477-22c572a87caa
+    condition:
+      and:
+      - or:
+        - predicate: Ability Selected
+          parameters: []
+          negate: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
@@ -178,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
   title: Targeting State
-  position: {x: 510, y: -16}
+  position: {x: 580.2002, y: -25.99999}
   transitions:
   - rootStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
@@ -221,6 +229,14 @@ MonoBehaviour:
           parameters:
           - Dodge
           negate: 0
+  - rootStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
+    trueStateID: 3ccad979-8d90-41de-b477-22c572a87caa
+    condition:
+      and:
+      - or:
+        - predicate: Ability Selected
+          parameters: []
+          negate: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
@@ -249,7 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 7b1841da-627c-4a31-80da-e78d3b1b8091
   title: Attack State
-  position: {x: 681, y: 106}
+  position: {x: 802.0001, y: 112}
   transitions:
   - rootStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
@@ -405,7 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 3c1b4db4-94aa-47f2-9bb4-594f7d01c1aa
   title: Directional Dodge State
-  position: {x: 527, y: 203}
+  position: {x: 578.25, y: -120.29802}
   transitions:
   - rootStateID: 3c1b4db4-94aa-47f2-9bb4-594f7d01c1aa
     trueStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
@@ -456,6 +472,7 @@ MonoBehaviour:
   - {fileID: 4555890129427161250}
   - {fileID: -689650441415031001}
   - {fileID: 1191048557425220596}
+  - {fileID: 877044352553193658}
 --- !u!114 &288852036151214733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +522,25 @@ MonoBehaviour:
     - Stand Up
   onTickActions: []
   onExitActions: []
+--- !u!114 &877044352553193658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c41c226ac830cc4badff91167841243, type: 3}
+  m_Name: ActionState
+  m_EditorClassIdentifier: 
+  uniqueID: 3ccad979-8d90-41de-b477-22c572a87caa
+  title: Ability State
+  position: {x: 588.0001, y: 223.00002}
+  transitions: []
+  onEnterActions: []
+  onTickActions: []
+  onExitActions: []
 --- !u!114 &1191048557425220596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,7 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 030741fb-42ad-4558-9227-ddd7b9b9e43e
   title: Fixed Dodge State
-  position: {x: 301, y: 201.51999}
+  position: {x: 307.45004, y: 231.00002}
   transitions:
   - rootStateID: 030741fb-42ad-4558-9227-ddd7b9b9e43e
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690

@@ -559,7 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 9ca8d539-36ca-486e-a6f6-87da17b09cc2
   description: Attack
-  position: {x: 825, y: 679}
+  position: {x: 835, y: 679}
   priority: 0
   onEnterActions:
   - actionID: Attack
@@ -670,12 +670,12 @@ MonoBehaviour:
         parameters: []
         negate: 0
     - or:
-      - predicate: Current Attack Finished
-        parameters: []
-        negate: 0
       - predicate: Current Attack Is Last
         parameters: []
         negate: 1
+      - predicate: Current Attack Finished
+        parameters: []
+        negate: 0
     - or:
       - predicate: Current Attack Finished
         parameters: []
