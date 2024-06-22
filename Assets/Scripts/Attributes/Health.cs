@@ -22,6 +22,16 @@ namespace CombatSystem.Attributes
             this.isInvulnerable = isInvulnerable;
         }
 
+        public bool IsDead()
+        {
+            return currentHealth == 0;
+        }
+
+        public float GetHealthFraction()
+        {
+            return currentHealth / maxHealth;
+        }
+
         public void TakeDamage(float damage)
         {
             if(!IsDead() && !isInvulnerable)
@@ -36,14 +46,9 @@ namespace CombatSystem.Attributes
             }
         }
 
-        public float GetFraction()
+        public void Heal(float amount)
         {
-            return currentHealth / maxHealth;
-        }
-
-        public bool IsDead()
-        {
-            return currentHealth == 0;
+            currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
         }
 
         void Awake()

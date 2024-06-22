@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3142970437634222817, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       propertyPath: onDie.m_PersistentCalls.m_Calls.Array.size
       value: 1

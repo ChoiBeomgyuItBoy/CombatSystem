@@ -10,7 +10,7 @@ namespace CombatSystem.UI
 
         void Update()
         {
-            foreground.localScale = new Vector3(health.GetFraction(), 1, 1);
+            foreground.localScale = new Vector3(health.GetHealthFraction(), 1, 1);
         }
     }
 }

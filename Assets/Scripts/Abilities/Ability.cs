@@ -7,18 +7,30 @@ namespace CombatSystem.Abilites
     public class Ability : ScriptableObject
     {
         [SerializeField] TargetingStrategy targetingStrategy;
+        [SerializeField] FilterStrategy[] filterStrategies;
+        [SerializeField] EffectStrategy[] effectStrategies;
 
         public void Use(GameObject user)
         {
-            targetingStrategy.StartTargeting(user, TargetAquired);
+            targetingStrategy.StartTargeting(user, (IEnumerable<GameObject> targets) => TargetAquired(user, targets));
         }
 
-        void TargetAquired(IEnumerable<GameObject> targets)
+        void TargetAquired(GameObject user, IEnumerable<GameObject> targets)
         {
-            foreach(var target in targets)
+            foreach(var filter in filterStrategies)
             {
-                Debug.Log(target);
+                targets = filter.Filter(targets);
             }
+
+            foreach(var effect in effectStrategies)
+            {
+                effect.StartEffect(user, targets, EffectFinished);
+            }   
         }   
+
+        void EffectFinished()
+        {
+
+        }
     }
 }
