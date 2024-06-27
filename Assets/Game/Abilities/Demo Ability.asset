@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: Demo Ability
   m_EditorClassIdentifier: 
   targetingStrategy: {fileID: 11400000, guid: 73b303f681f8b014b90ebe333157a7d4, type: 2}
+  filterStrategies:
+  - {fileID: 11400000, guid: 53edc4f4653c1d6459cffc6f19cc9a52, type: 2}
+  effectStrategies:
+  - {fileID: 11400000, guid: d8324cdb83bd4ba42bb94adaae578688, type: 2}

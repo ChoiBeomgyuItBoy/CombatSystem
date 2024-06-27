@@ -1,13 +1,13 @@
 using CombatSystem.Control;
 using RainbowAssets.Utils;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace CombatSystem.Abilites
 {
     public class AbilityStore : MonoBehaviour, IPredicateEvaluator
     {
         [SerializeField] Ability[] abilities;
+        string[] abilityInputs;
         InputReader inputReader;
 
         void Awake()
@@ -15,9 +15,29 @@ namespace CombatSystem.Abilites
             inputReader = GetComponent<InputReader>();
         }
 
+        void Start()
+        {
+            FillInputs();
+        }
+
         void UseAbility(int index)
         {
             abilities[index].Use(gameObject);
+        }
+
+        void FillInputs()
+        {
+            abilityInputs = new string[abilities.Length];
+
+            for(int i = 0; i < abilities.Length; i++)
+            {
+                abilityInputs[i] = $"Ability {i + 1}";
+            }
+        }
+
+        bool InputPressed(int index)
+        {
+            return inputReader.GetInputAction(abilityInputs[index]).WasPressedThisFrame();
         }
 
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
@@ -26,15 +46,14 @@ namespace CombatSystem.Abilites
             {
                 case "Ability Selected":
                     
-                    var abilityAction = inputReader.GetInputAction("Ability");
-
-                    if(abilityAction != null && abilityAction.activeControl != null)
+                    for(int i = 0; i < abilities.Length; i++)
                     {
-                        int index = abilityAction.GetBindingIndexForControl(abilityAction.activeControl);
+                        if(InputPressed(i))
+                        {
+                            UseAbility(i);
 
-                        UseAbility(index);
-
-                        return true;
+                            return true;
+                        }
                     }
 
                     return false;

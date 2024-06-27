@@ -51,9 +51,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Ability",
+                    "name": "Ability 1",
                     "type": "Button",
                     "id": "bd703677-be10-4a46-99f9-5fd00c9b8de2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ability 2",
+                    "type": "Button",
+                    "id": "3497226f-4bd6-4ff0-b373-407239a22bb9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ability 3",
+                    "type": "Button",
+                    "id": "4eef3dc7-2d51-4377-b1dd-b5719f8545d8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -200,29 +218,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
-                    "action": "Ability",
+                    "action": "Ability 1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "d6f878b0-4582-4ffc-b86c-fca22c8a95bf",
-                    "path": "<Keyboard>/2",
+                    "id": "82562a68-bc92-46ac-acdf-8bdd350f70fc",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Ability",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "317664d0-8a25-46ef-be65-c883f1df3a16",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Ability",
+                    "groups": "Controller",
+                    "action": "Ability 1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -245,6 +252,50 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f84e9f68-4db3-4095-be9d-a1c74cc3b02c",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Ability 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f88b7d43-441e-4a8f-b088-22123571eec9",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Ability 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3cde1ee9-2be5-4b4a-a56a-d086c4682967",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Ability 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ac05d5f-9f30-4335-b853-ab07e1716ce5",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Ability 3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

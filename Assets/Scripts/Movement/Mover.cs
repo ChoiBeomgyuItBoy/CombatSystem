@@ -8,8 +8,11 @@ namespace CombatSystem.Movement
     public class Mover : MonoBehaviour, IAction
     {
         [SerializeField] float maxSpeed = 6;
+        [SerializeField] float maxDistance = 10;
+        [SerializeField] bool updateRotation = true;
         NavMeshAgent agent;
         AnimationPlayer animationPlayer;
+        Vector3 initialPosition;
 
         public void MoveTo(Vector3 destination, float speedFraction)
         {
@@ -21,8 +24,11 @@ namespace CombatSystem.Movement
                 destination += transform.position;
             }
 
-            agent.destination = destination;
-            agent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
+            if(InTreshold(destination))
+            {
+                agent.destination = destination;
+                agent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
+            }
         }
 
         public bool AtDestination(Vector3 destination, float tolerance)
@@ -34,6 +40,9 @@ namespace CombatSystem.Movement
         {
             agent = GetComponent<NavMeshAgent>();
             animationPlayer = GetComponent<AnimationPlayer>();
+
+            initialPosition = transform.position;
+            agent.updateRotation = updateRotation;
         }
 
         void Update()
@@ -43,9 +52,12 @@ namespace CombatSystem.Movement
 
         void UpdateParameters()
         {
-            animationPlayer.UpdateParameter("movementSpeed", GetMovementMagnitude());
-            animationPlayer.UpdateParameter("forwardSpeed", GetForwardVelocity());
-            animationPlayer.UpdateParameter("rightSpeed", GetRightVelocity());
+            if(animationPlayer != null)
+            {
+                animationPlayer.UpdateParameter("movementSpeed", GetMovementMagnitude());
+                animationPlayer.UpdateParameter("forwardSpeed", GetForwardVelocity());
+                animationPlayer.UpdateParameter("rightSpeed", GetRightVelocity());
+            }
         }
 
         float GetMovementMagnitude()
@@ -66,6 +78,16 @@ namespace CombatSystem.Movement
         Vector3 GetLocalVelocity()
         {
             return transform.InverseTransformDirection(agent.velocity);
+        }
+
+        bool InTreshold(Vector3 destination)
+        {
+            if(maxDistance == Mathf.Infinity)
+            {
+                return true;
+            }
+
+            return Vector3.Distance(initialPosition, destination) <= maxDistance;
         }
 
         void IAction.DoAction(string actionID, string[] parameters)

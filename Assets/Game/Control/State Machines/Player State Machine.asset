@@ -229,14 +229,6 @@ MonoBehaviour:
           parameters:
           - Dodge
           negate: 0
-  - rootStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
-    trueStateID: 3ccad979-8d90-41de-b477-22c572a87caa
-    condition:
-      and:
-      - or:
-        - predicate: Ability Selected
-          parameters: []
-          negate: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
@@ -536,7 +528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 3ccad979-8d90-41de-b477-22c572a87caa
   title: Ability State
-  position: {x: 588.0001, y: 223.00002}
+  position: {x: 588, y: 239.00003}
   transitions: []
   onEnterActions: []
   onTickActions: []
@@ -555,7 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 030741fb-42ad-4558-9227-ddd7b9b9e43e
   title: Fixed Dodge State
-  position: {x: 307.45004, y: 231.00002}
+  position: {x: 302.77, y: 233.81583}
   transitions:
   - rootStateID: 030741fb-42ad-4558-9227-ddd7b9b9e43e
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690

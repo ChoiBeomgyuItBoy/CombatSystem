@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7329afd8b24e678458bd64a11d84bf7c, type: 3}
-  m_Name: Delayed ClickTargeting
+  m_Script: {fileID: 11500000, guid: a503042a5057fe742ae2406f80a4b9c7, type: 3}
+  m_Name: Delayed Point Targeting
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 8
-  effect: {fileID: 3280519133390621005, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
+    m_Bits: 0
+  pointPrefab: {fileID: 0}
   areaAffectRadius: 5
-  range: 30
-  effectHeightOffset: 0.4
+  maxRange: 10

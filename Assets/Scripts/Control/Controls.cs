@@ -73,9 +73,27 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Ability"",
+                    ""name"": ""Ability 1"",
                     ""type"": ""Button"",
                     ""id"": ""bd703677-be10-4a46-99f9-5fd00c9b8de2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""3497226f-4bd6-4ff0-b373-407239a22bb9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability 3"",
+                    ""type"": ""Button"",
+                    ""id"": ""4eef3dc7-2d51-4377-b1dd-b5719f8545d8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -222,29 +240,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""Ability"",
+                    ""action"": ""Ability 1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d6f878b0-4582-4ffc-b86c-fca22c8a95bf"",
-                    ""path"": ""<Keyboard>/2"",
+                    ""id"": ""82562a68-bc92-46ac-acdf-8bdd350f70fc"",
+                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""Ability"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""317664d0-8a25-46ef-be65-c883f1df3a16"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""Ability"",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Ability 1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -267,6 +274,50 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f84e9f68-4db3-4095-be9d-a1c74cc3b02c"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Ability 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f88b7d43-441e-4a8f-b088-22123571eec9"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Ability 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3cde1ee9-2be5-4b4a-a56a-d086c4682967"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Ability 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ac05d5f-9f30-4335-b853-ab07e1716ce5"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Ability 3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -310,7 +361,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Target = m_Player.FindAction("Target", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
-        m_Player_Ability = m_Player.FindAction("Ability", throwIfNotFound: true);
+        m_Player_Ability1 = m_Player.FindAction("Ability 1", throwIfNotFound: true);
+        m_Player_Ability2 = m_Player.FindAction("Ability 2", throwIfNotFound: true);
+        m_Player_Ability3 = m_Player.FindAction("Ability 3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -377,7 +430,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Target;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Dodge;
-    private readonly InputAction m_Player_Ability;
+    private readonly InputAction m_Player_Ability1;
+    private readonly InputAction m_Player_Ability2;
+    private readonly InputAction m_Player_Ability3;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -387,7 +442,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Target => m_Wrapper.m_Player_Target;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
-        public InputAction @Ability => m_Wrapper.m_Player_Ability;
+        public InputAction @Ability1 => m_Wrapper.m_Player_Ability1;
+        public InputAction @Ability2 => m_Wrapper.m_Player_Ability2;
+        public InputAction @Ability3 => m_Wrapper.m_Player_Ability3;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -412,9 +469,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dodge.started += instance.OnDodge;
             @Dodge.performed += instance.OnDodge;
             @Dodge.canceled += instance.OnDodge;
-            @Ability.started += instance.OnAbility;
-            @Ability.performed += instance.OnAbility;
-            @Ability.canceled += instance.OnAbility;
+            @Ability1.started += instance.OnAbility1;
+            @Ability1.performed += instance.OnAbility1;
+            @Ability1.canceled += instance.OnAbility1;
+            @Ability2.started += instance.OnAbility2;
+            @Ability2.performed += instance.OnAbility2;
+            @Ability2.canceled += instance.OnAbility2;
+            @Ability3.started += instance.OnAbility3;
+            @Ability3.performed += instance.OnAbility3;
+            @Ability3.canceled += instance.OnAbility3;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -434,9 +497,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Dodge.started -= instance.OnDodge;
             @Dodge.performed -= instance.OnDodge;
             @Dodge.canceled -= instance.OnDodge;
-            @Ability.started -= instance.OnAbility;
-            @Ability.performed -= instance.OnAbility;
-            @Ability.canceled -= instance.OnAbility;
+            @Ability1.started -= instance.OnAbility1;
+            @Ability1.performed -= instance.OnAbility1;
+            @Ability1.canceled -= instance.OnAbility1;
+            @Ability2.started -= instance.OnAbility2;
+            @Ability2.performed -= instance.OnAbility2;
+            @Ability2.canceled -= instance.OnAbility2;
+            @Ability3.started -= instance.OnAbility3;
+            @Ability3.performed -= instance.OnAbility3;
+            @Ability3.canceled -= instance.OnAbility3;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -479,6 +548,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnTarget(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
-        void OnAbility(InputAction.CallbackContext context);
+        void OnAbility1(InputAction.CallbackContext context);
+        void OnAbility2(InputAction.CallbackContext context);
+        void OnAbility3(InputAction.CallbackContext context);
     }
 }
