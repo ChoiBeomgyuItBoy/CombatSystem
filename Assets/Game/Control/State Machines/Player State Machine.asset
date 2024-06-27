@@ -529,7 +529,15 @@ MonoBehaviour:
   uniqueID: 3ccad979-8d90-41de-b477-22c572a87caa
   title: Ability State
   position: {x: 588, y: 239.00003}
-  transitions: []
+  transitions:
+  - rootStateID: 3ccad979-8d90-41de-b477-22c572a87caa
+    trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
+    condition:
+      and:
+      - or:
+        - predicate: Ability Finished
+          parameters: []
+          negate: 0
   onEnterActions: []
   onTickActions: []
   onExitActions: []

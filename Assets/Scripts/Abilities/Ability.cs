@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace CombatSystem.Abilites
         [SerializeField] TargetingStrategy targetingStrategy;
         [SerializeField] FilterStrategy[] filterStrategies;
         [SerializeField] EffectStrategy[] effectStrategies;
+        public event Action finished;
 
         public void Use(GameObject user)
         {
@@ -30,7 +32,7 @@ namespace CombatSystem.Abilites
 
         void EffectFinished()
         {
-
+            finished.Invoke();
         }
     }
 }

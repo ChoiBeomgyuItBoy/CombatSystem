@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4518bfaba68e34541a87e63172eedfb7, type: 3}
   m_Name: Demo Ability
   m_EditorClassIdentifier: 
-  targetingStrategy: {fileID: 11400000, guid: 73b303f681f8b014b90ebe333157a7d4, type: 2}
+  targetingStrategy: {fileID: 11400000, guid: 66330d5902f1ddc49913fb58db907d86, type: 2}
   filterStrategies:
   - {fileID: 11400000, guid: 53edc4f4653c1d6459cffc6f19cc9a52, type: 2}
   effectStrategies:

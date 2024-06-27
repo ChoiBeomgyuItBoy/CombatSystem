@@ -8,6 +8,7 @@ namespace CombatSystem.Abilites
     {
         [SerializeField] Ability[] abilities;
         string[] abilityInputs;
+        Ability currentAbility;
         InputReader inputReader;
 
         void Awake()
@@ -22,7 +23,15 @@ namespace CombatSystem.Abilites
 
         void UseAbility(int index)
         {
-            abilities[index].Use(gameObject);
+            currentAbility = abilities[index];
+            currentAbility.finished += CancelAbility;
+            currentAbility.Use(gameObject);
+        }
+
+        void CancelAbility()
+        {
+            currentAbility.finished -= CancelAbility;
+            currentAbility = null;
         }
 
         void FillInputs()
@@ -45,7 +54,6 @@ namespace CombatSystem.Abilites
             switch(predicate)
             {
                 case "Ability Selected":
-                    
                     for(int i = 0; i < abilities.Length; i++)
                     {
                         if(InputPressed(i))
@@ -57,6 +65,9 @@ namespace CombatSystem.Abilites
                     }
 
                     return false;
+
+                case "Ability Finished":
+                    return currentAbility == null;
             }
 
             return null;

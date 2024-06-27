@@ -12,9 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a503042a5057fe742ae2406f80a4b9c7, type: 3}
   m_Name: Delayed Point Targeting
   m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  pointPrefab: {fileID: 0}
+  pointPrefab: {fileID: 1465553929140135055, guid: 9b0c354f86ddea749a4d0761fd53bdd8, type: 3}
   areaAffectRadius: 5
-  maxRange: 10
