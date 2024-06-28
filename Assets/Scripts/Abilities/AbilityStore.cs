@@ -51,7 +51,7 @@ namespace CombatSystem.Abilites
                 case "Ability Selected":
                     for(int i = 0; i < abilities.Length; i++)
                     {
-                        if(inputReader.IsPressed(abilityInputs[i], true))
+                        if(inputReader.WasPressed(abilityInputs[i]))
                         {
                             UseAbility(i);
 

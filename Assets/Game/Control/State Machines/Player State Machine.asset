@@ -116,7 +116,7 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: Input Action
+        - predicate: Was Pressed
           parameters:
           - Attack
           negate: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: Input Action This Frame
+        - predicate: Was Pressed
           parameters:
           - Target
           negate: 0
@@ -138,12 +138,12 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: Input Action This Frame
+        - predicate: Was Pressed
           parameters:
           - Dodge
           negate: 0
       - or:
-        - predicate: Input Action
+        - predicate: Is Pressed
           parameters:
           - Locomotion
           negate: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: Input Action This Frame
+        - predicate: Was Pressed
           parameters:
           - Target
           negate: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: Input Action
+        - predicate: Was Pressed
           parameters:
           - Attack
           negate: 0
@@ -215,12 +215,12 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: Input Action This Frame
+        - predicate: Was Pressed
           parameters:
           - Dodge
           negate: 0
       - or:
-        - predicate: Input Action
+        - predicate: Is Pressed
           parameters:
           - Locomotion
           negate: 0
@@ -248,8 +248,6 @@ MonoBehaviour:
     parameters: []
   - actionID: Face Target
     parameters: []
-  - actionID: Select Target
-    parameters: []
   onExitActions: []
 --- !u!114 &-4429556588309076187
 MonoBehaviour:
@@ -276,24 +274,18 @@ MonoBehaviour:
           parameters: []
           negate: 0
       - or:
-        - predicate: Input Action
-          parameters:
-          - Attack
-          negate: 1
-      - or:
-        - predicate: Target In Targeting Range
-          parameters:
-          - 
-          negate: 1
-      - or:
         - predicate: Animation Over
           parameters:
           - Attack
           negate: 0
-        - predicate: Input Action
+        - predicate: Is Pressed
           parameters:
           - Locomotion
           negate: 0
+      - or:
+        - predicate: Target In Targeting Range
+          parameters: []
+          negate: 1
   - rootStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
     trueStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
     condition:
@@ -303,7 +295,7 @@ MonoBehaviour:
           parameters: []
           negate: 1
       - or:
-        - predicate: Input Action
+        - predicate: Was Pressed
           parameters:
           - Attack
           negate: 0
@@ -318,31 +310,20 @@ MonoBehaviour:
       and:
       - or:
         - predicate: Current Attack Finished
-          parameters:
-          - Attack
-          negate: 0
-      - or:
-        - predicate: Input Action
-          parameters:
-          - Attack
-          negate: 1
-        - predicate: Current Attack Is Last
-          parameters:
-          - Attack
-          negate: 0
-      - or:
-        - predicate: Target In Targeting Range
-          parameters:
-          - Attack
+          parameters: []
           negate: 0
       - or:
         - predicate: Animation Over
           parameters:
           - Attack
           negate: 0
-        - predicate: Input Action
+        - predicate: Is Pressed
           parameters:
           - Locomotion
+          negate: 0
+      - or:
+        - predicate: Target In Targeting Range
+          parameters: []
           negate: 0
   onEnterActions:
   - actionID: Attack

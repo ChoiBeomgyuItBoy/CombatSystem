@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using RainbowAssets.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,11 +9,14 @@ namespace CombatSystem.Control
     {
         Controls controls;
 
-        public bool IsPressed(string actionName, bool thisFrame)
+        public bool WasPressed(string actionName)
         {
-            InputAction action = GetInputAction(actionName);
+            return GetInputAction(actionName).WasPressedThisFrame();
+        }
 
-            return thisFrame? action.WasPerformedThisFrame() : action.IsPressed();
+        public bool IsPressed(string actionName)
+        {
+            return GetInputAction(actionName).IsPressed();
         }
 
         public Vector2 GetInputValue()
@@ -46,11 +50,11 @@ namespace CombatSystem.Control
         {
             switch(predicate)
             {
-                case "Input Action":
-                    return IsPressed(parameters[0], false);
-                
-                case "Input Action This Frame":
-                    return IsPressed(parameters[0], true);
+                case "Was Pressed":
+                    return WasPressed(parameters[0]);
+
+                case "Is Pressed":
+                    return IsPressed(parameters[0]);
             }
 
             return null;

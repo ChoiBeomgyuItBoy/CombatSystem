@@ -32,9 +32,9 @@ namespace CombatSystem.Abilites.Targeting
 
             while(true)
             {
-                if(inputReader.IsPressed(activationInput, true))
+                if(inputReader.WasPressed(activationInput))
                 {
-                    yield return new WaitWhile(() => Input.GetMouseButton(0));
+                    yield return new WaitWhile(() => inputReader.WasPressed(activationInput));
 
                     Destroy(pointInstance.gameObject);
 
