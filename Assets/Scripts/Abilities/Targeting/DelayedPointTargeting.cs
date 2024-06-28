@@ -15,9 +15,7 @@ namespace CombatSystem.Abilites.Targeting
 
         public override void StartTargeting(AbilityData data, Action finished)
         {
-            MonoBehaviour monoBehaviour = data.GetUser().GetComponent<MonoBehaviour>();
-
-            monoBehaviour.StartCoroutine(TargetingRoutine(data, finished));
+            data.StartCoroutine(TargetingRoutine(data, finished));
         }
 
         IEnumerator TargetingRoutine(AbilityData data, Action finished)

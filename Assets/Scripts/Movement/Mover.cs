@@ -36,6 +36,17 @@ namespace CombatSystem.Movement
             return Vector3.Distance(transform.position, destination) < tolerance;
         }
 
+        public void LookAt(Vector3 target)
+        {
+            Vector3 lookDirection = target - transform.position;
+            lookDirection.y = 0;
+
+            if(lookDirection != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(lookDirection);
+            }
+        }
+
         void Awake()
         {
             agent = GetComponent<NavMeshAgent>();

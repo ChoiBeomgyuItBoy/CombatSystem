@@ -251,13 +251,7 @@ namespace CombatSystem.Combat
         {
             if(target != null)
             {
-                Vector3 lookDirection = target.transform.position - transform.position;
-                lookDirection.y = 0;
-
-                if(lookDirection != Vector3.zero)
-                {
-                    transform.rotation = Quaternion.LookRotation(lookDirection);
-                }
+                mover.LookAt(target.transform.position);
             }
         }
 

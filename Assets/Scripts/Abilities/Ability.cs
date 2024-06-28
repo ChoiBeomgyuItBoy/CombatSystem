@@ -46,7 +46,7 @@ namespace CombatSystem.Abilites
         {
             if(IsLastEffect(effect))
             {
-                abilityFinished.Invoke();
+                abilityFinished?.Invoke();
             }
         }
 

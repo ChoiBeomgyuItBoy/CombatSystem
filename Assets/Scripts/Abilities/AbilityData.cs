@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +38,12 @@ namespace CombatSystem.Abilites
         public void SetTargetPoint(Vector3 targetPoint)
         {
             this.targetPoint = targetPoint;
+        }
+
+        public void StartCoroutine(IEnumerator coroutine)
+        {
+            MonoBehaviour monoBehaviour = user.GetComponent<MonoBehaviour>();
+            monoBehaviour.StartCoroutine(coroutine);
         }
     }
 }

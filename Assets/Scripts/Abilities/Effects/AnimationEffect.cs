@@ -13,9 +13,7 @@ namespace CombatSystem.Abilites.Effects
 
         public override void StartEffect(AbilityData data, Action finished)
         {
-            MonoBehaviour monoBehaviour = data.GetUser().GetComponent<MonoBehaviour>();
-            
-            monoBehaviour.StartCoroutine(WaitForAnimationRoutine(data, finished));
+            data.StartCoroutine(WaitForAnimationRoutine(data, finished));
         }
 
         IEnumerator WaitForAnimationRoutine(AbilityData data, Action finished)
