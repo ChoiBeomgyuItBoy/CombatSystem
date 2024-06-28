@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CombatSystem.Abilites
@@ -10,29 +9,39 @@ namespace CombatSystem.Abilites
         [SerializeField] TargetingStrategy targetingStrategy;
         [SerializeField] FilterStrategy[] filterStrategies;
         [SerializeField] EffectStrategy[] effectStrategies;
-        public event Action finished;
+        public event Action abilityFinished;
 
         public void Use(GameObject user)
         {
-            targetingStrategy.StartTargeting(user, (IEnumerable<GameObject> targets) => TargetAquired(user, targets));
+            AbilityData data = new(user);
+
+            targetingStrategy.StartTargeting(data, () => TargetAquired(data));
         }
 
-        void TargetAquired(GameObject user, IEnumerable<GameObject> targets)
+        void TargetAquired(AbilityData data)
         {
             foreach(var filter in filterStrategies)
             {
-                targets = filter.Filter(targets);
+                data.SetTargets(filter.Filter(data.GetTargets()));
             }
 
             foreach(var effect in effectStrategies)
             {
-                effect.StartEffect(user, targets, EffectFinished);
+                effect.StartEffect(data, () => EffectFinished(effect));
             }   
         }   
 
-        void EffectFinished()
+        void EffectFinished(EffectStrategy effect)
         {
-            finished.Invoke();
+            if(IsLastEffect(effect))
+            {
+                abilityFinished.Invoke();
+            }
+        }
+
+        bool IsLastEffect(EffectStrategy effect)
+        {
+            return effect == effectStrategies[effectStrategies.Length - 1];
         }
     }
 }

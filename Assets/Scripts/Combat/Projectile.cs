@@ -61,9 +61,7 @@ namespace CombatSystem.Combat
 
                 if(forceReceiver != null && forceReceiver != instigator.GetComponent<ForceReceiver>())
                 {
-                    Vector3 knockbackDirection = GetKnockbackDirection(forceReceiver.transform);
-
-                    forceReceiver.AddForce(knockbackDirection);
+                    forceReceiver.AddKnockback(instigator, knockback);
                 }
 
                 health.TakeDamage(damage);
@@ -108,17 +106,6 @@ namespace CombatSystem.Combat
         float GetTargetCenter()
         {
             return target.GetComponent<CharacterController>().height / 2;
-        }
-
-        Vector3 GetKnockbackDirection(Transform target)
-        {
-            Vector3 direction = (target.position - instigator.transform.position).normalized;
-
-            direction.y += knockback.y;
-            direction.x *= knockback.x;
-            direction.z *= knockback.x;
-
-            return direction;
         }
     }
 }

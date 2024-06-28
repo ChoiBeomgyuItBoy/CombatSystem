@@ -34,9 +34,7 @@ namespace CombatSystem.Combat
 
                     if(forceReceiver != null && forceReceiver != user.GetComponent<ForceReceiver>())
                     {
-                        Vector3 knockbackDirection = GetKnockbackDirection(user.transform, forceReceiver.transform, knockback);
-
-                        forceReceiver.AddForce(knockbackDirection);
+                        forceReceiver.AddKnockback(user, knockback);
                     }
 
                     health.TakeDamage(damage);
@@ -47,17 +45,6 @@ namespace CombatSystem.Combat
                     }
                 }
             }
-        }
-
-        Vector3 GetKnockbackDirection(Transform user, Transform target, Vector2 knockback)
-        {
-            Vector3 direction = (target.position - user.position).normalized;
-
-            direction.y += knockback.y;
-            direction.x *= knockback.x;
-            direction.z *= knockback.x;
-
-            return direction;
         }
 
         void OnDrawGizmosSelected()

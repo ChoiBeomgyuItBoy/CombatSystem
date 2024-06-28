@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using CombatSystem.Attributes;
 using UnityEngine;
 
@@ -10,9 +9,9 @@ namespace CombatSystem.Abilites.Effects
     {
         [SerializeField] float healthChange;
 
-        public override void StartEffect(GameObject user, IEnumerable<GameObject> targets, Action finished)
+        public override void StartEffect(AbilityData data, Action finished)
         {
-            foreach(var target in targets)
+            foreach(var target in data.GetTargets())
             {
                 Health health = target.GetComponent<Health>();
 

@@ -13,13 +13,17 @@ namespace CombatSystem.Abilites.Targeting
         [SerializeField] float areaAffectRadius = 5;
         const string activationInput = "Attack";
 
-        public override void StartTargeting(GameObject user, Action<IEnumerable<GameObject>> finished)
+        public override void StartTargeting(AbilityData data, Action finished)
         {
-            user.GetComponent<MonoBehaviour>().StartCoroutine(TargetingRoutine(user, finished));
+            MonoBehaviour monoBehaviour = data.GetUser().GetComponent<MonoBehaviour>();
+
+            monoBehaviour.StartCoroutine(TargetingRoutine(data, finished));
         }
 
-        IEnumerator TargetingRoutine(GameObject user, Action<IEnumerable<GameObject>> finished)
+        IEnumerator TargetingRoutine(AbilityData data, Action finished)
         {
+            GameObject user = data.GetUser();
+
             GameObject pointInstance = Instantiate(pointPrefab, user.transform.position, Quaternion.identity);
 
             pointInstance.transform.localScale = new Vector3(areaAffectRadius * 2, 1, areaAffectRadius * 2);
@@ -28,13 +32,16 @@ namespace CombatSystem.Abilites.Targeting
 
             while(true)
             {
-                if(inputReader.GetInputAction(activationInput).IsPressed())
+                if(inputReader.IsPressed(activationInput, true))
                 {
                     yield return new WaitWhile(() => Input.GetMouseButton(0));
 
                     Destroy(pointInstance.gameObject);
 
-                    finished(GetTargetsInRadius(pointInstance.transform.position));
+                    data.SetTargets(GetTargetsInRadius(pointInstance.transform.position));
+                    data.SetTargetPoint(pointInstance.transform.position);
+
+                    finished();
 
                     yield break;
                 }

@@ -229,6 +229,14 @@ MonoBehaviour:
           parameters:
           - Dodge
           negate: 0
+  - rootStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
+    trueStateID: 3ccad979-8d90-41de-b477-22c572a87caa
+    condition:
+      and:
+      - or:
+        - predicate: Ability Selected
+          parameters: []
+          negate: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
@@ -536,6 +544,22 @@ MonoBehaviour:
       and:
       - or:
         - predicate: Ability Finished
+          parameters: []
+          negate: 0
+      - or:
+        - predicate: Target In Targeting Range
+          parameters: []
+          negate: 1
+  - rootStateID: 3ccad979-8d90-41de-b477-22c572a87caa
+    trueStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
+    condition:
+      and:
+      - or:
+        - predicate: Ability Finished
+          parameters: []
+          negate: 0
+      - or:
+        - predicate: Target In Targeting Range
           parameters: []
           negate: 0
   onEnterActions: []

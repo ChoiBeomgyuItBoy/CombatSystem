@@ -24,13 +24,13 @@ namespace CombatSystem.Abilites
         void UseAbility(int index)
         {
             currentAbility = abilities[index];
-            currentAbility.finished += CancelAbility;
+            currentAbility.abilityFinished += CancelAbility;
             currentAbility.Use(gameObject);
         }
 
         void CancelAbility()
         {
-            currentAbility.finished -= CancelAbility;
+            currentAbility.abilityFinished -= CancelAbility;
             currentAbility = null;
         }
 
@@ -44,11 +44,6 @@ namespace CombatSystem.Abilites
             }
         }
 
-        bool InputPressed(int index)
-        {
-            return inputReader.GetInputAction(abilityInputs[index]).WasPressedThisFrame();
-        }
-
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
         {
             switch(predicate)
@@ -56,7 +51,7 @@ namespace CombatSystem.Abilites
                 case "Ability Selected":
                     for(int i = 0; i < abilities.Length; i++)
                     {
-                        if(InputPressed(i))
+                        if(inputReader.IsPressed(abilityInputs[i], true))
                         {
                             UseAbility(i);
 

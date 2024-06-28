@@ -8,17 +8,11 @@ namespace CombatSystem.Control
     {
         Controls controls;
 
-        public InputAction GetInputAction(string actionName)
+        public bool IsPressed(string actionName, bool thisFrame)
         {
-            InputAction action = controls.FindAction(actionName);
+            InputAction action = GetInputAction(actionName);
 
-            if(action == null)
-            {
-                Debug.LogError($"Input Action with name {actionName} not found");
-                return null;
-            }
-
-            return action;
+            return thisFrame? action.WasPerformedThisFrame() : action.IsPressed();
         }
 
         public Vector2 GetInputValue()
@@ -35,18 +29,17 @@ namespace CombatSystem.Control
             Cursor.visible = false;
         }
 
-        bool IsPressed(string actionName, bool thisFrame)
+        InputAction GetInputAction(string actionName)
         {
-            InputAction action = GetInputAction(actionName);
+            InputAction action = controls.FindAction(actionName);
 
-            if(thisFrame)
+            if(action == null)
             {
-                return action.WasPressedThisFrame();
+                Debug.LogError($"Input Action with name {actionName} not found");
+                return null;
             }
-            else
-            {
-                return action.IsPressed();
-            }
+
+            return action;
         }
 
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)

@@ -18,6 +18,17 @@ namespace CombatSystem.Core
             impact += force;
         }
 
+        public void AddKnockback(GameObject target, Vector2 knockback)
+        {
+            Vector3 direction = (transform.position - target.transform.position).normalized;
+
+            direction.y += knockback.y;
+            direction.x *= knockback.x;
+            direction.z *= knockback.x;
+
+            AddForce(direction);
+        }
+
         void Awake()
         {
             controller = GetComponent<CharacterController>();
