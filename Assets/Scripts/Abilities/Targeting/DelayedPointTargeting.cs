@@ -23,31 +23,19 @@ namespace CombatSystem.Abilites.Targeting
         IEnumerator TargetingRoutine(AbilityData data, Action finished)
         {
             GameObject user = data.GetUser();
-
             GameObject pointInstance = Instantiate(pointPrefab, user.transform.position, Quaternion.identity);
 
             pointInstance.transform.localScale = new Vector3(areaAffectRadius * 2, 1, areaAffectRadius * 2);
 
             InputReader inputReader = user.GetComponent<InputReader>();
 
-            while(true)
-            {
-                if(inputReader.WasPressed(activationInput))
-                {
-                    yield return new WaitWhile(() => inputReader.WasPressed(activationInput));
-
-                    Destroy(pointInstance.gameObject);
-
-                    data.SetTargets(GetTargetsInRadius(pointInstance.transform.position));
-                    data.SetTargetPoint(pointInstance.transform.position);
-
-                    finished();
-
-                    yield break;
-                }
+            yield return new WaitWhile(() => !inputReader.WasPressed(activationInput));
             
-                yield return null;
-            }
+            Destroy(pointInstance.gameObject);
+            data.SetTargets(GetTargetsInRadius(pointInstance.transform.position));
+            data.SetTargetPoint(pointInstance.transform.position);
+
+            finished();
         }
 
         IEnumerable<GameObject> GetTargetsInRadius(Vector3 pointPosition)

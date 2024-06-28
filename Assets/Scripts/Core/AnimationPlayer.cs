@@ -20,6 +20,11 @@ namespace CombatSystem.Core
             return 0;
         }
 
+        public bool AnimationOver(string tag)
+        {
+            return GetAnimationTime(tag) >= 1;
+        }
+
         public void PlaySmooth(string name)
         {
             animator.CrossFadeInFixedTime(name, crossFadeTime);
@@ -74,7 +79,7 @@ namespace CombatSystem.Core
             switch(predicate)
             {
                 case "Animation Over":
-                    return GetAnimationTime(parameters[0]) >= 1;
+                    return AnimationOver(parameters[0]);
             }
 
             return null;

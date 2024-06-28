@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CombatSystem.Control;
 using RainbowAssets.Utils;
 using UnityEngine;
@@ -7,9 +8,10 @@ namespace CombatSystem.Abilites
     public class AbilityStore : MonoBehaviour, IPredicateEvaluator
     {
         [SerializeField] Ability[] abilities;
-        string[] abilityInputs;
+        Dictionary<Ability, float> cooldownTimers = new();
         Ability currentAbility;
         InputReader inputReader;
+        string[] abilityInputs;
 
         void Awake()
         {
@@ -21,15 +23,39 @@ namespace CombatSystem.Abilites
             FillInputs();
         }
 
-        void UseAbility(int index)
+        void Update()
         {
-            currentAbility = abilities[index];
-            currentAbility.abilityFinished += CancelAbility;
-            currentAbility.Use(gameObject);
+            var keys = new List<Ability>(cooldownTimers.Keys);
+
+            foreach(var ability in keys)
+            {
+                cooldownTimers[ability] -= Time.deltaTime;
+
+                if(cooldownTimers[ability] < 0)
+                {
+                    cooldownTimers.Remove(ability);
+                }
+            }
+        }
+
+        bool UseAbility(int index)
+        {
+            Ability candidate = abilities[index];
+
+            if(GetRemainingCooldown(candidate) <= 0)
+            {
+                currentAbility = candidate;
+                currentAbility.abilityFinished += CancelAbility;
+                currentAbility.Use(gameObject);
+                return true;
+            }
+
+            return false;
         }
 
         void CancelAbility()
         {
+            StartCooldown(currentAbility);
             currentAbility.abilityFinished -= CancelAbility;
             currentAbility = null;
         }
@@ -44,6 +70,21 @@ namespace CombatSystem.Abilites
             }
         }
 
+        void StartCooldown(Ability ability)
+        {
+            cooldownTimers[ability] = ability.GetCooldownTime();
+        }
+
+        float GetRemainingCooldown(Ability ability)
+        {
+            if(!cooldownTimers.ContainsKey(ability))
+            {
+                return 0;
+            }
+            
+            return cooldownTimers[ability];
+        }
+
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
         {
             switch(predicate)
@@ -53,9 +94,7 @@ namespace CombatSystem.Abilites
                     {
                         if(inputReader.WasPressed(abilityInputs[i]))
                         {
-                            UseAbility(i);
-
-                            return true;
+                            return UseAbility(i);
                         }
                     }
 

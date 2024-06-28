@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CombatSystem.Abilites
@@ -9,7 +10,13 @@ namespace CombatSystem.Abilites
         [SerializeField] TargetingStrategy targetingStrategy;
         [SerializeField] FilterStrategy[] filterStrategies;
         [SerializeField] EffectStrategy[] effectStrategies;
+        [SerializeField] float cooldownTime = 5;
         public event Action abilityFinished;
+
+        public float GetCooldownTime()
+        {
+            return cooldownTime;
+        }
 
         public void Use(GameObject user)
         {
@@ -20,10 +27,14 @@ namespace CombatSystem.Abilites
 
         void TargetAquired(AbilityData data)
         {
+            List<GameObject> filteredTargets = new();
+
             foreach(var filter in filterStrategies)
             {
-                data.SetTargets(filter.Filter(data.GetTargets()));
+                filteredTargets.AddRange(filter.Filter(data.GetTargets()));
             }
+
+            data.SetTargets(filteredTargets);
 
             foreach(var effect in effectStrategies)
             {
