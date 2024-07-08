@@ -27,12 +27,19 @@ namespace CombatSystem.Abilites.Targeting
 
             InputReader inputReader = user.GetComponent<InputReader>();
 
-            yield return new WaitWhile(() => !inputReader.WasPressed(activationInput));
-            
-            Destroy(pointInstance.gameObject);
-            data.SetTargets(GetTargetsInRadius(pointInstance.transform.position));
-            data.SetTargetPoint(pointInstance.transform.position);
+            while(!data.IsCancelled())
+            {
+                if(inputReader.WasPressed(activationInput))
+                {
+                    data.SetTargets(GetTargetsInRadius(pointInstance.transform.position));
+                    data.SetTargetPoint(pointInstance.transform.position);
+                    break;
+                }
 
+                yield return null;
+            }
+
+            Destroy(pointInstance.gameObject);
             finished();
         }
 

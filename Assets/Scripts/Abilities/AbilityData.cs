@@ -9,6 +9,7 @@ namespace CombatSystem.Abilites
         GameObject user;
         IEnumerable<GameObject> targets;
         Vector3 targetPoint;
+        bool cancelled = false;
 
         public AbilityData(GameObject user)
         {
@@ -30,6 +31,11 @@ namespace CombatSystem.Abilites
             return targetPoint;
         }
 
+        public bool IsCancelled()
+        {
+            return cancelled;
+        }
+
         public void SetTargets(IEnumerable<GameObject> targets)
         {
             this.targets = targets;
@@ -38,6 +44,11 @@ namespace CombatSystem.Abilites
         public void SetTargetPoint(Vector3 targetPoint)
         {
             this.targetPoint = targetPoint;
+        }
+
+        public void Cancel()
+        {
+            cancelled = true;
         }
 
         public void StartCoroutine(IEnumerator coroutine)

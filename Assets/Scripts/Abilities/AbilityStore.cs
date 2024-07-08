@@ -5,17 +5,25 @@ using UnityEngine;
 
 namespace CombatSystem.Abilites
 {
-    public class AbilityStore : MonoBehaviour, IPredicateEvaluator
+    public class AbilityStore : MonoBehaviour, IAction, IPredicateEvaluator
     {
-        [SerializeField] Ability[] abilities;
-        Dictionary<Ability, float> cooldownTimers = new();
-        Ability currentAbility;
+        [SerializeField] List<Ability> abilities = new();
         InputReader inputReader;
-        string[] abilityInputs;
+        Ability currentAbility;
+        List<string> abilityInputs = new();
 
         void Awake()
         {
             inputReader = GetComponent<InputReader>();
+
+            List<Ability> abilitiesCache = new(abilities);
+
+            abilities.Clear();
+
+            foreach(var ability in abilitiesCache)
+            {
+                abilities.Add(ability.Clone());
+            }
         }
 
         void Start()
@@ -23,30 +31,14 @@ namespace CombatSystem.Abilites
             FillInputs();
         }
 
-        void Update()
-        {
-            var keys = new List<Ability>(cooldownTimers.Keys);
-
-            foreach(var ability in keys)
-            {
-                cooldownTimers[ability] -= Time.deltaTime;
-
-                if(cooldownTimers[ability] < 0)
-                {
-                    cooldownTimers.Remove(ability);
-                }
-            }
-        }
-
         bool UseAbility(int index)
         {
             Ability candidate = abilities[index];
 
-            if(GetRemainingCooldown(candidate) <= 0)
+            if(candidate.Use(gameObject))
             {
                 currentAbility = candidate;
                 currentAbility.abilityFinished += CancelAbility;
-                currentAbility.Use(gameObject);
                 return true;
             }
 
@@ -55,34 +47,30 @@ namespace CombatSystem.Abilites
 
         void CancelAbility()
         {
-            StartCooldown(currentAbility);
-            currentAbility.abilityFinished -= CancelAbility;
-            currentAbility = null;
+            if(currentAbility != null)
+            {
+                currentAbility.Cancel();
+                currentAbility.abilityFinished -= CancelAbility;
+                currentAbility = null;
+            }
         }
 
         void FillInputs()
         {
-            abilityInputs = new string[abilities.Length];
-
-            for(int i = 0; i < abilities.Length; i++)
+            for(int i = 0; i < abilities.Count; i++)
             {
-                abilityInputs[i] = $"Ability {i + 1}";
+                abilityInputs.Add($"Ability {i + 1}");
             }
         }
 
-        void StartCooldown(Ability ability)
+        void IAction.DoAction(string actionID, string[] parameters)
         {
-            cooldownTimers[ability] = ability.GetCooldownTime();
-        }
-
-        float GetRemainingCooldown(Ability ability)
-        {
-            if(!cooldownTimers.ContainsKey(ability))
+            switch(actionID)
             {
-                return 0;
+                case "Cancel Ability":
+                    CancelAbility();
+                    break;
             }
-            
-            return cooldownTimers[ability];
         }
 
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
@@ -90,7 +78,7 @@ namespace CombatSystem.Abilites
             switch(predicate)
             {
                 case "Ability Selected":
-                    for(int i = 0; i < abilities.Length; i++)
+                    for(int i = 0; i < abilities.Count; i++)
                     {
                         if(inputReader.WasPressed(abilityInputs[i]))
                         {

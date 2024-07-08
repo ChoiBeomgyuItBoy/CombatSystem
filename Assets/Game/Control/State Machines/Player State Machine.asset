@@ -263,24 +263,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 7b1841da-627c-4a31-80da-e78d3b1b8091
   title: Attack State
-  position: {x: 802.0001, y: 112}
+  position: {x: 812, y: 122}
   transitions:
   - rootStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
     condition:
       and:
       - or:
-        - predicate: Current Attack Finished
-          parameters: []
-          negate: 0
-      - or:
         - predicate: Animation Over
           parameters:
           - Attack
-          negate: 0
-        - predicate: Is Pressed
-          parameters:
-          - Locomotion
           negate: 0
       - or:
         - predicate: Target In Targeting Range
@@ -301,25 +293,16 @@ MonoBehaviour:
           negate: 0
       - or:
         - predicate: Current Attack Finished
-          parameters:
-          - Attack
+          parameters: []
           negate: 0
   - rootStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
     trueStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
     condition:
       and:
       - or:
-        - predicate: Current Attack Finished
-          parameters: []
-          negate: 0
-      - or:
         - predicate: Animation Over
           parameters:
           - Attack
-          negate: 0
-        - predicate: Is Pressed
-          parameters:
-          - Locomotion
           negate: 0
       - or:
         - predicate: Target In Targeting Range
@@ -609,6 +592,8 @@ MonoBehaviour:
   - actionID: Play Animation
     parameters:
     - Dead Entry
+  - actionID: Cancel Current Ability
+    parameters: []
   onTickActions: []
   onExitActions: []
 --- !u!114 &6531354048580725087
@@ -663,6 +648,8 @@ MonoBehaviour:
     - Damage 4
   - actionID: Reset Combo
     parameters: []
+  - actionID: Cancel Current Ability
+    parameters: []
   onTickActions:
   - actionID: Apply Motion Zero
     parameters: []
@@ -699,6 +686,8 @@ MonoBehaviour:
     parameters:
     - Knockdown Entry
   - actionID: Reset Combo
+    parameters: []
+  - actionID: Cancel Current Ability
     parameters: []
   onTickActions:
   - actionID: Apply Motion Zero
