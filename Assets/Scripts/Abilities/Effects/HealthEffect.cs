@@ -19,7 +19,7 @@ namespace CombatSystem.Abilites.Effects
                 {
                     if(healthChange < 0)
                     {
-                        health.TakeDamage(healthChange);
+                        health.TakeDamage(-healthChange);
                     }
                     else
                     {

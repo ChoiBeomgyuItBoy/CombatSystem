@@ -10,6 +10,7 @@ namespace CombatSystem.Abilites.Effects
     {
         [SerializeField] string animationName;
         [SerializeField] string animationTag;
+        [SerializeField] [Range(0, 0.99f)] float endTime = 1;
 
         public override void StartEffect(AbilityData data, Action finished)
         {
@@ -22,7 +23,12 @@ namespace CombatSystem.Abilites.Effects
 
             animationPlayer.PlaySmooth(animationName);
 
-            yield return new WaitWhile(() => !animationPlayer.AnimationOver(animationTag));
+            yield return new WaitWhile(() => animationPlayer.GetAnimationTime(animationTag) < endTime);
+
+            if(data.IsCancelled())
+            {
+                yield break;
+            }
                 
             finished();
         }

@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a503042a5057fe742ae2406f80a4b9c7, type: 3}
-  m_Name: Delayed Point Targeting
+  m_Script: {fileID: 11500000, guid: 0adc3f6784e7b3b48a9fcb0e3b34a7aa, type: 3}
+  m_Name: Fire Ball Delay
   m_EditorClassIdentifier: 
-  pointPrefab: {fileID: 1465553929140135055, guid: 9b0c354f86ddea749a4d0761fd53bdd8, type: 3}
-  areaAffectRadius: 5
+  delayedEffects:
+  - {fileID: 11400000, guid: 4074021537fd3c946a6266b0d7c3eaf7, type: 2}
+  delay: 0.8
+  abortIfCancelled: 1

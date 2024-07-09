@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 24320750606745791}
   - component: {fileID: 881904760423495567}
   m_Layer: 0
-  m_Name: Damage Text Spawner
+  m_Name: Heal Text Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5415edb4e4de93141b869887b6c7f756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthTextPrefab: {fileID: 5004389223831532232, guid: b56979fa781a0aa459b99fb1ec8c7b02, type: 3}
+  healthTextPrefab: {fileID: 5004389223831532232, guid: 14eb31a70c4bade4789cb18f980e6b2c, type: 3}

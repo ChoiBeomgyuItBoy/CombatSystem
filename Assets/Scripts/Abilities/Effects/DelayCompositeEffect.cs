@@ -42,10 +42,21 @@ namespace CombatSystem.Abilites.Effects
 
             foreach(var effect in delayedEffects)
             {
-                effect.StartEffect(data, finished);
+                effect.StartEffect(data, () => EffectFinished(effect, finished));
             }
+        }
 
-            finished();
+        void EffectFinished(EffectStrategy effect, Action finished)
+        {
+            if(IsLastEffect(effect))
+            {
+                finished();
+            }
+        }
+
+        bool IsLastEffect(EffectStrategy effect)
+        {
+            return effect == delayedEffects[delayedEffects.Count - 1];
         }
     }
 }

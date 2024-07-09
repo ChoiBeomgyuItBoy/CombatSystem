@@ -23,7 +23,7 @@ namespace CombatSystem.Abilites.Targeting
             GameObject user = data.GetUser();
             GameObject pointInstance = Instantiate(pointPrefab, user.transform.position, Quaternion.identity);
 
-            pointInstance.transform.localScale = new Vector3(areaAffectRadius * 2, 1, areaAffectRadius * 2);
+            pointInstance.transform.localScale = new Vector3(areaAffectRadius, 1, areaAffectRadius);
 
             InputReader inputReader = user.GetComponent<InputReader>();
 

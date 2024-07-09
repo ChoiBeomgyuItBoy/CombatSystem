@@ -42,6 +42,11 @@ namespace CombatSystem.Combat
             Vector3.right
         };
 
+        public Transform GetHand(bool isLeftHanded)
+        {
+            return isLeftHanded ? leftHand : rightHand;
+        }
+
         void Awake()
         {
             animationPlayer = GetComponent<AnimationPlayer>();

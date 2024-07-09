@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0adc3f6784e7b3b48a9fcb0e3b34a7aa, type: 3}
-  m_Name: Heal Delay
+  m_Script: {fileID: 11500000, guid: 371381f09d2a1184eb373fb9ddb0db2f, type: 3}
+  m_Name: Spawn Explosion VFX
   m_EditorClassIdentifier: 
-  delayedEffects:
-  - {fileID: 11400000, guid: 31288da8c037836408356b870290aa8f, type: 2}
-  - {fileID: 11400000, guid: cbddd13f1b9cedd45b4a39189677f0e8, type: 2}
-  delay: 2
-  abortIfCancelled: 1
+  effect: {fileID: 6067298524587219701, guid: 577ec2c45b166e74e811cb841ae3c6f2, type: 3}

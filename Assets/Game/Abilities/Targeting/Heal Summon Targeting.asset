@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371381f09d2a1184eb373fb9ddb0db2f, type: 3}
-  m_Name: Spawn Explosion Effect
+  m_Script: {fileID: 11500000, guid: a503042a5057fe742ae2406f80a4b9c7, type: 3}
+  m_Name: Heal Summon Targeting
   m_EditorClassIdentifier: 
-  effect: {fileID: 6067298524587219701, guid: 577ec2c45b166e74e811cb841ae3c6f2, type: 3}
+  pointPrefab: {fileID: 2999975665141645428, guid: 18fa44dc7f542b4418d44e4d0e754c6c, type: 3}
+  areaAffectRadius: 2

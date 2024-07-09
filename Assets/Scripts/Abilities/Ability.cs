@@ -15,6 +15,7 @@ namespace CombatSystem.Abilites
         public event Action abilityFinished;
         AbilityData currentData;
         float remainingCooldown = 0;
+        int finishedEffectCount = 0;
 
         public Ability Clone()
         {
@@ -41,6 +42,7 @@ namespace CombatSystem.Abilites
         {
             currentData.Cancel();
             currentData.StartCoroutine(CooldownRoutine());
+            finishedEffectCount = 0;
         }
 
         public bool Use(GameObject user)
@@ -75,22 +77,19 @@ namespace CombatSystem.Abilites
 
             foreach(var effect in effectStrategies)
             {
-                effect.StartEffect(currentData, () => EffectFinished(effect));
+                effect.StartEffect(currentData, EffectFinished);
             }   
         }   
 
-        void EffectFinished(EffectStrategy effect)
+        void EffectFinished()
         {
-            if(IsLastEffect(effect))
+            finishedEffectCount++;
+
+            if(finishedEffectCount >= effectStrategies.Count)
             {
                 abilityFinished?.Invoke();
                 Cancel();
             }
-        }
-
-        bool IsLastEffect(EffectStrategy effect)
-        {
-            return effect == effectStrategies[effectStrategies.Count - 1];
         }
 
         IEnumerator CooldownRoutine()

@@ -8,6 +8,7 @@ namespace CombatSystem.Attributes
     {
         [SerializeField] float maxHealth = 100;
         [SerializeField] LazyEvent<float> onDamageTaken;
+        [SerializeField] LazyEvent<float> onHeal;
         public LazyEvent onDie;
         float currentHealth = 0;
         bool isInvulnerable = false;
@@ -58,7 +59,11 @@ namespace CombatSystem.Attributes
 
         public void Heal(float amount)
         {
-            currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+            if(!IsDead() && currentHealth < GetMaxHealth())
+            {
+                currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+                StartCoroutine(onHeal?.Invoke(amount));
+            }
         }
 
         void Awake()

@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371381f09d2a1184eb373fb9ddb0db2f, type: 3}
-  m_Name: Spawn Healing Effect
+  m_Script: {fileID: 11500000, guid: 320d9d57e846cd044b124f98b89ead34, type: 3}
+  m_Name: Drink Animation
   m_EditorClassIdentifier: 
-  effect: {fileID: 6855314210357232287, guid: 7c2a9b83b809a0848915fabd9596b68b, type: 3}
-  spawnAtTargetPoint: 0
+  animationName: Drink
+  animationTag: Ability
+  endTime: 0.7
