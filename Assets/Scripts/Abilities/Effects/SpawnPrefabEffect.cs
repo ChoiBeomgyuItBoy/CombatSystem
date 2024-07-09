@@ -7,10 +7,18 @@ namespace CombatSystem.Abilites.Effects
     public class SpawnPrefabEffect : EffectStrategy
     {
         [SerializeField] GameObject effect;
+        [SerializeField] bool spawnAtTargetPoint = true;
 
         public override void StartEffect(AbilityData data, Action finished)
         {
-            Instantiate(effect, data.GetTargetPoint(), Quaternion.identity);
+            if(spawnAtTargetPoint)
+            {
+                Instantiate(effect, data.GetTargetPoint(), Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(effect, data.GetUser().transform);
+            }
 
             finished();
         }

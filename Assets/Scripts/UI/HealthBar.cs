@@ -1,4 +1,5 @@
 using CombatSystem.Attributes;
+using TMPro;
 using UnityEngine;
 
 namespace CombatSystem.UI
@@ -7,10 +8,16 @@ namespace CombatSystem.UI
     {
         [SerializeField] Health health;
         [SerializeField] RectTransform foreground;
+        [SerializeField] TMP_Text healthText;
 
         void Update()
         {
-            foreground.localScale = new Vector3(health.GetHealthFraction(), 1, 1);
+            foreground.localScale = new Vector3(health.GetHealthPercentage(), 1, 1);
+
+            if(healthText != null)
+            {
+                healthText.text = $"{health.GetCurrentHealth()} / {health.GetMaxHealth()}";
+            }
         }
     }
 }

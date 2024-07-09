@@ -510,6 +510,10 @@ MonoBehaviour:
         - predicate: Ability Finished
           parameters: []
           negate: 0
+        - predicate: Was Pressed
+          parameters:
+          - Cancel
+          negate: 0
       - or:
         - predicate: Target In Targeting Range
           parameters: []
@@ -522,13 +526,21 @@ MonoBehaviour:
         - predicate: Ability Finished
           parameters: []
           negate: 0
+        - predicate: Was Pressed
+          parameters:
+          - Cancel
+          negate: 0
       - or:
         - predicate: Target In Targeting Range
           parameters: []
           negate: 0
-  onEnterActions: []
+  onEnterActions:
+  - actionID: Cancel Movement
+    parameters: []
   onTickActions: []
-  onExitActions: []
+  onExitActions:
+  - actionID: Cancel Ability
+    parameters: []
 --- !u!114 &1191048557425220596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,8 +604,6 @@ MonoBehaviour:
   - actionID: Play Animation
     parameters:
     - Dead Entry
-  - actionID: Cancel Current Ability
-    parameters: []
   onTickActions: []
   onExitActions: []
 --- !u!114 &6531354048580725087
@@ -646,10 +656,6 @@ MonoBehaviour:
     - Damage 2
     - Damage 3
     - Damage 4
-  - actionID: Reset Combo
-    parameters: []
-  - actionID: Cancel Current Ability
-    parameters: []
   onTickActions:
   - actionID: Apply Motion Zero
     parameters: []
@@ -670,7 +676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 6dec52fc-0c63-4e90-ba98-22e281661543
   title: Knockdown Entry
-  position: {x: -91.00013, y: -109.99998}
+  position: {x: -91, y: -107}
   transitions:
   - rootStateID: 6dec52fc-0c63-4e90-ba98-22e281661543
     trueStateID: 52685c2a-729e-488c-8e7f-67b8e10f7d6e
@@ -685,10 +691,6 @@ MonoBehaviour:
   - actionID: Play Animation
     parameters:
     - Knockdown Entry
-  - actionID: Reset Combo
-    parameters: []
-  - actionID: Cancel Current Ability
-    parameters: []
   onTickActions:
   - actionID: Apply Motion Zero
     parameters: []

@@ -27,7 +27,17 @@ namespace CombatSystem.Attributes
             return currentHealth == 0;
         }
 
-        public float GetHealthFraction()
+        public float GetMaxHealth()
+        {
+            return maxHealth;
+        }
+
+        public float GetCurrentHealth()
+        {
+            return currentHealth;
+        }
+
+        public float GetHealthPercentage()
         {
             return currentHealth / maxHealth;
         }

@@ -436,7 +436,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2747805288204149409}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10811271, y: 1e-45, z: -0, w: 0.99413866}
+  m_LocalRotation: {x: 0.10811271, y: -0, z: -0, w: 0.99413866}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -546,8 +546,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2866674916303424592}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000011810551, y: 0, z: 4.2720017}
+  m_LocalRotation: {x: -0.1784248, y: 0.00000001892863, z: -0.0000000034324152, w: 0.9839536}
+  m_LocalPosition: {x: 0.00000012244664, y: 0, z: 4.2720017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -597,7 +597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4592207879338631434}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12613003, y: 1e-45, z: -0, w: 0.99201375}
+  m_LocalRotation: {x: 0.12613003, y: -1e-45, z: -0, w: 0.99201375}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -914,7 +914,9 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 8639759723298610372}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras: []
+  m_ChildCameras:
+  - {fileID: 532498504141249494}
+  - {fileID: 8069377665913060413}
   m_Instructions:
   - m_FullHash: -1269438207
     m_VirtualCamera: {fileID: 532498504141249494}
@@ -1033,6 +1035,44 @@ MonoBehaviour:
     m_ParentHash: 756556552
   - m_Hash: 694351920
     m_ParentHash: 756556552
+  - m_Hash: 880565834
+    m_ParentHash: 756556552
+  - m_Hash: 1462787396
+    m_ParentHash: 756556552
+  - m_Hash: -1224315501
+    m_ParentHash: 756556552
+  - m_Hash: -1073652475
+    m_ParentHash: 756556552
+  - m_Hash: 1493699775
+    m_ParentHash: 756556552
+  - m_Hash: 772750377
+    m_ParentHash: 756556552
+  - m_Hash: -1095753288
+    m_ParentHash: 756556552
+  - m_Hash: -910749394
+    m_ParentHash: 756556552
+  - m_Hash: -534908937
+    m_ParentHash: 756556552
+  - m_Hash: -1759846559
+    m_ParentHash: 756556552
+  - m_Hash: 236162779
+    m_ParentHash: 756556552
+  - m_Hash: 2031402573
+    m_ParentHash: 756556552
+  - m_Hash: -412079122
+    m_ParentHash: 756556552
+  - m_Hash: 1104627121
+    m_ParentHash: 756556552
+  - m_Hash: 919631143
+    m_ParentHash: 756556552
+  - m_Hash: -1723977673
+    m_ParentHash: 756556552
+  - m_Hash: -298254175
+    m_ParentHash: 756556552
+  - m_Hash: 1999655195
+    m_ParentHash: 756556552
+  - m_Hash: -826543008
+    m_ParentHash: 756556552
 --- !u!1 &8116143482812627675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,7 +1098,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8116143482812627675}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17842482, y: 0.000000014526292, z: -0.0000000026341191, w: 0.98395354}
+  m_LocalRotation: {x: 0.17842482, y: -0.000000015060225, z: 0.0000000027309404, w: 0.98395354}
   m_LocalPosition: {x: 10.76, y: -0.27713656, z: 2.0198507}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1210,7 +1250,7 @@ MonoBehaviour:
   m_ZDamping: 1
   m_AngularDampingMode: 0
   m_PitchDamping: 0
-  m_YawDamping: 4
+  m_YawDamping: 3.5
   m_RollDamping: 0
   m_AngularDamping: 0
 --- !u!1001 &6848333475368475211
@@ -1225,6 +1265,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100002, guid: 43992d4f16e57574fa5d16ef485c0cbd, type: 3}
+    - target: {fileID: 2458436482172168519, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1235,15 +1279,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3142970437634222817, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       propertyPath: maxHealth
-      value: 10000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5771482465836489871, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -8.32
       objectReference: {fileID: 0}
     - target: {fileID: 5771482465836489871, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5771482465836489871, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1386,7 +1430,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freeLookSpeedFraction: 1
-  maxDistance: 10
   moveOnUpdate: 0
 --- !u!114 &7951206869717268858
 MonoBehaviour:
@@ -1412,18 +1455,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c85f67d9a3d13445887f6205298f96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: e965b39d6ff6ea44f9b1c414f1159c03, type: 2}
+  weaponData: {fileID: 11400000, guid: 88ed3df358532ad42838b10367c3ffd5, type: 2}
   rightHand: {fileID: 3075955041797519054}
   leftHand: {fileID: 6563671787854371292}
   targetGroup: {fileID: 6166532866636124502}
   targetingRange: 20
   targetingSpeedFraction: 0.8
-  chaseSpeedFraction: 1
-  suspicionDuration: 3
   targetingMoveDistance: 5
   targetingPointTolerance: 2
   targetingDuration: 5
-  target: {fileID: 0}
+  suspicionDuration: 3
+  chaseSpeedFraction: 1
 --- !u!114 &4081738893590250565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1451,4 +1493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7e63333986dc34d8018a5e3e4689c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: ae93d6a62636ccc4c870feee167c112f, type: 2}
+  - {fileID: 11400000, guid: a5d42273d939fa44c9457974d5e832b6, type: 2}
