@@ -81,11 +81,11 @@ namespace CombatSystem.Combat
 
             if(target != null)
             {
-                projectileInstance.SetData(user, damage, knockback, target);
+                projectileInstance.SetData(user, GetHand().position, damage, knockback, target);
             }
             else
             {
-                projectileInstance.SetData(user, damage, knockback, GetProjectilePoint());
+                projectileInstance.SetData(user, GetHand().position, damage, knockback, GetProjectilePoint());
             }
         }
 

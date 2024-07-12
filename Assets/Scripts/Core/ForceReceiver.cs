@@ -13,6 +13,16 @@ namespace CombatSystem.Core
         NavMeshAgent agent;
         float verticalVelocity = 0;
 
+        public void Move()
+        {
+            if(agent != null)
+            {
+                agent.enabled = false;
+            }
+
+            controller.Move(GetTotalForce() * Time.deltaTime);
+        }
+
         public void AddForce(Vector3 force)
         {
             impact += force;
@@ -59,12 +69,6 @@ namespace CombatSystem.Core
             return impact + Vector3.up * verticalVelocity;
         }
 
-        void ApplyMotion(Vector3 motion)
-        {
-            agent.enabled = false;
-            controller.Move((motion + GetTotalForce()) * Time.deltaTime);
-        }
-
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
         {
             switch(predicate)
@@ -85,7 +89,7 @@ namespace CombatSystem.Core
             switch(actionID)
             {
                 case "Apply Motion Zero":
-                    ApplyMotion(Vector3.zero);
+                    Move();
                     break;
             }
         }

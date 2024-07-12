@@ -16,14 +16,46 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7248675632109130833, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7457665682031841935, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: forceDrag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
       propertyPath: speed
-      value: 10
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: isHoming
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: lineStep
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
       propertyPath: hitEffect
       value: 
       objectReference: {fileID: 6045215257620709841, guid: 989877939a59ebf48ad2cdb6f86b34df, type: 3}
+    - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: maxHeight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: isParabolic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: launchHeight
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
       propertyPath: lifeAfterHit
       value: 0
@@ -124,7 +156,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8241974822736539127, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
-      insertIndex: -1
+      insertIndex: 0
       addedObject: {fileID: 7318181178859860481}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
