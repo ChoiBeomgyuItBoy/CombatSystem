@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2011490596860857130
 Transform:
   m_ObjectHideFlags: 0
@@ -203,11 +203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8448421429eb247a68786337e6a988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 2
   maxHeight: 5
   maxLifeTime: 10
   isParabolic: 1
-  isHoming: 0
   hitEffect: {fileID: 0}
   pathLine: {fileID: 1395139193149103017}
-  lineStep: 0.1
+  lineStep: 0.01

@@ -47,9 +47,9 @@ namespace CombatSystem.Combat
         void Update()
         {
             timeSinceLaunched += Time.deltaTime;
-            transform.position = CalculatePath(timeSinceLaunched);
+            FollowPath();
             DrawPath();
-        }   
+        }
 
         void OnTriggerEnter(Collider other)
         {
@@ -100,7 +100,7 @@ namespace CombatSystem.Combat
             this.targetPoint = targetPoint;
 
             CalculateParameters();
-
+            
             Destroy(gameObject, maxLifeTime);
         }
 
@@ -113,6 +113,19 @@ namespace CombatSystem.Combat
 
             direction = GetAimLocation() - launchPoint;
             targetPoint = new(direction.magnitude, direction.y, 0);
+        }
+
+        void FollowPath()
+        {
+            Vector3 nextPosition = CalculatePath(timeSinceLaunched);
+            Vector3 directionToNextPosition = nextPosition - transform.position;
+
+            if(directionToNextPosition != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(directionToNextPosition);
+            }
+
+            transform.position = nextPosition;
         }
 
         Vector3 CalculatePath(float time)

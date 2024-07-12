@@ -172,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
       propertyPath: speed
-      value: 15
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
       propertyPath: isHoming
@@ -183,8 +183,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9198238611806258893, guid: 3e4aa3babfdb13946be474962081d6d4, type: 3}
     - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: maxHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
       propertyPath: isParabolic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.size
