@@ -7,17 +7,46 @@ namespace CombatSystem.Abilites.Effects
     public class SpawnPrefabEffect : EffectStrategy
     {
         [SerializeField] GameObject effect;
-        [SerializeField] bool spawnAtTargetPoint = true;
+        [SerializeField] SpawnChoice spawnChoice;
+
+        enum SpawnChoice
+        {
+            TargetPoint,
+            UserTransform,
+            UserPosition,
+            PerTargetTransform,
+            PerTargetPosition
+        }
 
         public override void StartEffect(AbilityData data, Action finished)
         {
-            if(spawnAtTargetPoint)
+            switch (spawnChoice)
             {
-                Instantiate(effect, data.GetTargetPoint(), Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(effect, data.GetUser().transform);
+                case SpawnChoice.TargetPoint:
+                    Instantiate(effect, data.GetTargetPoint(), Quaternion.identity);
+                    break;
+
+                case SpawnChoice.UserTransform:
+                    Instantiate(effect, data.GetUser().transform);
+                    break;
+
+                case SpawnChoice.UserPosition:
+                    Instantiate(effect, data.GetUser().transform.position, Quaternion.identity);
+                    break;
+
+                case SpawnChoice.PerTargetTransform:
+                    foreach(var target in data.GetTargets())
+                    {
+                        Instantiate(effect, target.transform);
+                    }
+                    break;
+
+                case SpawnChoice.PerTargetPosition:
+                    foreach(var target in data.GetTargets())
+                    {
+                        Instantiate(effect, target.transform.position, Quaternion.identity);
+                    }
+                    break;
             }
 
             finished();

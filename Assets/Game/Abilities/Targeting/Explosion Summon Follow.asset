@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a503042a5057fe742ae2406f80a4b9c7, type: 3}
-  m_Name: Explosion Summon Targeting
+  m_Script: {fileID: 11500000, guid: be6a09c7b9d46844188fbb4bc474671b, type: 3}
+  m_Name: Explosion Summon Follow
   m_EditorClassIdentifier: 
-  pointPrefab: {fileID: 5834311414736127436, guid: e0007be4514d20e41b4dc1e5504606c7, type: 3}
-  areaAffectRadius: 3
+  follower: {fileID: 0}
+  areaAffectRadius: 5
+  followTime: 5

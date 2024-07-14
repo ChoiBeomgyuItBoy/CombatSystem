@@ -78,6 +78,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Ability 4",
+                    "type": "Button",
+                    "id": "a2cb2497-b637-4838-908f-d553ec5f5eda",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Cancel",
                     "type": "Button",
                     "id": "94345ba1-c2ef-4621-9360-d43335971c04",
@@ -327,6 +336,28 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "83ea1451-878a-4a1b-8755-39acf735d1c4",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Ability 4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb26a041-7247-4eec-b51f-dc4c15d90174",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Ability 4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

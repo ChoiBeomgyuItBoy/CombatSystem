@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a503042a5057fe742ae2406f80a4b9c7, type: 3}
-  m_Name: Projectile Targeting
+  m_Name: Heal Summon Free Look
   m_EditorClassIdentifier: 
-  pointPrefab: {fileID: 1470643599967301065, guid: 47914ed829fe27c40829c99434c0a096, type: 3}
-  areaAffectRadius: 3
+  pointPrefab: {fileID: 2999975665141645428, guid: 18fa44dc7f542b4418d44e4d0e754c6c, type: 3}
+  areaAffectRadius: 2

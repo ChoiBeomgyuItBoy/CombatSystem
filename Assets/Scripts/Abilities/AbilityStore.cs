@@ -16,19 +16,19 @@ namespace CombatSystem.Abilites
         {
             inputReader = GetComponent<InputReader>();
 
-            List<Ability> abilitiesCache = new(abilities);
+            List<Ability> abilitiesCopy = new(abilities);
 
             abilities.Clear();
 
-            foreach(var ability in abilitiesCache)
+            foreach(var ability in abilitiesCopy)
             {
                 abilities.Add(ability.Clone());
             }
-        }
 
-        void Start()
-        {
-            FillInputs();
+            if(inputReader != null)
+            {
+                FillInputs();
+            }
         }
 
         bool UseAbility(int index)
@@ -63,10 +63,32 @@ namespace CombatSystem.Abilites
             }
         }
 
+        bool AbilitySelected()
+        {
+            for(int i = 0; i < abilities.Count; i++)
+            {
+                if(inputReader.WasPressed(abilityInputs[i]))
+                {
+                    return UseAbility(i);
+                }
+            }
+
+            return false;
+        }
+
+        void SelectRandomAbility()
+        {
+            UseAbility(Random.Range(0, abilities.Count));
+        }
+
         void IAction.DoAction(string actionID, string[] parameters)
         {
             switch(actionID)
             {
+                case "Select Random Ability":
+                    SelectRandomAbility();
+                    return;
+
                 case "Cancel Ability":
                     CancelAbility();
                     break;
@@ -78,15 +100,7 @@ namespace CombatSystem.Abilites
             switch(predicate)
             {
                 case "Ability Selected":
-                    for(int i = 0; i < abilities.Count; i++)
-                    {
-                        if(inputReader.WasPressed(abilityInputs[i]))
-                        {
-                            return UseAbility(i);
-                        }
-                    }
-
-                    return false;
+                    return AbilitySelected();
 
                 case "Ability Finished":
                     return currentAbility == null;

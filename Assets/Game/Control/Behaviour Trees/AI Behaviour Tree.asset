@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: a83f3dfb-2f41-4bbc-9737-6f2149cc23f1
   description: Targeting Sequence
-  position: {x: 432, y: 378}
+  position: {x: 35.00003, y: 362.00003}
   priority: 0
   children:
   - {fileID: -6735275671551728652}
@@ -35,7 +35,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 54955de9-9c3b-4d8a-841e-79418f844562
   description: Start Targeting
-  position: {x: 273, y: 542}
+  position: {x: -76.000015, y: 531.00006}
   priority: 0
   onEnterActions:
   - actionID: Start Targeting
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: b3f195c8-8d8f-4440-9d2e-b5d608b06992
   description: Move To Waypoint
-  position: {x: -9, y: 394}
+  position: {x: -350.5844, y: 405}
   priority: 0
   onEnterActions:
   - actionID: Cancel Target
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 0b94e956-bcbb-4453-bc44-05e7391bdec5
   description: Wait for Dwell Time
-  position: {x: 167, y: 394}
+  position: {x: -161.99994, y: 397}
   priority: 0
   onEnterActions:
   - actionID: Cancel Movement
@@ -292,6 +292,38 @@ MonoBehaviour:
       - predicate: On Damage Taken
         parameters: []
         negate: 0
+--- !u!114 &-3533947929495124811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 07be5817-01a7-409d-b58c-e9665bf65802
+  description: Select Random Ability
+  position: {x: 674.8425, y: 515}
+  priority: 0
+  onEnterActions:
+  - actionID: Select Random Ability
+    parameters: []
+  onTickActions: []
+  onExitActions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and: []
+  - status: 2
+    condition:
+      and:
+      - or:
+        - predicate: Select Random Ability
+          parameters: []
+          negate: 1
 --- !u!114 &-3234831812922042020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 6a212ec2-19a1-4016-92e7-22b13d2d5521
   description: Chase Target
-  position: {x: 661, y: 566}
+  position: {x: 307, y: 523}
   priority: 0
   onEnterActions:
   - actionID: Play Animation
@@ -393,7 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: f466d04c-898e-43f3-9118-3260517b1c59
   description: Target Movement
-  position: {x: 437, y: 710}
+  position: {x: 87.999985, y: 633}
   priority: 0
   onEnterActions:
   - actionID: Play Animation
@@ -455,7 +487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 99f16b64-71fa-4282-a689-f5e45a8e399e
   description: Targeting Loop
-  position: {x: 440, y: 534}
+  position: {x: 105.00002, y: 507.00003}
   priority: 0
   child: {fileID: -1853822377194779028}
   abortCondition:
@@ -512,6 +544,9 @@ MonoBehaviour:
   - {fileID: -2205044298231158326}
   - {fileID: -1427858624211829717}
   - {fileID: -6735275671551728652}
+  - {fileID: -3533947929495124811}
+  - {fileID: 8001911773077099269}
+  - {fileID: 7683258129093614186}
   rootNodeOffset: {x: 250, y: 0}
 --- !u!114 &1257269783449214162
 MonoBehaviour:
@@ -559,7 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 9ca8d539-36ca-486e-a6f6-87da17b09cc2
   description: Attack
-  position: {x: 835, y: 679}
+  position: {x: 455, y: 641}
   priority: 0
   onEnterActions:
   - actionID: Attack
@@ -657,7 +692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 39461813-7a88-455f-9b7d-3891d36d98d7
   description: Attack Loop
-  position: {x: 845.0001, y: 534.0001}
+  position: {x: 481.99997, y: 507.00006}
   priority: 0
   child: {fileID: 1422539465447904945}
   abortCondition:
@@ -757,7 +792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 57657e1b-441f-40c4-a659-3d4320491c65
   description: Wait for Suspicion Time
-  position: {x: -202, y: 386}
+  position: {x: -562.835, y: 387}
   priority: 0
   onEnterActions:
   - actionID: Cancel Movement
@@ -808,11 +843,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 5e4ee057-6cba-4597-a257-9f285c883d39
   description: Random Target Action
-  position: {x: 645, y: 243}
+  position: {x: 397.49304, y: 243.39563}
   priority: 0
   children:
   - {fileID: -8894691778470887057}
   - {fileID: 6238139369065955955}
+  - {fileID: 8001911773077099269}
   abortCondition:
     and:
     - or:
@@ -834,7 +870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: c3319265-7df9-4f22-8616-20e91b874021
   description: Patrol Sequence
-  position: {x: 102, y: 251}
+  position: {x: -325.90262, y: 251}
   priority: 1
   children:
   - {fileID: 3647280899877788980}
@@ -860,7 +896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 58b8f9c4-1fff-4107-98f6-1933c673d377
   description: Chase Sequence
-  position: {x: 731, y: 389}
+  position: {x: 403.99985, y: 380.9999}
   priority: 0
   children:
   - {fileID: -2205044298231158326}
@@ -929,6 +965,54 @@ MonoBehaviour:
         parameters:
         - 8
         negate: 1
+--- !u!114 &7683258129093614186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa78cfd3a9a8564f809aa248eff2e14, type: 3}
+  m_Name: CustomAction
+  m_EditorClassIdentifier: 
+  uniqueID: 2323e197-4136-4692-bc2e-94208a5ecad4
+  description: Wait for Ability
+  position: {x: 856, y: 515}
+  priority: 0
+  onEnterActions: []
+  onTickActions: []
+  onExitActions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Ability Finished
+          parameters: []
+          negate: 0
+--- !u!114 &8001911773077099269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b80b585178d2045b1b5f40e1fad244, type: 3}
+  m_Name: Sequence
+  m_EditorClassIdentifier: 
+  uniqueID: f767d24c-6be3-45ff-81ff-47bbd5f3d1a9
+  description: Ability Sequence
+  position: {x: 703.36005, y: 381}
+  priority: 0
+  children:
+  - {fileID: -3533947929495124811}
+  - {fileID: 7683258129093614186}
+  abortCondition:
+    and: []
 --- !u!114 &8294959450762681043
 MonoBehaviour:
   m_ObjectHideFlags: 0

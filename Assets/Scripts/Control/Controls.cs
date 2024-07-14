@@ -100,6 +100,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Ability 4"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2cb2497-b637-4838-908f-d553ec5f5eda"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""94345ba1-c2ef-4621-9360-d43335971c04"",
@@ -351,6 +360,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83ea1451-878a-4a1b-8755-39acf735d1c4"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Ability 4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb26a041-7247-4eec-b51f-dc4c15d90174"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Ability 4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -395,6 +426,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Ability1 = m_Player.FindAction("Ability 1", throwIfNotFound: true);
         m_Player_Ability2 = m_Player.FindAction("Ability 2", throwIfNotFound: true);
         m_Player_Ability3 = m_Player.FindAction("Ability 3", throwIfNotFound: true);
+        m_Player_Ability4 = m_Player.FindAction("Ability 4", throwIfNotFound: true);
         m_Player_Cancel = m_Player.FindAction("Cancel", throwIfNotFound: true);
     }
 
@@ -465,6 +497,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Ability1;
     private readonly InputAction m_Player_Ability2;
     private readonly InputAction m_Player_Ability3;
+    private readonly InputAction m_Player_Ability4;
     private readonly InputAction m_Player_Cancel;
     public struct PlayerActions
     {
@@ -478,6 +511,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Ability1 => m_Wrapper.m_Player_Ability1;
         public InputAction @Ability2 => m_Wrapper.m_Player_Ability2;
         public InputAction @Ability3 => m_Wrapper.m_Player_Ability3;
+        public InputAction @Ability4 => m_Wrapper.m_Player_Ability4;
         public InputAction @Cancel => m_Wrapper.m_Player_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -512,6 +546,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability3.started += instance.OnAbility3;
             @Ability3.performed += instance.OnAbility3;
             @Ability3.canceled += instance.OnAbility3;
+            @Ability4.started += instance.OnAbility4;
+            @Ability4.performed += instance.OnAbility4;
+            @Ability4.canceled += instance.OnAbility4;
             @Cancel.started += instance.OnCancel;
             @Cancel.performed += instance.OnCancel;
             @Cancel.canceled += instance.OnCancel;
@@ -543,6 +580,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Ability3.started -= instance.OnAbility3;
             @Ability3.performed -= instance.OnAbility3;
             @Ability3.canceled -= instance.OnAbility3;
+            @Ability4.started -= instance.OnAbility4;
+            @Ability4.performed -= instance.OnAbility4;
+            @Ability4.canceled -= instance.OnAbility4;
             @Cancel.started -= instance.OnCancel;
             @Cancel.performed -= instance.OnCancel;
             @Cancel.canceled -= instance.OnCancel;
@@ -591,6 +631,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAbility1(InputAction.CallbackContext context);
         void OnAbility2(InputAction.CallbackContext context);
         void OnAbility3(InputAction.CallbackContext context);
+        void OnAbility4(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
     }
 }

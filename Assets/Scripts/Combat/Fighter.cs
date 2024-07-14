@@ -47,6 +47,11 @@ namespace CombatSystem.Combat
             return isLeftHanded ? leftHand : rightHand;
         }
 
+        public Health GetTarget()
+        {
+            return target;
+        }
+
         void Awake()
         {
             animationPlayer = GetComponent<AnimationPlayer>();
