@@ -1,7 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CombatSystem.Attributes;
+using CombatSystem.Combat;
 using CombatSystem.Control;
+using CombatSystem.Core;
+using CombatSystem.Movement;
 using UnityEngine;
 
 namespace CombatSystem.Abilites.Targeting
@@ -9,38 +13,71 @@ namespace CombatSystem.Abilites.Targeting
     [CreateAssetMenu(menuName = "Abilities/Targeting/Delayed Point Targeting")]
     public class DelayedPointTargeting : TargetingStrategy
     {
-        [SerializeField] GameObject pointPrefab;
+        [SerializeField] string targetingAnimation = "";
+        [SerializeField] Mover movingPoint;
         [SerializeField] float areaAffectRadius = 5;
+        [SerializeField] float maxLifeTime = 5;
+        [SerializeField] [Range(0,1)] float pointSpeedFraction = 1;
         const string activationInput = "Attack";
 
         public override void StartTargeting(AbilityData data, Action finished)
         {
+            AnimationPlayer animationPlayer = data.GetUser().GetComponent<AnimationPlayer>();
+            animationPlayer.PlaySmooth(targetingAnimation);
             data.StartCoroutine(TargetingRoutine(data, finished));
         }
 
         IEnumerator TargetingRoutine(AbilityData data, Action finished)
         {
             GameObject user = data.GetUser();
-            GameObject pointInstance = Instantiate(pointPrefab, user.transform.position, Quaternion.identity);
+            InputReader inputReader = user.GetComponent<InputReader>();
+            Health currentTarget = user.GetComponent<Fighter>().GetTarget();
+            Mover pointInstance = Instantiate(movingPoint, user.transform.position, Quaternion.identity);
 
+            pointInstance.Warp(user.transform.position);
             pointInstance.transform.localScale = new Vector3(areaAffectRadius, 1, areaAffectRadius);
 
-            InputReader inputReader = user.GetComponent<InputReader>();
+            float elapsedTime = 0;
 
-            while(!data.IsCancelled())
+            while(!data.IsCancelled() && elapsedTime < maxLifeTime)
             {
-                if(inputReader.WasPressed(activationInput))
+                if(user.CompareTag("Player"))
                 {
-                    data.SetTargets(GetTargetsInRadius(pointInstance.transform.position));
-                    data.SetTargetPoint(pointInstance.transform.position);
-                    break;
+                    pointInstance.MoveTo(GetMovingDirection(pointInstance.transform.position, inputReader), pointSpeedFraction);
+
+                    if(inputReader.WasPressed(activationInput))
+                    {
+                        break;
+                    }
                 }
+                else
+                {
+                    pointInstance.MoveTo(currentTarget.transform.position, pointSpeedFraction);
+                }
+
+                elapsedTime += Time.deltaTime;
 
                 yield return null;
             }
 
+            data.SetTargets(GetTargetsInRadius(pointInstance.transform.position));
+            data.SetTargetPoint(pointInstance.transform.position);
             Destroy(pointInstance.gameObject);
             finished();
+        }
+
+        Vector3 GetMovingDirection(Vector3 pointPosition, InputReader inputReader)
+        {
+            Vector2 inputValue = inputReader.GetInputValue();
+            Transform mainCamera = Camera.main.transform;
+
+            Vector3 right = (inputValue.x * mainCamera.right).normalized;
+            right.y = 0;
+
+            Vector3 forward = (inputValue.y * mainCamera.forward).normalized;
+            forward.y = 0;
+
+            return right + forward + pointPosition;
         }
 
         IEnumerable<GameObject> GetTargetsInRadius(Vector3 pointPosition)

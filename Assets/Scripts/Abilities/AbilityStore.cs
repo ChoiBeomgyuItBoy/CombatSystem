@@ -33,6 +33,11 @@ namespace CombatSystem.Abilites
 
         bool UseAbility(int index)
         {
+            if(abilities.Count == 0)
+            {
+                return false;
+            }
+
             Ability candidate = abilities[index];
 
             if(candidate.Use(gameObject))

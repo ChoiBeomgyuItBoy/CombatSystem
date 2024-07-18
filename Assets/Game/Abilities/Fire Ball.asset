@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4518bfaba68e34541a87e63172eedfb7, type: 3}
   m_Name: Fire Ball
   m_EditorClassIdentifier: 
-  targetingStrategy: {fileID: 11400000, guid: dbedba03ef89efb4cafded3ffef4f076, type: 2}
-  filterStrategies:
-  - {fileID: 11400000, guid: 53edc4f4653c1d6459cffc6f19cc9a52, type: 2}
-  effectStrategies:
-  - {fileID: 11400000, guid: da2829b47ad2eae44a2f76aefe7dde8c, type: 2}
-  - {fileID: 11400000, guid: 56a833ca208333f4c9221ab763e26091, type: 2}
+  targetingStrategy: {fileID: 0}
+  filterStrategies: []
+  effectStrategies: []
   cooldownTime: 5

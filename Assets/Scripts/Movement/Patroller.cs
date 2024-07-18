@@ -9,7 +9,6 @@ namespace CombatSystem.Movement
     {
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] [Range(0,1)] float patrolSpeedFraction = 0.6f;
-        [SerializeField] float waypointTolerance = 1;
         [SerializeField] float waypointDwellTime = 3;
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         int currentWaypointIndex = 0;
@@ -32,7 +31,7 @@ namespace CombatSystem.Movement
 
         bool AtWaypoint()
         {
-            bool arrived = mover.AtDestination(GetCurentWaypoint(), waypointTolerance);
+            bool arrived = mover.AtDestination(GetCurentWaypoint());
 
             if(arrived)
             {

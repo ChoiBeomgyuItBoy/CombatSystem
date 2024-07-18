@@ -64,6 +64,7 @@ namespace CombatSystem.Movement
             {
                 direction += right;
                 direction += forward;
+                direction += transform.position;
             }
             else
             {

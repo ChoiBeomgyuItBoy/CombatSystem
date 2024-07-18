@@ -7,7 +7,6 @@ namespace CombatSystem.Movement
     public class FreeLooker : MonoBehaviour, IAction
     {
         [SerializeField] [Range(0,1)] float freeLookSpeedFraction = 0.6f;
-        [SerializeField] bool moveOnUpdate = false;
         Mover mover;
         InputReader inputReader;        
 
@@ -15,14 +14,6 @@ namespace CombatSystem.Movement
         {
             mover = GetComponent<Mover>();
             inputReader = GetComponent<InputReader>();
-        }
-
-        void Update()
-        {
-            if(moveOnUpdate)
-            {
-                mover.MoveTo(GetFreeLookDirection(), freeLookSpeedFraction);
-            }
         }
 
         Vector3 GetFreeLookDirection()
@@ -37,7 +28,7 @@ namespace CombatSystem.Movement
             Vector3 forward = (inputValue.y * mainCamera.forward).normalized;
             forward.y = 0;
 
-            return right + forward;
+            return right + forward + transform.position;
         }
         
         void IAction.DoAction(string actionID, string[] parameters)

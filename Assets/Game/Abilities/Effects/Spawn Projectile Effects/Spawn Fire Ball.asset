@@ -16,4 +16,4 @@ MonoBehaviour:
   damage: 200
   knockback: {x: 10, y: 5}
   isLeftHanded: 0
-  useTargetPoint: 0
+  useTargetPoint: 1

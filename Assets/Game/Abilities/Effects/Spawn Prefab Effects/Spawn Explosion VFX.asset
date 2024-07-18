@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Spawn Explosion VFX
   m_EditorClassIdentifier: 
   effect: {fileID: 6067298524587219701, guid: 577ec2c45b166e74e811cb841ae3c6f2, type: 3}
+  spawnChoice: 4

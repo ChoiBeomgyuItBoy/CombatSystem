@@ -110,7 +110,9 @@ MonoBehaviour:
   description: Check if Impact Magnitude < 8
   position: {x: 964.1502, y: 389.00003}
   priority: 0
-  onEnterActions: []
+  onEnterActions:
+  - actionID: Cancel Ability
+    parameters: []
   onTickActions: []
   onExitActions: []
   statusConditions:
@@ -373,6 +375,8 @@ MonoBehaviour:
     parameters:
     - Dead Entry
   - actionID: Cancel Movement
+    parameters: []
+  - actionID: Cancel Ability
     parameters: []
   onTickActions: []
   onExitActions: []
@@ -658,7 +662,9 @@ MonoBehaviour:
   description: Check if Impact Magnitude > 8
   position: {x: 1383, y: 397}
   priority: 0
-  onEnterActions: []
+  onEnterActions:
+  - actionID: Cancel Ability
+    parameters: []
   onTickActions: []
   onExitActions: []
   statusConditions:
@@ -979,9 +985,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 2323e197-4136-4692-bc2e-94208a5ecad4
   description: Wait for Ability
-  position: {x: 856, y: 515}
+  position: {x: 867, y: 523}
   priority: 0
-  onEnterActions: []
+  onEnterActions:
+  - actionID: Cancel Movement
+    parameters: []
   onTickActions: []
   onExitActions: []
   statusConditions:

@@ -16,8 +16,9 @@ namespace CombatSystem.Combat
         [SerializeField] CinemachineTargetGroup targetGroup;
         [SerializeField] float targetingRange = 20;
         [SerializeField] [Range(0,1)] float targetingSpeedFraction = 0.3f;
+        [Header("AI Data")]
+        [SerializeField] Vector3[] targetingPoints;
         [SerializeField] float targetingMoveDistance = 5;
-        [SerializeField] float targetingPointTolerance = 2;
         [SerializeField] float targetingDuration = 5;
         [SerializeField] float suspicionDuration = 3;
         [SerializeField] [Range(0,1)] float chaseSpeedFraction = 1;
@@ -34,13 +35,7 @@ namespace CombatSystem.Combat
         bool attackForceApplied = false;
         const float targetGroupRadius = 2;
         const float targetGroupWeight = 1;
-        readonly Vector3[] targetingPoints = new Vector3[]
-        {
-            Vector3.left,
-            Vector3.back,
-            Vector3.forward,
-            Vector3.right
-        };
+
 
         public Transform GetHand(bool isLeftHanded)
         {
@@ -296,6 +291,7 @@ namespace CombatSystem.Combat
 
                 direction += right;
                 direction += forward;
+                direction += transform.position;
             }
             else
             {
@@ -323,7 +319,7 @@ namespace CombatSystem.Combat
 
         bool AtTargetingPoint()
         {
-            return mover.AtDestination(currentTargetingPoint, targetingPointTolerance);
+            return mover.AtDestination(currentTargetingPoint);
         }
 
         void ChaseMovement()

@@ -8,32 +8,22 @@ namespace CombatSystem.Movement
     public class Mover : MonoBehaviour, IAction
     {
         [SerializeField] float maxSpeed = 6;
-        [SerializeField] float maxDistance = 10;
+        [SerializeField] float pointTolerance = 1;
         [SerializeField] bool updateRotation = true;
         NavMeshAgent agent;
         AnimationPlayer animationPlayer;
-        Vector3 initialPosition;
 
         public void MoveTo(Vector3 destination, float speedFraction)
         {
             agent.enabled = true;
             agent.isStopped = false;
-
-            if(CompareTag("Player"))
-            {
-                destination += transform.position;
-            }
-
-            if(InTreshold(destination))
-            {
-                agent.destination = destination;
-                agent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
-            }
+            agent.destination = destination;
+            agent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
         }
 
-        public bool AtDestination(Vector3 destination, float tolerance)
+        public bool AtDestination(Vector3 destination)
         {
-            return Vector3.Distance(transform.position, destination) < tolerance;
+            return Vector3.Distance(transform.position, destination) < pointTolerance;
         }
 
         public void LookAt(Vector3 target)
@@ -47,12 +37,19 @@ namespace CombatSystem.Movement
             }
         }
 
+        public void Warp(Vector3 position)
+        {
+            agent.Warp(position);
+        }
+
         void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
             animationPlayer = GetComponent<AnimationPlayer>();
+        }
 
-            initialPosition = transform.position;
+        void Start()
+        {
             agent.updateRotation = updateRotation;
         }
 
@@ -89,16 +86,6 @@ namespace CombatSystem.Movement
         Vector3 GetLocalVelocity()
         {
             return transform.InverseTransformDirection(agent.velocity);
-        }
-
-        bool InTreshold(Vector3 destination)
-        {
-            if(maxDistance == Mathf.Infinity)
-            {
-                return true;
-            }
-
-            return Vector3.Distance(initialPosition, destination) <= maxDistance;
         }
 
         void IAction.DoAction(string actionID, string[] parameters)
