@@ -17,6 +17,7 @@ namespace CombatSystem.Abilites.Targeting
         [SerializeField] Mover movingPoint;
         [SerializeField] float areaAffectRadius = 5;
         [SerializeField] float maxLifeTime = 5;
+        [SerializeField] float maxDistance = 20;
         [SerializeField] [Range(0,1)] float pointSpeedFraction = 1;
         const string activationInput = "Attack";
 
@@ -43,7 +44,13 @@ namespace CombatSystem.Abilites.Targeting
             {
                 if(user.CompareTag("Player"))
                 {
-                    pointInstance.MoveTo(GetMovingDirection(pointInstance.transform.position, inputReader), pointSpeedFraction);
+                    Vector3 pointPosition = pointInstance.transform.position;
+                    Vector3 movingDirection = GetMovingDirection(pointPosition, inputReader);
+
+                    if(InDistanceThreshold(movingDirection, user))
+                    {
+                        pointInstance.MoveTo(movingDirection, pointSpeedFraction);
+                    }
 
                     if(inputReader.WasPressed(activationInput))
                     {
@@ -64,6 +71,11 @@ namespace CombatSystem.Abilites.Targeting
             data.SetTargetPoint(pointInstance.transform.position);
             Destroy(pointInstance.gameObject);
             finished();
+        }
+
+        bool InDistanceThreshold(Vector3 pointPosition, GameObject user)
+        {
+            return Vector3.Distance(user.transform.position, pointPosition) <= maxDistance;
         }
 
         Vector3 GetMovingDirection(Vector3 pointPosition, InputReader inputReader)
