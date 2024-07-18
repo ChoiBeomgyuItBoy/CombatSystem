@@ -9,8 +9,8 @@ namespace CombatSystem.Abilites
     public class Ability : ScriptableObject
     {
         [SerializeField] TargetingStrategy targetingStrategy;
-        [SerializeField] List<FilterStrategy> filterStrategies = new();
-        [SerializeField] List<EffectStrategy> effectStrategies = new();
+        [SerializeField] FilterStrategy[] filterStrategies;
+        [SerializeField] EffectStrategy[] effectStrategies;
         [SerializeField] float cooldownTime = 5;
         public event Action abilityFinished;
         AbilityData currentData;
@@ -22,17 +22,15 @@ namespace CombatSystem.Abilites
             Ability clone = Instantiate(this);
 
             clone.targetingStrategy = targetingStrategy.Clone();
-            clone.filterStrategies.Clear();
-            clone.effectStrategies.Clear();
 
-            foreach(var filter in filterStrategies)
+            for(int i = 0; i < filterStrategies.Length; i++)
             {
-                clone.filterStrategies.Add(filter.Clone());
+                clone.filterStrategies[i] = filterStrategies[i].Clone();
             }
 
-            foreach(var effect in effectStrategies)
+            for(int i = 0; i < effectStrategies.Length; i++)
             {
-                clone.effectStrategies.Add(effect.Clone());
+                clone.effectStrategies[i] = effectStrategies[i].Clone();
             }
 
             return clone;
@@ -85,7 +83,7 @@ namespace CombatSystem.Abilites
         {
             finishedEffectCount++;
 
-            if(finishedEffectCount >= effectStrategies.Count)
+            if(finishedEffectCount >= effectStrategies.Length)
             {
                 abilityFinished?.Invoke();
                 Cancel();

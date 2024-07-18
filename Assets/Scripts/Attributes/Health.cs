@@ -97,6 +97,21 @@ namespace CombatSystem.Attributes
 
                 case "Is Dead":
                     return IsDead();
+
+                case "Has Health Percentage":
+                    float percentage = float.Parse(parameters[1]);
+
+                    if(parameters[0] == ">")
+                    {
+                        return GetHealthPercentage() > percentage;
+                    }
+
+                    if(parameters[0] == "<")
+                    {
+                        return GetHealthPercentage() < percentage;
+                    }
+
+                    return false;
             }
 
             return null;

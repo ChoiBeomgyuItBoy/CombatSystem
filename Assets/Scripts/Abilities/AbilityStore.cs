@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using CombatSystem.Control;
 using RainbowAssets.Utils;
 using UnityEngine;
@@ -7,22 +6,26 @@ namespace CombatSystem.Abilites
 {
     public class AbilityStore : MonoBehaviour, IAction, IPredicateEvaluator
     {
-        [SerializeField] List<Ability> abilities = new();
+        [SerializeField] bool useConditions = true;
+        [SerializeField] AbilityCondition[] abilityConditions;
         InputReader inputReader;
         Ability currentAbility;
-        List<string> abilityInputs = new();
+        string[] abilityInputs;
+
+        [System.Serializable]
+        class AbilityCondition
+        {
+            public Ability ability;
+            public Condition useCondition;
+        }
 
         void Awake()
         {
             inputReader = GetComponent<InputReader>();
 
-            List<Ability> abilitiesCopy = new(abilities);
-
-            abilities.Clear();
-
-            foreach(var ability in abilitiesCopy)
+            for(int i = 0; i < abilityConditions.Length; i++)
             {
-                abilities.Add(ability.Clone());
+                abilityConditions[i].ability = abilityConditions[i].ability.Clone();
             }
 
             if(inputReader != null)
@@ -33,12 +36,19 @@ namespace CombatSystem.Abilites
 
         bool UseAbility(int index)
         {
-            if(abilities.Count == 0)
+            if(abilityConditions.Length == 0)
             {
                 return false;
             }
 
-            Ability candidate = abilities[index];
+            Condition useCondition = abilityConditions[index].useCondition;
+
+            if(useConditions && !useCondition.Check(GetComponents<IPredicateEvaluator>()))
+            {
+                return false;
+            }
+
+            Ability candidate = abilityConditions[index].ability;
 
             if(candidate.Use(gameObject))
             {
@@ -62,15 +72,17 @@ namespace CombatSystem.Abilites
 
         void FillInputs()
         {
-            for(int i = 0; i < abilities.Count; i++)
+            abilityInputs = new string[abilityConditions.Length];
+
+            for(int i = 0; i < abilityConditions.Length; i++)
             {
-                abilityInputs.Add($"Ability {i + 1}");
+                abilityInputs[i] = $"Ability {i + 1}";
             }
         }
 
         bool AbilitySelected()
         {
-            for(int i = 0; i < abilities.Count; i++)
+            for(int i = 0; i < abilityConditions.Length; i++)
             {
                 if(inputReader.WasPressed(abilityInputs[i]))
                 {
@@ -83,7 +95,7 @@ namespace CombatSystem.Abilites
 
         void SelectRandomAbility()
         {
-            UseAbility(Random.Range(0, abilities.Count));
+            UseAbility(Random.Range(0, abilityConditions.Length));
         }
 
         void IAction.DoAction(string actionID, string[] parameters)

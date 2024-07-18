@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a503042a5057fe742ae2406f80a4b9c7, type: 3}
   m_Name: Heal Summon Targeting
   m_EditorClassIdentifier: 
+  targetingAnimation: Spell Idle 1
   movingPoint: {fileID: 1136731539865621696, guid: 18fa44dc7f542b4418d44e4d0e754c6c, type: 3}
   areaAffectRadius: 2
   maxLifeTime: 3
   pointSpeedFraction: 1
-  effects:
-  - {fileID: 0}

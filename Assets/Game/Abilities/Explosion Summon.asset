@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4518bfaba68e34541a87e63172eedfb7, type: 3}
   m_Name: Explosion Summon
   m_EditorClassIdentifier: 
-  targetingStrategy: {fileID: 0}
-  filterStrategies: []
-  effectStrategies: []
+  targetingStrategy: {fileID: 11400000, guid: 2cef31fd09a6df543a808da82f3eabba, type: 2}
+  filterStrategies:
+  - {fileID: 11400000, guid: 53edc4f4653c1d6459cffc6f19cc9a52, type: 2}
+  - {fileID: 11400000, guid: 6c75a6c9362f03a4b98902f3702ccaf2, type: 2}
+  effectStrategies:
+  - {fileID: 11400000, guid: b5b59f5a1164a4249b738a6131cbf2d1, type: 2}
+  - {fileID: 11400000, guid: 3448031f865f28c46932bb731b56fed8, type: 2}
   cooldownTime: 10

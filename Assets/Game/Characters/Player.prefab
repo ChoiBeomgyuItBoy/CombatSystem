@@ -436,7 +436,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2747805288204149409}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10811271, y: -0, z: -0, w: 0.99413866}
+  m_LocalRotation: {x: 0.10811271, y: -1.0033421e-33, z: 4.3696445e-34, w: 0.99413866}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -547,7 +547,7 @@ Transform:
   m_GameObject: {fileID: 2866674916303424592}
   serializedVersion: 2
   m_LocalRotation: {x: -0.1784248, y: 0.00000001892863, z: -0.0000000034324152, w: 0.9839536}
-  m_LocalPosition: {x: -0.00000017089188, y: -0.00000011920929, z: 4.2720017}
+  m_LocalPosition: {x: 0.00000010484335, y: 0, z: 4.2720017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -597,7 +597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4592207879338631434}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12613003, y: -1e-45, z: -0, w: 0.99201375}
+  m_LocalRotation: {x: 0.12613003, y: -4.541714e-29, z: 6.0085486e-30, w: 0.99201375}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -914,9 +914,7 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 8639759723298610372}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras:
-  - {fileID: 532498504141249494}
-  - {fileID: 8069377665913060413}
+  m_ChildCameras: []
   m_Instructions:
   - m_FullHash: -1269438207
     m_VirtualCamera: {fileID: 532498504141249494}
@@ -1071,7 +1069,31 @@ MonoBehaviour:
     m_ParentHash: 756556552
   - m_Hash: 1999655195
     m_ParentHash: 756556552
-  - m_Hash: -826543008
+  - m_Hash: 1858556150
+    m_ParentHash: 756556552
+  - m_Hash: 1228087383
+    m_ParentHash: 756556552
+  - m_Hash: -137494196
+    m_ParentHash: 756556552
+  - m_Hash: -2134298150
+    m_ParentHash: 756556552
+  - m_Hash: 514696313
+    m_ParentHash: 756556552
+  - m_Hash: 1772786927
+    m_ParentHash: 756556552
+  - m_Hash: -257702571
+    m_ParentHash: 756556552
+  - m_Hash: -2019232317
+    m_ParentHash: 756556552
+  - m_Hash: 387704914
+    m_ParentHash: 756556552
+  - m_Hash: 1612503236
+    m_ParentHash: 756556552
+  - m_Hash: -1603580072
+    m_ParentHash: 756556552
+  - m_Hash: -680755250
+    m_ParentHash: 756556552
+  - m_Hash: 304247406
     m_ParentHash: 756556552
 --- !u!1 &8116143482812627675
 GameObject:
@@ -1098,7 +1120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8116143482812627675}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1784248, y: 0.00000002101871, z: -0.000000003811419, w: 0.98395354}
+  m_LocalRotation: {x: 0.17842482, y: -0.000000012895124, z: 0.0000000023383322, w: 0.98395354}
   m_LocalPosition: {x: 10.76, y: -0.27713656, z: 2.0198507}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1430,7 +1452,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freeLookSpeedFraction: 1
-  moveOnUpdate: 0
 --- !u!114 &7951206869717268858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,8 +1482,8 @@ MonoBehaviour:
   targetGroup: {fileID: 6166532866636124502}
   targetingRange: 20
   targetingSpeedFraction: 0.8
+  targetingPoints: []
   targetingMoveDistance: 5
-  targetingPointTolerance: 2
   targetingDuration: 5
   suspicionDuration: 3
   chaseSpeedFraction: 1
@@ -1493,6 +1514,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7e63333986dc34d8018a5e3e4689c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilities:
-  - {fileID: 11400000, guid: ae93d6a62636ccc4c870feee167c112f, type: 2}
-  - {fileID: 11400000, guid: a5d42273d939fa44c9457974d5e832b6, type: 2}
+  useConditions: 0
+  abilityConditions: []

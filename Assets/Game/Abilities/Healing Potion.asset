@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4518bfaba68e34541a87e63172eedfb7, type: 3}
   m_Name: Healing Potion
   m_EditorClassIdentifier: 
-  targetingStrategy: {fileID: 0}
-  filterStrategies: []
-  effectStrategies: []
+  targetingStrategy: {fileID: 11400000, guid: 74dbed054c81dba4fa3201ed34a6b73b, type: 2}
+  filterStrategies:
+  - {fileID: 11400000, guid: 53edc4f4653c1d6459cffc6f19cc9a52, type: 2}
+  - {fileID: 11400000, guid: 6c75a6c9362f03a4b98902f3702ccaf2, type: 2}
+  effectStrategies:
+  - {fileID: 11400000, guid: de049696c9e60d34bb8583376d70ffc7, type: 2}
+  - {fileID: 11400000, guid: de9ed4f321fa9d0499bce7e982bfaf24, type: 2}
   cooldownTime: 5

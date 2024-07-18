@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a503042a5057fe742ae2406f80a4b9c7, type: 3}
   m_Name: Projectile Summon Targeting
   m_EditorClassIdentifier: 
+  targetingAnimation: Spell Idle 1
   movingPoint: {fileID: 3431340968687873225, guid: 47914ed829fe27c40829c99434c0a096, type: 3}
   areaAffectRadius: 3
   maxLifeTime: 5
   pointSpeedFraction: 1
-  effects:
-  - {fileID: 0}

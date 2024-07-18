@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CombatSystem.Abilites.Effects
@@ -8,7 +7,7 @@ namespace CombatSystem.Abilites.Effects
     [CreateAssetMenu(menuName = "Abilities/Effects/Delay Composite Effect")]
     public class DelayCompositeEffect : EffectStrategy
     {
-        [SerializeField] List<EffectStrategy> delayedEffects = new();
+        [SerializeField] EffectStrategy[] delayedEffects;
         [SerializeField] float delay = 1;
         [SerializeField] bool abortIfCancelled = false;
 
@@ -16,11 +15,9 @@ namespace CombatSystem.Abilites.Effects
         {
             DelayCompositeEffect clone = Instantiate(this);
 
-            clone.delayedEffects.Clear();
-
-            foreach(var effect in delayedEffects)
+            for(int i = 0; i < delayedEffects.Length; i++)
             {
-                clone.delayedEffects.Add(effect.Clone());
+                clone.delayedEffects[i] = delayedEffects[i].Clone();
             }
 
             return clone;
@@ -56,7 +53,7 @@ namespace CombatSystem.Abilites.Effects
 
         bool IsLastEffect(EffectStrategy effect)
         {
-            return effect == delayedEffects[delayedEffects.Count - 1];
+            return effect == delayedEffects[delayedEffects.Length - 1];
         }
     }
 }

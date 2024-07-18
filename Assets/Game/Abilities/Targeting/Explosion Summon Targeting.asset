@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a503042a5057fe742ae2406f80a4b9c7, type: 3}
   m_Name: Explosion Summon Targeting
   m_EditorClassIdentifier: 
+  targetingAnimation: Spell Idle 1
   movingPoint: {fileID: 9150279624081634421, guid: e0007be4514d20e41b4dc1e5504606c7, type: 3}
   areaAffectRadius: 4
   maxLifeTime: 5
   pointSpeedFraction: 1
-  effects:
-  - {fileID: 0}
