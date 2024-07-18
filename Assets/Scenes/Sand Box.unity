@@ -7396,11 +7396,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464611287337446962, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00000012244664
+      value: 0.00000017089188
       objectReference: {fileID: 0}
     - target: {fileID: 4464611287337446962, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.00000011920929
       objectReference: {fileID: 0}
     - target: {fileID: 4464611287337446962, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7509,7 +7509,7 @@ PrefabInstance:
     - target: {fileID: 5882296972809275587, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: weaponData
       value: 
-      objectReference: {fileID: 11400000, guid: e965b39d6ff6ea44f9b1c414f1159c03, type: 2}
+      objectReference: {fileID: 11400000, guid: 88ed3df358532ad42838b10367c3ffd5, type: 2}
     - target: {fileID: 7355687665372669445, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0

@@ -59,7 +59,9 @@ namespace CombatSystem.Abilites.Targeting
                 }
                 else
                 {
-                    pointInstance.MoveTo(currentTarget.transform.position, pointSpeedFraction);
+                    Vector3 targetPosition = currentTarget.transform.position;
+
+                    pointInstance.MoveTo(targetPosition, pointSpeedFraction);
                 }
 
                 elapsedTime += Time.deltaTime;

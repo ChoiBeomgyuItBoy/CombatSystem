@@ -15,5 +15,6 @@ MonoBehaviour:
   targetingAnimation: Spell Idle 1
   movingPoint: {fileID: 1136731539865621696, guid: 18fa44dc7f542b4418d44e4d0e754c6c, type: 3}
   areaAffectRadius: 2
-  maxLifeTime: 3
+  maxLifeTime: 10
+  maxDistance: 10
   pointSpeedFraction: 1
