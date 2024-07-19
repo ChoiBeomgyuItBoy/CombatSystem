@@ -23,7 +23,7 @@ namespace MagicArsenal
         private GameObject beamEnd;
         private GameObject beam;
         private LineRenderer line;
-        private Transform transform;
+        private Transform beamTransform;
         private float textureScrollOffset;
 
         [Header("Adjustable Variables")]
@@ -43,7 +43,7 @@ namespace MagicArsenal
         // Use this for initialization
         void Start()
         {
-            transform = gameObject.transform;
+            beamTransform = gameObject.transform;
             if (textBeamName)
                 textBeamName.text = beamLineRendererPrefab[(int)currentBeam].name;
             if (endOffSetSlider)
@@ -55,9 +55,9 @@ namespace MagicArsenal
 
         void CreateBeamObjects()
         {
-            beamStart = Instantiate(beamStartPrefab[(int)currentBeam], new Vector3(0, 0, 0), Quaternion.identity, transform);
-            beamEnd = Instantiate(beamEndPrefab[(int)currentBeam], new Vector3(0, 0, 0), Quaternion.identity, transform);
-            beam = Instantiate(beamLineRendererPrefab[(int)currentBeam], new Vector3(0, 0, 0), Quaternion.identity, transform);
+            beamStart = Instantiate(beamStartPrefab[(int)currentBeam], new Vector3(0, 0, 0), Quaternion.identity, beamTransform);
+            beamEnd = Instantiate(beamEndPrefab[(int)currentBeam], new Vector3(0, 0, 0), Quaternion.identity, beamTransform);
+            beam = Instantiate(beamLineRendererPrefab[(int)currentBeam], new Vector3(0, 0, 0), Quaternion.identity, beamTransform);
             line = beam.GetComponent<LineRenderer>();
             beamStart.SetActive(false);
             beamEnd.SetActive(false);
@@ -91,8 +91,8 @@ namespace MagicArsenal
                 RaycastHit hit;
                 if (Physics.Raycast(ray.origin, ray.direction, out hit))
                 {
-                    Vector3 tdir = hit.point - transform.position;
-                    ShootBeamInDir(transform.position, tdir);
+                    Vector3 tdir = hit.point - beamTransform.position;
+                    ShootBeamInDir(beamTransform.position, tdir);
                 }
             }
 
@@ -128,7 +128,7 @@ namespace MagicArsenal
         if (Physics.Raycast(start, dir, out hit))
             end = hit.point - (dir.normalized * beamEndOffset);
         else
-            end = transform.position + (dir * 100);
+            end = beamTransform.position + (dir * 100);
 
         beamEnd.transform.position = end;
         line.SetPosition(1, end);

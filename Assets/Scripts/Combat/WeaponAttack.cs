@@ -8,7 +8,6 @@ namespace CombatSystem.Combat
         [SerializeField] string animationName;
         [SerializeField] Vector2 knockback;
         [SerializeField] float attackForce;
-        [SerializeField] [Range(0, 0.99f)] float forceTime;
         [SerializeField] [Range(0, 0.99f)] float endTime;
         [SerializeField] [Range(0, 1)] float bonusPercentage;
         [SerializeField] GameObject attackEffect;
@@ -26,11 +25,6 @@ namespace CombatSystem.Combat
         public float GetAttackForce()
         {
             return attackForce;
-        }
-
-        public float GetForceTime()
-        {
-            return forceTime;
         }
 
         public float GetEndTime()

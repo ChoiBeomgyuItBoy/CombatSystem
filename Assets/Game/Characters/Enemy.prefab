@@ -180,9 +180,6 @@ PrefabInstance:
       addedObject: {fileID: 4683470466203371846}
     - targetCorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7909639025400844032}
-    - targetCorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 5717782372771093248}
     - targetCorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       insertIndex: -1
@@ -220,18 +217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviourTree: {fileID: 11400000, guid: 2d34ef31b6984a044885358b8233139b, type: 2}
---- !u!114 &7909639025400844032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063063611088874312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c69b4ac5925d4c4b89fae4f4f23b69a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5717782372771093248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7e63333986dc34d8018a5e3e4689c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilities: []
+  useConditions: 1
+  abilityConditions: []
 --- !u!4 &4550708243073356132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 296379630448870295, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}

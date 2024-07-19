@@ -22,6 +22,7 @@ namespace RainbowAssets.BehaviourTree.Editor
             this.AddManipulator(new ContentZoomer());
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new SelectionDragger());
+            this.AddManipulator(new RectangleSelector());
 
             Undo.undoRedoPerformed += OnUndoRedo;
         }

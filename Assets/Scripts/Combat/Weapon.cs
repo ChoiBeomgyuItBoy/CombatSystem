@@ -34,7 +34,7 @@ namespace CombatSystem.Combat
 
                     if(forceReceiver != null && forceReceiver != user.GetComponent<ForceReceiver>())
                     {
-                        forceReceiver.AddKnockback(user, knockback);
+                        forceReceiver.AddKnockback(user.transform.position, knockback);
                     }
 
                     health.TakeDamage(damage);

@@ -27,12 +27,11 @@ namespace CombatSystem.Combat
         ForceReceiver forceReceiver;
         Mover mover;
         GameObject player;
-        Health target;
+        [SerializeField] Health target;
         Vector3 currentTargetingPoint;
         int currentAttackIndex = 0;
         float timeSinceLastSawTarget = Mathf.Infinity;
         float timeSinceStartedTargeting = Mathf.Infinity;
-        bool attackForceApplied = false;
         const float targetGroupRadius = 2;
         const float targetGroupWeight = 1;
 
@@ -105,27 +104,7 @@ namespace CombatSystem.Combat
 
         void Attack()
         {
-            attackForceApplied = false;
             animationPlayer.PlaySmooth(GetCurrentAttack().GetAnimationName());
-        }
-
-        void ApplyAttackForce()
-        {
-            float forceTime = GetCurrentAttack().GetForceTime();
-
-            if(GetCurrentAttackTime() < forceTime)
-            {
-                return;
-            }
-
-            if(attackForceApplied)
-            {
-                return;
-            }
-
-            Vector3 forceMotion = transform.forward * GetCurrentAttack().GetAttackForce();
-            forceReceiver.AddForce(forceMotion);
-            attackForceApplied = true;
         }
 
         void CycleCombo()
@@ -142,6 +121,7 @@ namespace CombatSystem.Combat
         void Hit()
         {
             weaponData.Hit(currentAttackIndex, target);
+            forceReceiver.AddForce(transform.forward * GetCurrentAttack().GetAttackForce());
         }
 
         bool SelectTarget()
@@ -339,10 +319,6 @@ namespace CombatSystem.Combat
             {
                 case "Attack":
                     Attack();
-                    break;
-
-                case "Apply Attack Force":
-                    ApplyAttackForce();
                     break;
                 
                 case "Cycle Combo":

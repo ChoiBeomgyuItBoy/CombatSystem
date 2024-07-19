@@ -23,7 +23,7 @@ PrefabInstance:
     - target: {fileID: 4683470466203371846, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: behaviourTree
       value: 
-      objectReference: {fileID: 11400000, guid: 487e3218270d8cc4199444e828126805, type: 2}
+      objectReference: {fileID: 11400000, guid: 7b6510a3b7b335d4d9eec8ff34956f0d, type: 2}
     - target: {fileID: 7631315107574109392, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: leftHand
       value: 

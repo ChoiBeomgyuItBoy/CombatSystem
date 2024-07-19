@@ -5,6 +5,7 @@ namespace RainbowAssets.BehaviourTree
 {
     public class CustomAction : ActionNode
     {
+        [SerializeField] Status defaultStatus = Status.Running;
         [SerializeField] ActionData[] onEnterActions;
         [SerializeField] ActionData[] onTickActions;
         [SerializeField] ActionData[] onExitActions;
@@ -53,7 +54,7 @@ namespace RainbowAssets.BehaviourTree
                 }
             }
 
-            return Status.Running;
+            return defaultStatus;
         }
 
         void DoActions(ActionData[] actions)

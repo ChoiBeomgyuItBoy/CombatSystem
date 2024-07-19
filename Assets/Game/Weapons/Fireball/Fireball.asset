@@ -22,7 +22,6 @@ MonoBehaviour:
   - animationName: Item Attack 1
     knockback: {x: 10, y: 0}
     attackForce: 0
-    forceTime: 0
     endTime: 0.9
     bonusPercentage: 0
-    attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
+    attackEffect: {fileID: 885083363062775776, guid: 04a3ace5acb9d4b45831cbe7c8d80891, type: 3}

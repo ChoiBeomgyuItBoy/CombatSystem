@@ -1,5 +1,6 @@
 using System;
 using CombatSystem.Attributes;
+using CombatSystem.Core;
 using UnityEngine;
 
 namespace CombatSystem.Abilites.Effects
@@ -8,6 +9,7 @@ namespace CombatSystem.Abilites.Effects
     public class HealthEffect : EffectStrategy
     {
         [SerializeField] float healthChange;
+        [SerializeField] Vector2 knockback;
 
         public override void StartEffect(AbilityData data, Action finished)
         {
@@ -25,6 +27,13 @@ namespace CombatSystem.Abilites.Effects
                     {
                         health.Heal(healthChange);
                     }
+                }
+
+                ForceReceiver forceReceiver = target.GetComponent<ForceReceiver>();
+
+                if(forceReceiver != null)
+                {
+                    forceReceiver.AddKnockback(data.GetTargetPoint(), knockback);
                 }
             }
 

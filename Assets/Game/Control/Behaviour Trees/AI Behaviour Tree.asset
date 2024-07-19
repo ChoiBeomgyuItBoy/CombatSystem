@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: a83f3dfb-2f41-4bbc-9737-6f2149cc23f1
   description: Targeting Sequence
-  position: {x: 35.00003, y: 362.00003}
+  position: {x: 35.999973, y: 378}
   priority: 0
   children:
   - {fileID: -6735275671551728652}
@@ -35,17 +35,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 54955de9-9c3b-4d8a-841e-79418f844562
   description: Start Targeting
-  position: {x: -76.000015, y: 531.00006}
+  position: {x: -74.61251, y: 563}
   priority: 0
+  defaultStatus: 1
   onEnterActions:
   - actionID: Start Targeting
     parameters: []
   onTickActions: []
   onExitActions: []
-  statusConditions:
-  - status: 1
-    condition:
-      and: []
+  statusConditions: []
 --- !u!114 &-6391837482643163466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,14 +58,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 0d46a631-d6f6-47d4-ac92-ee5461e11b81
   description: Knockdown Sequence
-  position: {x: 1662.6261, y: 233.14912}
+  position: {x: 2075.3298, y: 251.99998}
   priority: 0
   children:
   - {fileID: 2188412288555749410}
   - {fileID: 3530502216129297405}
   - {fileID: 1257269783449214162}
   - {fileID: 8294959450762681043}
-  - {fileID: -5174156530798113680}
+  - {fileID: 2568522624254700757}
   - {fileID: 1545375685465312531}
   abortCondition:
     and:
@@ -89,7 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 43b56627-31ce-4871-b00d-14938e8d1ebd
   description: 
-  position: {x: 748, y: -585.81635}
+  position: {x: 911.6424, y: -752.0514}
   priority: 0
   child: {fileID: 8405625846950773725}
   abortCondition:
@@ -107,31 +105,25 @@ MonoBehaviour:
   m_Name: CustomAction
   m_EditorClassIdentifier: 
   uniqueID: 32adc54a-9739-4566-afa7-dbac563093ff
-  description: Check if Impact Magnitude < 8
-  position: {x: 964.1502, y: 389.00003}
+  description: Check if Impact Magnitude > 1 && < 8
+  position: {x: 1117.1112, y: 437}
   priority: 0
+  defaultStatus: 2
   onEnterActions:
   - actionID: Cancel Ability
     parameters: []
   onTickActions: []
   onExitActions: []
   statusConditions:
-  - status: 2
-    condition:
-      and:
-      - or:
-        - predicate: Has Impact Magnitude
-          parameters:
-          - 8
-          negate: 0
   - status: 1
     condition:
       and:
       - or:
         - predicate: Has Impact Magnitude
           parameters:
+          - <
           - 8
-          negate: 1
+          negate: 0
 --- !u!114 &-5466954830304288259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: e36d7fb4-c6cf-4d2a-a4ba-608611d9a110
   description: Movement Loop
-  position: {x: 260, y: -8}
+  position: {x: 16.999964, y: -57}
   priority: 0
   child: {fileID: 4784020635163290285}
   abortCondition:
@@ -155,28 +147,6 @@ MonoBehaviour:
       - predicate: On Damage Taken
         parameters: []
         negate: 0
---- !u!114 &-5174156530798113680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 943c39989e6f3ed46b7f81cfe26422a5, type: 3}
-  m_Name: Selector
-  m_EditorClassIdentifier: 
-  uniqueID: a503825c-30ed-4b6d-bf28-c570e1a4f9fb
-  description: Dead Selector
-  position: {x: 2049, y: 413}
-  priority: 0
-  children:
-  - {fileID: 6301621095754054197}
-  - {fileID: -5166349936687010143}
-  abortCondition:
-    and: []
-  selectionType: 0
 --- !u!114 &-5172249129818689147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,8 +161,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: b3f195c8-8d8f-4440-9d2e-b5d608b06992
   description: Move To Waypoint
-  position: {x: -350.5844, y: 405}
+  position: {x: -458.00018, y: 394.00006}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
   - actionID: Cancel Target
     parameters: []
@@ -227,8 +198,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 3d95e77f-56ee-4428-bfb1-8121e9f07fc7
   description: Dead Loop
-  position: {x: 2168, y: 543.16}
+  position: {x: 2439.3296, y: 587.99994}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
@@ -250,8 +222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 0b94e956-bcbb-4453-bc44-05e7391bdec5
   description: Wait for Dwell Time
-  position: {x: -161.99994, y: 397}
+  position: {x: -257.155, y: 394.00006}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
   - actionID: Cancel Movement
     parameters: []
@@ -283,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: a4a7fba3-e90f-44f8-87a7-09b5ac25ce15
   description: Knockback Sequence
-  position: {x: 1061, y: 248}
+  position: {x: 1228.1112, y: 295}
   priority: 0
   children:
   - {fileID: -5767101357777649108}
@@ -310,6 +283,7 @@ MonoBehaviour:
   description: Select Random Ability
   position: {x: 674.8425, y: 515}
   priority: 0
+  defaultStatus: 2
   onEnterActions:
   - actionID: Select Random Ability
     parameters: []
@@ -318,14 +292,11 @@ MonoBehaviour:
   statusConditions:
   - status: 1
     condition:
-      and: []
-  - status: 2
-    condition:
       and:
       - or:
         - predicate: Select Random Ability
           parameters: []
-          negate: 1
+          negate: 0
 --- !u!114 &-3234831812922042020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: aa25f882-8eef-4927-b9eb-c6d86d1e7450
   description: Damage Loop
-  position: {x: 1398.9998, y: -30.470905}
+  position: {x: 1731, y: -99.99997}
   priority: 0
   child: {fileID: 8763485855992065924}
   abortCondition:
@@ -368,8 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 10453afa-f1a5-4468-ae0a-6f62a925b81d
   description: Die
-  position: {x: 954.0775, y: -294.99997}
+  position: {x: 1117.6425, y: -461.05142}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
@@ -395,14 +367,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 6a212ec2-19a1-4016-92e7-22b13d2d5521
   description: Chase Target
-  position: {x: 307, y: 523}
+  position: {x: 323, y: 531}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
+  - actionID: Reset Combo
+    parameters: []
   - actionID: Play Animation
     parameters:
     - Targeting
-  - actionID: Reset Combo
-    parameters: []
   onTickActions:
   - actionID: Chase Movement
     parameters: []
@@ -429,24 +402,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: f466d04c-898e-43f3-9118-3260517b1c59
   description: Target Movement
-  position: {x: 87.999985, y: 633}
+  position: {x: 89.38748, y: 665}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
+  - actionID: Choose Random Targeting Point
+    parameters: []
+  - actionID: Reset Combo
+    parameters: []
   - actionID: Play Animation
     parameters:
     - Targeting
-  - actionID: Reset Combo
-    parameters: []
-  - actionID: Choose Random Targeting Point
-    parameters: []
   onTickActions:
   - actionID: Targeting Movement
     parameters: []
   - actionID: Face Target
     parameters: []
-  onExitActions:
-  - actionID: Cancel Movement
-    parameters: []
+  onExitActions: []
   statusConditions:
   - status: 1
     condition:
@@ -469,7 +441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 662ed49c-2f45-40f3-a72f-2e23c9e6588c
   description: Behaviour Selector
-  position: {x: 739.6372, y: -205}
+  position: {x: 903.6425, y: -371.05142}
   priority: 1
   children:
   - {fileID: -5466954830304288259}
@@ -491,7 +463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 99f16b64-71fa-4282-a689-f5e45a8e399e
   description: Targeting Loop
-  position: {x: 105.00002, y: 507.00003}
+  position: {x: 106.387505, y: 539}
   priority: 0
   child: {fileID: -1853822377194779028}
   abortCondition:
@@ -540,7 +512,6 @@ MonoBehaviour:
   - {fileID: 1257269783449214162}
   - {fileID: 8294959450762681043}
   - {fileID: 1545375685465312531}
-  - {fileID: -5174156530798113680}
   - {fileID: -5166349936687010143}
   - {fileID: 6301621095754054197}
   - {fileID: 4904722443321041011}
@@ -551,6 +522,7 @@ MonoBehaviour:
   - {fileID: -3533947929495124811}
   - {fileID: 8001911773077099269}
   - {fileID: 7683258129093614186}
+  - {fileID: 2568522624254700757}
   rootNodeOffset: {x: 250, y: 0}
 --- !u!114 &1257269783449214162
 MonoBehaviour:
@@ -566,14 +538,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 62ac6be6-ddfe-46c1-b4ae-7e7fea1d01ed
   description: Knockdown Fall
-  position: {x: 1712.9999, y: 397}
+  position: {x: 1915.3297, y: 461.99994}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
     - Knockdown Fall
   onTickActions:
-  - actionID: Apply Motion Zero
+  - actionID: Apply Forces
     parameters: []
   onExitActions: []
   statusConditions:
@@ -598,19 +571,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 9ca8d539-36ca-486e-a6f6-87da17b09cc2
   description: Attack
-  position: {x: 455, y: 641}
+  position: {x: 471, y: 641}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
-  - actionID: Attack
-    parameters: []
   - actionID: Cancel Movement
     parameters: []
+  - actionID: Attack
+    parameters: []
   onTickActions:
+  - actionID: Apply Forces
+    parameters: []
   - actionID: Face Target
-    parameters: []
-  - actionID: Apply Motion Zero
-    parameters: []
-  - actionID: Apply Attack Force
     parameters: []
   onExitActions:
   - actionID: Cycle Combo
@@ -637,8 +609,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 2a8a7ab9-ba0d-4496-b9d5-34da91c89e3f
   description: Stand Up
-  position: {x: 2233.3972, y: 405}
+  position: {x: 2525, y: 470}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
@@ -660,30 +633,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: ec448a0b-1c7d-42f8-9b47-8d5fbe33cee8
   description: Check if Impact Magnitude > 8
-  position: {x: 1383, y: 397}
+  position: {x: 1563.3297, y: 461.99994}
   priority: 0
+  defaultStatus: 2
   onEnterActions:
   - actionID: Cancel Ability
     parameters: []
   onTickActions: []
   onExitActions: []
   statusConditions:
-  - status: 2
-    condition:
-      and:
-      - or:
-        - predicate: Has Impact Magnitude
-          parameters:
-          - 8
-          negate: 1
   - status: 1
     condition:
       and:
       - or:
         - predicate: Has Impact Magnitude
           parameters:
+          - '>'
           - 8
           negate: 0
+--- !u!114 &2568522624254700757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943c39989e6f3ed46b7f81cfe26422a5, type: 3}
+  m_Name: Selector
+  m_EditorClassIdentifier: 
+  uniqueID: 987bd65e-2d88-46dd-9161-c6878668873e
+  description: Dead Selector
+  position: {x: 2302.3296, y: 461.99994}
+  priority: 0
+  children:
+  - {fileID: 6301621095754054197}
+  - {fileID: -5166349936687010143}
+  abortCondition:
+    and: []
+  selectionType: 0
 --- !u!114 &2701376643077850189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,13 +700,6 @@ MonoBehaviour:
         parameters: []
         negate: 0
     - or:
-      - predicate: Current Attack Is Last
-        parameters: []
-        negate: 1
-      - predicate: Current Attack Finished
-        parameters: []
-        negate: 0
-    - or:
       - predicate: Current Attack Finished
         parameters: []
         negate: 0
@@ -735,8 +717,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 0f839507-2332-48e7-9649-1b7478440b1d
   description: Knockback
-  position: {x: 1147, y: 397}
+  position: {x: 1332.1112, y: 460}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
   - actionID: Play Random Animation
     parameters:
@@ -745,9 +728,9 @@ MonoBehaviour:
     - Damage 3
     - Damage 4
   onTickActions:
-  - actionID: Face Target
+  - actionID: Apply Forces
     parameters: []
-  - actionID: Apply Motion Zero
+  - actionID: Face Target
     parameters: []
   onExitActions: []
   statusConditions: []
@@ -765,14 +748,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 0a75ad89-cd5e-495e-aef8-ba68c689c0fe
   description: Knockdown Entry
-  position: {x: 1547, y: 397}
+  position: {x: 1742.3297, y: 453.99994}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
     - Knockdown Entry
   onTickActions:
-  - actionID: Apply Motion Zero
+  - actionID: Apply Forces
     parameters: []
   onExitActions: []
   statusConditions:
@@ -798,14 +782,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 57657e1b-441f-40c4-a659-3d4320491c65
   description: Wait for Suspicion Time
-  position: {x: -562.835, y: 387}
+  position: {x: -675, y: 394}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
   - actionID: Cancel Movement
     parameters: []
   onTickActions: []
   onExitActions: []
   statusConditions:
+  - status: 2
+    condition:
+      and:
+      - or:
+        - predicate: Has Patrol Path
+          parameters: []
+          negate: 1
   - status: 1
     condition:
       and:
@@ -827,7 +819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: ac93c9c0-84dc-4e0b-a3d6-e557a4be3fc4
   description: Movement Selector
-  position: {x: 253.00002, y: 118}
+  position: {x: 8.876434, y: 62.99999}
   priority: 1
   children:
   - {fileID: 6152840740901662884}
@@ -848,7 +840,7 @@ MonoBehaviour:
   m_Name: Selector
   m_EditorClassIdentifier: 
   uniqueID: 5e4ee057-6cba-4597-a257-9f285c883d39
-  description: Random Target Action
+  description: Random Hostile Action
   position: {x: 397.49304, y: 243.39563}
   priority: 0
   children:
@@ -876,7 +868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: c3319265-7df9-4f22-8616-20e91b874021
   description: Patrol Sequence
-  position: {x: -325.90262, y: 251}
+  position: {x: -450.00018, y: 243.1829}
   priority: 1
   children:
   - {fileID: 3647280899877788980}
@@ -923,19 +915,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 48ccb239-6619-4091-99be-d17e6bea5e80
   description: Check if Dead
-  position: {x: 1963, y: 543.68}
+  position: {x: 2239.3298, y: 580}
   priority: 0
+  defaultStatus: 1
   onEnterActions: []
   onTickActions: []
   onExitActions: []
   statusConditions:
-  - status: 1
-    condition:
-      and:
-      - or:
-        - predicate: Is Dead
-          parameters: []
-          negate: 1
   - status: 2
     condition:
       and:
@@ -957,7 +943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 2cf39b43-4b54-4ab2-91e3-63c47bc62e21
   description: Behaviour Loop
-  position: {x: 748.00006, y: -327}
+  position: {x: 911.6424, y: -493.0514}
   priority: 1
   child: {fileID: -1708105002057340823}
   abortCondition:
@@ -969,8 +955,9 @@ MonoBehaviour:
     - or:
       - predicate: Has Impact Magnitude
         parameters:
+        - <
         - 8
-        negate: 1
+        negate: 0
 --- !u!114 &7683258129093614186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,6 +974,7 @@ MonoBehaviour:
   description: Wait for Ability
   position: {x: 867, y: 523}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
   - actionID: Cancel Movement
     parameters: []
@@ -1035,8 +1023,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: def2ac53-aaf9-40cf-9f3c-e9de8daaa94d
   description: Knockdown Land
-  position: {x: 1877, y: 404}
+  position: {x: 2079.3298, y: 461.99994}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
   - actionID: Play Animation
     parameters:
@@ -1066,7 +1055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: c2a87741-f125-448f-be01-0c4dfa399a72
   description: Master Selector
-  position: {x: 748.0001, y: -455.92413}
+  position: {x: 911.6424, y: -622.0514}
   priority: 0
   children:
   - {fileID: 7301774416542155770}
@@ -1088,7 +1077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: c77f2d31-5006-412e-9f00-43389ebd5b09
   description: Damage Selector
-  position: {x: 1390.9998, y: 96.90915}
+  position: {x: 1723, y: 20.000015}
   priority: 0
   children:
   - {fileID: -3882840076128564867}

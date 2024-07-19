@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 6814dd82-98e9-4299-90f4-d2987bc285aa
   title: Dead Loop
-  position: {x: -341, y: -123}
+  position: {x: -445, y: -135}
   transitions: []
   onEnterActions:
   - actionID: Play Animation
@@ -36,7 +36,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 52685c2a-729e-488c-8e7f-67b8e10f7d6e
   title: Knockdown Fall
-  position: {x: -73, y: -219.19824}
+  position: {x: -167, y: -218.32}
   transitions:
   - rootStateID: 52685c2a-729e-488c-8e7f-67b8e10f7d6e
     trueStateID: 2573f1fc-41be-4419-a21f-b04d1c9f9b2b
@@ -51,7 +51,7 @@ MonoBehaviour:
     parameters:
     - Knockdown Fall
   onTickActions:
-  - actionID: Apply Motion Zero
+  - actionID: Apply Forces
     parameters: []
   onExitActions: []
 --- !u!114 &-7710654307947419803
@@ -92,7 +92,7 @@ MonoBehaviour:
     parameters:
     - Knockdown Land
   onTickActions:
-  - actionID: Apply Motion Zero
+  - actionID: Apply Forces
     parameters: []
   onExitActions: []
 --- !u!114 &-4766437016663962902
@@ -148,7 +148,7 @@ MonoBehaviour:
           - Locomotion
           negate: 0
       - or:
-        - predicate: Dodge Cooldown Finished
+        - predicate: Can Dodge
           parameters:
           - Dodge
           negate: 0
@@ -161,13 +161,13 @@ MonoBehaviour:
           parameters: []
           negate: 0
   onEnterActions:
+  - actionID: Cancel Target
+    parameters: []
+  - actionID: Reset Combo
+    parameters: []
   - actionID: Play Animation
     parameters:
     - Locomotion
-  - actionID: Reset Combo
-    parameters: []
-  - actionID: Cancel Target
-    parameters: []
   onTickActions:
   - actionID: Free Look Movement
     parameters: []
@@ -225,7 +225,7 @@ MonoBehaviour:
           - Locomotion
           negate: 0
       - or:
-        - predicate: Dodge Cooldown Finished
+        - predicate: Can Dodge
           parameters:
           - Dodge
           negate: 0
@@ -279,6 +279,19 @@ MonoBehaviour:
           parameters: []
           negate: 1
   - rootStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
+    trueStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
+    condition:
+      and:
+      - or:
+        - predicate: Animation Over
+          parameters:
+          - Attack
+          negate: 0
+      - or:
+        - predicate: Target In Targeting Range
+          parameters: []
+          negate: 0
+  - rootStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
     trueStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
     condition:
       and:
@@ -295,28 +308,13 @@ MonoBehaviour:
         - predicate: Current Attack Finished
           parameters: []
           negate: 0
-  - rootStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
-    trueStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36
-    condition:
-      and:
-      - or:
-        - predicate: Animation Over
-          parameters:
-          - Attack
-          negate: 0
-      - or:
-        - predicate: Target In Targeting Range
-          parameters: []
-          negate: 0
   onEnterActions:
   - actionID: Attack
     parameters: []
   onTickActions:
   - actionID: Face Target
     parameters: []
-  - actionID: Apply Attack Force
-    parameters: []
-  - actionID: Apply Motion Zero
+  - actionID: Apply Forces
     parameters: []
   onExitActions:
   - actionID: Cycle Combo
@@ -335,7 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 07371f81-119a-48d4-b6a6-71ce2bb4b8c0
   title: Any
-  position: {x: -69, y: -23.999998}
+  position: {x: -65, y: -18}
   transitions:
   - rootStateID: 07371f81-119a-48d4-b6a6-71ce2bb4b8c0
     trueStateID: 275fc7c0-1403-4bd9-b307-d7fb9a7575e3
@@ -344,6 +342,12 @@ MonoBehaviour:
       - or:
         - predicate: On Damage Taken
           parameters: []
+          negate: 0
+      - or:
+        - predicate: 'Has Impact Magnitude '
+          parameters:
+          - <
+          - 8
           negate: 0
   - rootStateID: 07371f81-119a-48d4-b6a6-71ce2bb4b8c0
     trueStateID: 6dec52fc-0c63-4e90-ba98-22e281661543
@@ -356,6 +360,7 @@ MonoBehaviour:
       - or:
         - predicate: Has Impact Magnitude
           parameters:
+          - '>'
           - 8
           negate: 0
   - rootStateID: 07371f81-119a-48d4-b6a6-71ce2bb4b8c0
@@ -369,8 +374,9 @@ MonoBehaviour:
       - or:
         - predicate: Has Impact Magnitude
           parameters:
+          - <
           - 8
-          negate: 1
+          negate: 0
 --- !u!114 &-689650441415031001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,9 +398,9 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: Dodge Cooldown Finished
+        - predicate: Dodge Finished
           parameters: []
-          negate: 1
+          negate: 0
   onEnterActions:
   - actionID: Start Directional Dodge
     parameters: []
@@ -555,16 +561,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 030741fb-42ad-4558-9227-ddd7b9b9e43e
   title: Fixed Dodge State
-  position: {x: 302.77, y: 233.81583}
+  position: {x: 318.00003, y: 247.00002}
   transitions:
   - rootStateID: 030741fb-42ad-4558-9227-ddd7b9b9e43e
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
     condition:
       and:
       - or:
-        - predicate: Dodge Cooldown Finished
+        - predicate: Dodge Finished
           parameters: []
-          negate: 1
+          negate: 0
   onEnterActions:
   - actionID: Start Fixed Dodge
     parameters: []
@@ -620,7 +626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 275fc7c0-1403-4bd9-b307-d7fb9a7575e3
   title: Knockback State
-  position: {x: 153, y: -26}
+  position: {x: 162, y: -18}
   transitions:
   - rootStateID: 275fc7c0-1403-4bd9-b307-d7fb9a7575e3
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
@@ -676,7 +682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 6dec52fc-0c63-4e90-ba98-22e281661543
   title: Knockdown Entry
-  position: {x: -91, y: -107}
+  position: {x: -165, y: -112}
   transitions:
   - rootStateID: 6dec52fc-0c63-4e90-ba98-22e281661543
     trueStateID: 52685c2a-729e-488c-8e7f-67b8e10f7d6e
@@ -692,7 +698,7 @@ MonoBehaviour:
     parameters:
     - Knockdown Entry
   onTickActions:
-  - actionID: Apply Motion Zero
+  - actionID: Apply Forces
     parameters: []
   onExitActions: []
 --- !u!114 &7717512463470998862

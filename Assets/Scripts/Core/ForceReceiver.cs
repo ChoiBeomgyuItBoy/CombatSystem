@@ -28,9 +28,9 @@ namespace CombatSystem.Core
             impact += force;
         }
 
-        public void AddKnockback(GameObject target, Vector2 knockback)
+        public void AddKnockback(Vector3 targetPosition, Vector2 knockback)
         {
-            Vector3 direction = (transform.position - target.transform.position).normalized;
+            Vector3 direction = (transform.position - targetPosition).normalized;
 
             direction.y += knockback.y;
             direction.x *= knockback.x;
@@ -77,8 +77,19 @@ namespace CombatSystem.Core
                     return controller.isGrounded;
 
                 case "Has Impact Magnitude":
-                    float threshold = float.Parse(parameters[0]);
-                    return impact.magnitude >= threshold;
+                    float threshold = float.Parse(parameters[1]);
+
+                    if(parameters[0] == ">")
+                    {
+                        return impact.magnitude > threshold;
+                    }
+  
+                    if(parameters[0] == "<")
+                    {
+                        return impact.magnitude < threshold;
+                    }
+
+                    return false;
             }
                 
             return null;
@@ -88,7 +99,7 @@ namespace CombatSystem.Core
         {
             switch(actionID)
             {
-                case "Apply Motion Zero":
+                case "Apply Forces":
                     Move();
                     break;
             }

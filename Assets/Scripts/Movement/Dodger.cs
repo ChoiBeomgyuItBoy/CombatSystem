@@ -97,8 +97,11 @@ namespace CombatSystem.Movement
         {
             switch(predicate)
             {
-                case "Dodge Cooldown Finished":
+                case "Can Dodge":
                     return dodgeCooldownTime < timeSinceLastDodge;
+
+                case "Dodge Finished":
+                    return remainingDodgeTime <= 0;
             }
 
             return null;

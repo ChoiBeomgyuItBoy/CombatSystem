@@ -16,27 +16,30 @@ MonoBehaviour:
   projectile: {fileID: 0}
   animatorOverride: {fileID: 22100000, guid: be4afc291dc2f4f48bfb633eaa15354e, type: 2}
   baseDamage: 100
-  range: 3
+  range: 2
   isLeftHanded: 0
   combo:
   - animationName: Heavy Sword Attack 1
     knockback: {x: 2, y: 0}
     attackForce: 3
-    forceTime: 0.1
     endTime: 0.6
     bonusPercentage: 0
-    attackEffect: {fileID: 3352754593128845497, guid: 1ce9c2c74592aa543a4d2753f27b894a, type: 3}
+    attackEffect: {fileID: 3352754593128845497, guid: fb8ba7bb7b79ecf4186d2dc7d71f5ad0, type: 3}
   - animationName: Heavy Sword Attack 2
     knockback: {x: 3, y: 3}
     attackForce: 3
-    forceTime: 0.6
-    endTime: 0.7
+    endTime: 0.6
     bonusPercentage: 0
-    attackEffect: {fileID: 3352754593128845497, guid: 1ce9c2c74592aa543a4d2753f27b894a, type: 3}
+    attackEffect: {fileID: 3352754593128845497, guid: fb8ba7bb7b79ecf4186d2dc7d71f5ad0, type: 3}
   - animationName: Heavy Sword Attack 3
     knockback: {x: 15, y: 10}
     attackForce: 5
-    forceTime: 0.6
+    endTime: 0.7
+    bonusPercentage: 0
+    attackEffect: {fileID: 3352754593128845497, guid: fb8ba7bb7b79ecf4186d2dc7d71f5ad0, type: 3}
+  - animationName: Heavy Sword Attack 4
+    knockback: {x: 15, y: 10}
+    attackForce: 5
     endTime: 0.99
     bonusPercentage: 0
-    attackEffect: {fileID: 3352754593128845497, guid: 1ce9c2c74592aa543a4d2753f27b894a, type: 3}
+    attackEffect: {fileID: 3352754593128845497, guid: fb8ba7bb7b79ecf4186d2dc7d71f5ad0, type: 3}
