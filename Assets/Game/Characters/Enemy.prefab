@@ -100,6 +100,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3142970437634222817, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142970437634222817, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7787272566749855518}
@@ -108,7 +112,15 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3142970437634222817, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142970437634222817, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142970437634222817, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 3142970437634222817, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
@@ -116,7 +128,19 @@ PrefabInstance:
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3142970437634222817, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142970437634222817, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142970437634222817, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142970437634222817, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5771482465836489871, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
@@ -177,6 +201,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 7968425094913212129}
+    - targetCorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 4683470466203371846}
     - targetCorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
       insertIndex: -1
@@ -204,6 +231,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2853830607492479419, guid: 398bf921f88b2e340b5ddd4755fc3ee5, type: 3}
   m_PrefabInstance: {fileID: 4268197199965672179}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7968425094913212129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063063611088874312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d6833a3db8e7e42affbebbeb3d679f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4683470466203371846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +286,7 @@ MonoBehaviour:
   weaponData: {fileID: 0}
   rightHand: {fileID: 5665098896560225910}
   leftHand: {fileID: 4550708243073356132}
+  target: {fileID: 0}
   targetGroup: {fileID: 0}
   targetingRange: 20
   targetingSpeedFraction: 0.3

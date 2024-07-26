@@ -280,23 +280,16 @@ MonoBehaviour:
   m_Name: CustomAction
   m_EditorClassIdentifier: 
   uniqueID: 07be5817-01a7-409d-b58c-e9665bf65802
-  description: Select Random Ability
+  description: Select Ability
   position: {x: 674.8425, y: 515}
   priority: 0
-  defaultStatus: 2
+  defaultStatus: 1
   onEnterActions:
-  - actionID: Select Random Ability
+  - actionID: Select Ability
     parameters: []
   onTickActions: []
   onExitActions: []
-  statusConditions:
-  - status: 1
-    condition:
-      and:
-      - or:
-        - predicate: Select Random Ability
-          parameters: []
-          negate: 0
+  statusConditions: []
 --- !u!114 &-3234831812922042020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -979,7 +972,9 @@ MonoBehaviour:
   - actionID: Cancel Movement
     parameters: []
   onTickActions: []
-  onExitActions: []
+  onExitActions:
+  - actionID: Cycle Ability
+    parameters: []
   statusConditions:
   - status: 1
     condition:

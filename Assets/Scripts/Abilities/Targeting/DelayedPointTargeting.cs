@@ -19,6 +19,7 @@ namespace CombatSystem.Abilites.Targeting
         [SerializeField] float maxLifeTime = 5;
         [SerializeField] float maxDistance = 20;
         [SerializeField] [Range(0,1)] float pointSpeedFraction = 1;
+        [SerializeField] bool lookAtPoint = false;
         const string activationInput = "Attack";
 
         public override void StartTargeting(AbilityData data, Action finished)
@@ -32,6 +33,7 @@ namespace CombatSystem.Abilites.Targeting
         {
             GameObject user = data.GetUser();
             InputReader inputReader = user.GetComponent<InputReader>();
+            Mover userMover = user.GetComponent<Mover>();
             Health currentTarget = user.GetComponent<Fighter>().GetTarget();
             Mover pointInstance = Instantiate(movingPoint, user.transform.position, Quaternion.identity);
 
@@ -42,6 +44,11 @@ namespace CombatSystem.Abilites.Targeting
 
             while(!data.IsCancelled() && elapsedTime < maxLifeTime)
             {
+                if(lookAtPoint)
+                {
+                    userMover.LookAt(pointInstance.transform.position);
+                }
+                
                 if(user.CompareTag("Player"))
                 {
                     Vector3 pointPosition = pointInstance.transform.position;

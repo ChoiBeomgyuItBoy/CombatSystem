@@ -697,6 +697,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.14462541
       objectReference: {fileID: 0}
+    - target: {fileID: 1790889456032140930, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1999311748829243363, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.038320832
@@ -787,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2063063611088874312, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2582372722977493549, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: m_LocalPosition.x
@@ -987,10 +991,14 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 567989aaecdc00945b7942482c9eeb48, type: 2}
     - target: {fileID: 3591762594162792356, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: abilityConditions.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3591762594162792356, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: abilityConditions.Array.data[0].ability
+      value: 
+      objectReference: {fileID: 11400000, guid: e1c2badb9a689e6498e2928053826c5f, type: 2}
+    - target: {fileID: 3591762594162792356, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
+      propertyPath: abilityConditions.Array.data[1].ability
       value: 
       objectReference: {fileID: 11400000, guid: b96581a13201e2247b4c0149c0ef13b6, type: 2}
     - target: {fileID: 3792806464504683627, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
@@ -1844,7 +1852,7 @@ PrefabInstance:
     - target: {fileID: 7631315107574109392, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: weaponData
       value: 
-      objectReference: {fileID: 11400000, guid: 69dca11fb13ffa244922cd5f6c53874e, type: 2}
+      objectReference: {fileID: 11400000, guid: be6ac637c84d4764680e9928b14b42d9, type: 2}
     - target: {fileID: 7631315107574109392, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: dodgeDuration
       value: 1
@@ -3753,16 +3761,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4957621799281735218, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: abilityConditions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4957621799281735218, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: abilityConditions.Array.data[0].ability
       value: 
       objectReference: {fileID: 11400000, guid: b96581a13201e2247b4c0149c0ef13b6, type: 2}
+    - target: {fileID: 4957621799281735218, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
+      propertyPath: abilityConditions.Array.data[1].ability
+      value: 
+      objectReference: {fileID: 11400000, guid: e1c2badb9a689e6498e2928053826c5f, type: 2}
+    - target: {fileID: 4957621799281735218, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
+      propertyPath: abilityConditions.Array.data[2].ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 9584720e58d1ae84b8f72dea45c8edcc, type: 2}
     - target: {fileID: 5882296972809275587, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: weaponData
       value: 
-      objectReference: {fileID: 11400000, guid: e965b39d6ff6ea44f9b1c414f1159c03, type: 2}
+      objectReference: {fileID: 11400000, guid: 88ed3df358532ad42838b10367c3ffd5, type: 2}
     - target: {fileID: 7712694054656906571, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.1784248
@@ -3948,7 +3964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2965319272433479209, guid: f239836e3d094a04eb2834406c93d428, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6656452116778717617, guid: f239836e3d094a04eb2834406c93d428, type: 3}
       propertyPath: targetingRange
@@ -5546,10 +5562,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.02612429
       objectReference: {fileID: 0}
-    - target: {fileID: 8464674746543180839, guid: f239836e3d094a04eb2834406c93d428, type: 3}
-      propertyPath: behaviourTree
-      value: 
-      objectReference: {fileID: 11400000, guid: 7b6510a3b7b335d4d9eec8ff34956f0d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5838,7 +5850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2965319272433479209, guid: f239836e3d094a04eb2834406c93d428, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6819669480724613917, guid: f239836e3d094a04eb2834406c93d428, type: 3}
       propertyPath: m_LocalPosition.x

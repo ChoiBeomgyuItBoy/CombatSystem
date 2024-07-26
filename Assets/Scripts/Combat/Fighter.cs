@@ -13,6 +13,7 @@ namespace CombatSystem.Combat
         [SerializeField] WeaponData weaponData;
         [SerializeField] Transform rightHand;
         [SerializeField] Transform leftHand;
+        [SerializeField] Health target;
         [SerializeField] CinemachineTargetGroup targetGroup;
         [SerializeField] float targetingRange = 20;
         [SerializeField] [Range(0,1)] float targetingSpeedFraction = 0.3f;
@@ -27,7 +28,6 @@ namespace CombatSystem.Combat
         ForceReceiver forceReceiver;
         Mover mover;
         GameObject player;
-        [SerializeField] Health target;
         Vector3 currentTargetingPoint;
         int currentAttackIndex = 0;
         float timeSinceLastSawTarget = Mathf.Infinity;
@@ -130,7 +130,7 @@ namespace CombatSystem.Combat
 
             if(CompareTag("Player"))
             {
-                closestTarget = GetClosestTargetOnScreen();
+                closestTarget = GetClosestCombatTarget();
             }
             else
             {
@@ -146,7 +146,7 @@ namespace CombatSystem.Combat
             return false;
         }
 
-        Health GetClosestTargetOnScreen()
+        Health GetClosestCombatTarget()
         {
             var hits = Physics.SphereCastAll(transform.position, targetingRange, Vector3.up, 0);
             float closestTargetDistance = Mathf.Infinity;
@@ -154,23 +154,25 @@ namespace CombatSystem.Combat
 
             foreach(var hit in hits)
             {
-                Health currentTarget = hit.transform.GetComponent<Health>();
+                CombatTarget combatTarget = hit.transform.GetComponent<CombatTarget>();
 
-                if(currentTarget != null && currentTarget != GetComponent<Health>())
+                if(combatTarget != null)
                 {
-                    if(currentTarget.IsDead())
+                    Health targetHealth = combatTarget.GetComponent<Health>();
+
+                    if(targetHealth.IsDead())
                     {
                         continue;
                     }
 
-                    Renderer renderer = currentTarget.GetComponentInChildren<Renderer>();
+                    Renderer renderer = combatTarget.GetComponentInChildren<Renderer>();
 
                     if(!renderer.isVisible)
                     {
                         continue;
                     }
 
-                    Vector2 targetPosition = Camera.main.WorldToViewportPoint(currentTarget.transform.position);
+                    Vector2 targetPosition = Camera.main.WorldToViewportPoint(combatTarget.transform.position);
                     Vector2 centerToTarget = targetPosition - new Vector2(0.5f, 0.5f);
                     
                     if(centerToTarget.sqrMagnitude > closestTargetDistance)
@@ -179,7 +181,7 @@ namespace CombatSystem.Combat
                     }
 
                     closestTargetDistance = centerToTarget.sqrMagnitude;
-                    closestTarget = currentTarget;
+                    closestTarget = targetHealth;
                 }
             }
 

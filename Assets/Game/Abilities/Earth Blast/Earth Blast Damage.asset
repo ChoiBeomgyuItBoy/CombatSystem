@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Earth Blast Damage
   m_EditorClassIdentifier: 
   healthChange: -200
-  knockback: {x: 10, y: 20}
+  knockback: {x: 20, y: 15}

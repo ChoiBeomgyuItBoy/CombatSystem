@@ -7,10 +7,12 @@ namespace CombatSystem.Abilites
     public class AbilityStore : MonoBehaviour, IAction, IPredicateEvaluator
     {
         [SerializeField] bool useConditions = true;
+        [SerializeField] bool randomSelection = false;
         [SerializeField] AbilityCondition[] abilityConditions;
         InputReader inputReader;
         Ability currentAbility;
         string[] abilityInputs;
+        int currentAbilityIndex = 0;
 
         [System.Serializable]
         class AbilityCondition
@@ -50,10 +52,11 @@ namespace CombatSystem.Abilites
 
             Ability candidate = abilityConditions[index].ability;
 
-            if(candidate.Use(gameObject))
+            if(candidate.CanBeUsed())
             {
                 currentAbility = candidate;
                 currentAbility.abilityFinished += CancelAbility;
+                currentAbility.Use(gameObject);
                 return true;
             }
 
@@ -93,21 +96,42 @@ namespace CombatSystem.Abilites
             return false;
         }
 
-        void SelectRandomAbility()
+        void SelectAbility()
         {
-            UseAbility(Random.Range(0, abilityConditions.Length));
+            if(randomSelection)
+            {
+                UseAbility(Random.Range(0, abilityConditions.Length));
+            }
+            else
+            {
+                UseAbility(currentAbilityIndex);
+            }
+        }
+
+        void CycleAbility()
+        {
+            if(currentAbilityIndex == abilityConditions.Length - 1)
+            {
+                currentAbilityIndex = 0;
+            }
+
+            currentAbilityIndex++;
         }
 
         void IAction.DoAction(string actionID, string[] parameters)
         {
             switch(actionID)
             {
-                case "Select Random Ability":
-                    SelectRandomAbility();
+                case "Select Ability":
+                    SelectAbility();
                     return;
 
                 case "Cancel Ability":
                     CancelAbility();
+                    break;
+
+                case "Cycle Ability":
+                    CycleAbility();
                     break;
             }
         }

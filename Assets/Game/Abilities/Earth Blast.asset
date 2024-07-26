@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetingStrategy: {fileID: 11400000, guid: de28cffb5070f1d4d946f15088625c71, type: 2}
   filterStrategies:
-  - {fileID: 11400000, guid: 6a7c71a7738374f49b00f10e7d493d90, type: 2}
+  - {fileID: 11400000, guid: f2aab043189548b44bceedcb35edae36, type: 2}
   effectStrategies:
   - {fileID: 11400000, guid: 2523e964b2aaeac4da6dc92aad5c65c3, type: 2}
   - {fileID: 11400000, guid: 19b6649e089600b46897a391c4e5ac79, type: 2}

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4f23ace626f10499494d32d1670af6, type: 3}
+  m_Name: Earth Scepter
+  m_EditorClassIdentifier: 
+  equippedWeapon: {fileID: 7749578759438532145, guid: 266bdd65c09553a4683067411621d0a7, type: 3}
+  projectile: {fileID: 8273058541419456644, guid: 730e17adab2286b44b96060e72acca7f, type: 3}
+  animatorOverride: {fileID: 0}
+  baseDamage: 100
+  range: 20
+  isLeftHanded: 0
+  combo:
+  - animationName: Spell Cast 2
+    knockback: {x: 10, y: 0}
+    attackForce: 0
+    endTime: 0.6
+    bonusPercentage: 0
+    attackEffect: {fileID: 885083363062775776, guid: 04a3ace5acb9d4b45831cbe7c8d80891, type: 3}
+  - animationName: Spell Cast 3
+    knockback: {x: 10, y: 0}
+    attackForce: 0
+    endTime: 0.99
+    bonusPercentage: 0
+    attackEffect: {fileID: 885083363062775776, guid: 04a3ace5acb9d4b45831cbe7c8d80891, type: 3}

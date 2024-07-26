@@ -16,6 +16,11 @@ namespace CombatSystem.Combat
 
             foreach(var hit in hits)
             {
+                if(hit.transform.CompareTag(user.tag))
+                {
+                    continue;
+                }
+
                 Health health = hit.transform.GetComponent<Health>();
 
                 if(health != null && health != user.GetComponent<Health>())

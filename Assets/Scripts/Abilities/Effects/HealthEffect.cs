@@ -19,6 +19,11 @@ namespace CombatSystem.Abilites.Effects
 
                 if(health != null)
                 {
+                    if(health.IsInvulnerable())
+                    {
+                        continue;
+                    }
+
                     if(healthChange < 0)
                     {
                         health.TakeDamage(-healthChange);
@@ -27,13 +32,13 @@ namespace CombatSystem.Abilites.Effects
                     {
                         health.Heal(healthChange);
                     }
-                }
 
-                ForceReceiver forceReceiver = target.GetComponent<ForceReceiver>();
+                    ForceReceiver forceReceiver = target.GetComponent<ForceReceiver>();
 
-                if(forceReceiver != null)
-                {
-                    forceReceiver.AddKnockback(data.GetTargetPoint(), knockback);
+                    if(forceReceiver != null)
+                    {
+                        forceReceiver.AddKnockback(data.GetTargetPoint(), knockback);
+                    }
                 }
             }
 

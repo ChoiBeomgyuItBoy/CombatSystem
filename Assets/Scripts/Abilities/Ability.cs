@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RainbowAssets.BehaviourTree;
 using UnityEngine;
 
 namespace CombatSystem.Abilites
@@ -43,18 +44,18 @@ namespace CombatSystem.Abilites
             finishedEffectCount = 0;
         }
 
-        public bool Use(GameObject user)
+        public bool CanBeUsed()
         {
-            if(remainingCooldown > 0)
+            return remainingCooldown <= 0;
+        }
+
+        public void Use(GameObject user)
+        {
+            if(CanBeUsed())
             {
-                return false;
+                currentData = new(user);
+                targetingStrategy.StartTargeting(currentData, TargetAquired);
             }
-
-            currentData = new(user);
-
-            targetingStrategy.StartTargeting(currentData, TargetAquired);
-
-            return true;
         }
 
         void TargetAquired()

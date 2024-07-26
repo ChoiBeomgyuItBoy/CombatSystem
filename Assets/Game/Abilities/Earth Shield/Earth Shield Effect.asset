@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c063a84ebd8b548aeda43a9acce781, type: 3}
+  m_Name: Earth Shield Effect
+  m_EditorClassIdentifier: 
+  shieldPrefab: {fileID: 8964379729105158849, guid: 4b6cf8cf13d486b408d7356d5468274f, type: 3}
+  destroyEffect: {fileID: 9083732665924869058, guid: 25b92094807357e42aead81d207c5497, type: 3}
+  maxLifeTime: 50

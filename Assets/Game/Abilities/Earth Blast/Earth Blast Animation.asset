@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Earth Blast Animation
   m_EditorClassIdentifier: 
   animationName: Spell Cast 4
-  animationTag: Ability
+  animationTag: Attack
   endTime: 0.99

@@ -53,6 +53,11 @@ namespace CombatSystem.Combat
 
         void OnTriggerEnter(Collider other)
         {
+            if(other.CompareTag(instigator.tag))
+            {
+                return;
+            }
+
             Health health = other.GetComponent<Health>();
 
             if(health != null && health != instigator.GetComponent<Health>())

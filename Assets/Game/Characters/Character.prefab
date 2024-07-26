@@ -61,10 +61,10 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.2
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.02
+  m_SkinWidth: 0.03
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &8187136884615502377
@@ -76,7 +76,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2853830607492479419}
   m_Enabled: 1
   m_AgentTypeID: 1479372276
-  m_Radius: 0.2
+  m_Radius: 0.3
   m_Speed: 6
   m_Acceleration: 100
   avoidancePriority: 50

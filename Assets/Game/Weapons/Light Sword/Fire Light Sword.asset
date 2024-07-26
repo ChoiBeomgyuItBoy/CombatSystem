@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4f23ace626f10499494d32d1670af6, type: 3}
+  m_Name: Fire Light Sword
+  m_EditorClassIdentifier: 
+  equippedWeapon: {fileID: 1227218876564722152, guid: 6e1c51fe3e03ad24a9da3857cb2fa657, type: 3}
+  projectile: {fileID: 0}
+  animatorOverride: {fileID: 22100000, guid: 0ca3bc400f776044aaeee1a5d9e8e29a, type: 2}
+  baseDamage: 100
+  range: 1
+  isLeftHanded: 0
+  combo:
+  - animationName: Light Sword Attack 4
+    knockback: {x: 2, y: 0}
+    attackForce: 2
+    endTime: 0.3
+    bonusPercentage: 0.1
+    attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
+  - animationName: Light Sword Attack 5
+    knockback: {x: 2, y: 0}
+    attackForce: 2
+    endTime: 0.35
+    bonusPercentage: 0.15
+    attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
+  - animationName: Light Sword Attack 8
+    knockback: {x: 2, y: 0}
+    attackForce: 2
+    endTime: 0.4
+    bonusPercentage: 0.2
+    attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
+  - animationName: Light Sword Attack 9
+    knockback: {x: 0, y: 0}
+    attackForce: 0
+    endTime: 0.3
+    bonusPercentage: 0.25
+    attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
+  - animationName: Light Sword Attack 12
+    knockback: {x: 10, y: 5}
+    attackForce: 4
+    endTime: 0.5
+    bonusPercentage: 0.4
+    attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
