@@ -66,18 +66,11 @@ namespace CombatSystem.Combat
             {
                 weaponInstance.Hit(user, damage, knockback);
             }
-
-            GameObject attackEffect = GetAttack(comboIndex).GetAttackEffect();
-
-            if(attackEffect != null)
-            {
-                Instantiate(attackEffect, GetHand().position, GetHand().rotation);
-            }
         }
 
-        void LaunchProjectile(Health target, float damage, Vector3 knockback)
+        Projectile LaunchProjectile(Health target, float damage, Vector3 knockback)
         {
-            var projectileInstance = Instantiate(projectile, GetHand().position, Quaternion.identity);
+            Projectile projectileInstance = Instantiate(projectile, GetHand().position, Quaternion.identity);
 
             if(target != null)
             {
@@ -87,6 +80,8 @@ namespace CombatSystem.Combat
             {
                 projectileInstance.SetData(user, GetHand().position, damage, knockback, GetProjectilePoint());
             }
+
+            return projectileInstance;
         }
 
         Vector3 GetProjectilePoint()

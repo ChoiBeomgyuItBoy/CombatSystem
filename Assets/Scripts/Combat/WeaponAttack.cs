@@ -10,7 +10,6 @@ namespace CombatSystem.Combat
         [SerializeField] float attackForce;
         [SerializeField] [Range(0, 0.99f)] float endTime;
         [SerializeField] [Range(0, 1)] float bonusPercentage;
-        [SerializeField] GameObject attackEffect;
 
         public string GetAnimationName()
         {
@@ -35,11 +34,6 @@ namespace CombatSystem.Combat
         public float GetBonusPercentage()
         {
             return bonusPercentage;
-        }
-
-        public GameObject GetAttackEffect()
-        {
-            return attackEffect;
         }
     }
 }

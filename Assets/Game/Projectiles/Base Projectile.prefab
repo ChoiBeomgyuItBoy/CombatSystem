@@ -145,9 +145,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8241974822736539127}
-  - component: {fileID: 7578796932176512084}
   - component: {fileID: 7248675632109130833}
-  - component: {fileID: 7613616126027271481}
+  - component: {fileID: 8577417507783510873}
   m_Layer: 0
   m_Name: Base Projectile
   m_TagString: Untagged
@@ -171,33 +170,6 @@ Transform:
   - {fileID: 2011490596860857130}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &7578796932176512084
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3094826182442167978}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!135 &7248675632109130833
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -219,7 +191,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7613616126027271481
+--- !u!114 &8577417507783510873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,10 +203,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8448421429eb247a68786337e6a988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  maxHeight: 5
+  speed: 10
+  maxHeight: 1
   maxLifeTime: 10
   isParabolic: 1
+  launchEffect: {fileID: 0}
   hitEffect: {fileID: 0}
   pathLine: {fileID: 1395139193149103017}
-  lineStep: 0.01
+  lineStep: 0.1

@@ -22,12 +22,12 @@ MonoBehaviour:
   - animationName: Spell Cast 2
     knockback: {x: 10, y: 0}
     attackForce: 0
-    endTime: 0.6
+    endTime: 0.3
     bonusPercentage: 0
     attackEffect: {fileID: 885083363062775776, guid: 04a3ace5acb9d4b45831cbe7c8d80891, type: 3}
   - animationName: Spell Cast 3
     knockback: {x: 10, y: 0}
     attackForce: 0
-    endTime: 0.99
+    endTime: 0.6
     bonusPercentage: 0
     attackEffect: {fileID: 885083363062775776, guid: 04a3ace5acb9d4b45831cbe7c8d80891, type: 3}

@@ -28621,7 +28621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7248675632109130833, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7457665682031841935, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
       propertyPath: forceDrag
@@ -28751,6 +28751,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8577417507783510873, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 6045215257620709841, guid: 4cbe32446f88aaf46ad37a18a28f7dc7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

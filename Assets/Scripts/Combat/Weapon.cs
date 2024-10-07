@@ -8,10 +8,16 @@ namespace CombatSystem.Combat
     { 
         [SerializeField] Transform hitboxCenter;
         [SerializeField] float hitboxRadius = 0.5f;
+        [SerializeField] GameObject attackEffect;
         [SerializeField] GameObject hitEffect;
 
         public void Hit(GameObject user, float damage, Vector2 knockback)
         {
+            if(attackEffect != null)
+            {
+                Instantiate(attackEffect, transform.position, transform.rotation);
+            }
+
             var hits = Physics.SphereCastAll(hitboxCenter.position, hitboxRadius, Vector3.up, 0);
 
             foreach(var hit in hits)

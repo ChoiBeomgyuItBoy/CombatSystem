@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Earth Scepter
   m_EditorClassIdentifier: 
   equippedWeapon: {fileID: 7749578759438532145, guid: 266bdd65c09553a4683067411621d0a7, type: 3}
-  projectile: {fileID: 8273058541419456644, guid: 730e17adab2286b44b96060e72acca7f, type: 3}
+  projectile: {fileID: 7813229309928992484, guid: 730e17adab2286b44b96060e72acca7f, type: 3}
   animatorOverride: {fileID: 0}
   baseDamage: 100
   range: 20
@@ -24,10 +24,8 @@ MonoBehaviour:
     attackForce: 0
     endTime: 0.6
     bonusPercentage: 0
-    attackEffect: {fileID: 885083363062775776, guid: 04a3ace5acb9d4b45831cbe7c8d80891, type: 3}
   - animationName: Spell Cast 3
     knockback: {x: 10, y: 0}
     attackForce: 0
     endTime: 0.99
     bonusPercentage: 0
-    attackEffect: {fileID: 885083363062775776, guid: 04a3ace5acb9d4b45831cbe7c8d80891, type: 3}

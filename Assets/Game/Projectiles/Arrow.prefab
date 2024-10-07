@@ -199,6 +199,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: launchEffect
+      value: 
+      objectReference: {fileID: 4246028509557968221, guid: 08a0ff6ae4f232c4dab0122b50a3e030, type: 3}
+    - target: {fileID: 7613616126027271481, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
       propertyPath: onHit.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -250,6 +254,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8577417507783510873, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8577417507783510873, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 9198238611806258893, guid: 3e4aa3babfdb13946be474962081d6d4, type: 3}
+    - target: {fileID: 8577417507783510873, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: launchEffect
+      value: 
+      objectReference: {fileID: 4246028509557968221, guid: 08a0ff6ae4f232c4dab0122b50a3e030, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

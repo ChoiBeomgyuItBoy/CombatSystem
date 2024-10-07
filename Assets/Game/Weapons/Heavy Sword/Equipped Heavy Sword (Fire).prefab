@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxCenter: {fileID: 8575679539215626147}
   hitboxRadius: 1.7
+  attackEffect: {fileID: 2932722638734451171, guid: 77657b5e7a7ae3048bc3f5eb9ec6c9fc, type: 3}
   hitEffect: {fileID: 6045215257620709841, guid: 989877939a59ebf48ad2cdb6f86b34df, type: 3}
 --- !u!1001 &3823432927326010437
 PrefabInstance:

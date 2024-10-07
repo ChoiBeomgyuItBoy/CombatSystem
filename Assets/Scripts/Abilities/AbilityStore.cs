@@ -113,6 +113,7 @@ namespace CombatSystem.Abilites
             if(currentAbilityIndex == abilityConditions.Length - 1)
             {
                 currentAbilityIndex = 0;
+                return;
             }
 
             currentAbilityIndex++;

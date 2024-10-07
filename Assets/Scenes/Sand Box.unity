@@ -791,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2063063611088874312, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2582372722977493549, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: m_LocalPosition.x
@@ -972,6 +972,14 @@ PrefabInstance:
     - target: {fileID: 3406447151506469670, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.02028692
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591762594162792356, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
+      propertyPath: useConditions
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591762594162792356, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
+      propertyPath: randomSelection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3591762594162792356, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: abilities.Array.size
@@ -2653,7 +2661,7 @@ PrefabInstance:
     - target: {fileID: 3591762594162792356, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: abilityConditions.Array.data[0].ability
       value: 
-      objectReference: {fileID: 11400000, guid: a5d42273d939fa44c9457974d5e832b6, type: 2}
+      objectReference: {fileID: 11400000, guid: e1c2badb9a689e6498e2928053826c5f, type: 2}
     - target: {fileID: 3591762594162792356, guid: 6f58624bbf549fb4cb1bfc0614980700, type: 3}
       propertyPath: abilityConditions.Array.data[0].useCondition.and.Array.size
       value: 1
@@ -3751,6 +3759,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3087434313322123128, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
+      propertyPath: freeLookSpeedFraction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4464611287337446962, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.00000017089188
@@ -3778,7 +3790,7 @@ PrefabInstance:
     - target: {fileID: 5882296972809275587, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: weaponData
       value: 
-      objectReference: {fileID: 11400000, guid: 88ed3df358532ad42838b10367c3ffd5, type: 2}
+      objectReference: {fileID: 11400000, guid: 085f6c228efb7fe408e1259b951c9b41, type: 2}
     - target: {fileID: 7712694054656906571, guid: a3e5990df156cd343ab5140c5b6cedeb, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.1784248

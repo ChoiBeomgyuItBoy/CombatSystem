@@ -18,3 +18,4 @@ MonoBehaviour:
   maxLifeTime: 5
   maxDistance: 20
   pointSpeedFraction: 1
+  lookAtPoint: 1

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3094826182442167978, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
       propertyPath: m_Name
-      value: Fireball
+      value: Fire Ball
       objectReference: {fileID: 0}
     - target: {fileID: 5074756638666403935, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
       propertyPath: m_Radius
@@ -148,6 +148,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8577417507783510873, guid: fe09dacb04c9a274b9aa8cd950b35060, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 6045215257620709841, guid: 989877939a59ebf48ad2cdb6f86b34df, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

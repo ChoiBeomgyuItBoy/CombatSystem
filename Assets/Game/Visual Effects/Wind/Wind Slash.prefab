@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5734786246270512897}
   m_Layer: 0
-  m_Name: Slash (Wind)
+  m_Name: Wind Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 3d95e77f-56ee-4428-bfb1-8121e9f07fc7
   description: Dead Loop
-  position: {x: 2439.3296, y: 587.99994}
+  position: {x: 2388, y: 591.4374}
   priority: 0
   defaultStatus: 0
   onEnterActions:
@@ -908,7 +908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 48ccb239-6619-4091-99be-d17e6bea5e80
   description: Check if Dead
-  position: {x: 2239.3298, y: 580}
+  position: {x: 2210.499, y: 596}
   priority: 0
   defaultStatus: 1
   onEnterActions: []

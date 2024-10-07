@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bow
   m_EditorClassIdentifier: 
   equippedWeapon: {fileID: 7079492833554786356, guid: 8d96bd696cb6c6444a8f4b4642084a47, type: 3}
-  projectile: {fileID: 7444301861938601231, guid: 9f4b233f2f1d9524c8431cb50f1c00fb, type: 3}
+  projectile: {fileID: 8786132932919860079, guid: 9f4b233f2f1d9524c8431cb50f1c00fb, type: 3}
   animatorOverride: {fileID: 0}
   baseDamage: 20
   range: 15
@@ -22,7 +22,5 @@ MonoBehaviour:
   - animationName: Bow Attack 1
     knockback: {x: 10, y: 5}
     attackForce: 0
-    forceTime: 0
     endTime: 0.9
     bonusPercentage: 0
-    attackEffect: {fileID: 4246028509557968221, guid: 08a0ff6ae4f232c4dab0122b50a3e030, type: 3}

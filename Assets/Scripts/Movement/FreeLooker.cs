@@ -30,13 +30,18 @@ namespace CombatSystem.Movement
 
             return right + forward + transform.position;
         }
+
+        float GetFreeLookSpeed()
+        {
+            return inputReader.GetInputValue().magnitude * freeLookSpeedFraction;
+        }
         
         void IAction.DoAction(string actionID, string[] parameters)
         {
             switch(actionID)
             {
                 case "Free Look Movement":
-                    mover.MoveTo(GetFreeLookDirection(), freeLookSpeedFraction);  
+                    mover.MoveTo(GetFreeLookDirection(), GetFreeLookSpeed());  
                     break;
             }
 

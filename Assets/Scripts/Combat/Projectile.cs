@@ -10,6 +10,7 @@ namespace CombatSystem.Combat
         [SerializeField] float maxHeight = 5;
         [SerializeField] float maxLifeTime = 10;
         [SerializeField] bool isParabolic = true;
+        [SerializeField] GameObject launchEffect;
         [SerializeField] GameObject hitEffect;
         [SerializeField] LineRenderer pathLine;
         [SerializeField] float lineStep = 0.1f;
@@ -41,6 +42,11 @@ namespace CombatSystem.Combat
 
         void Start()
         {
+            if(launchEffect != null)
+            {
+                Instantiate(launchEffect, transform.position, transform.rotation);
+            }
+            
             transform.LookAt(GetAimLocation());
         }
 
