@@ -391,7 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 3c1b4db4-94aa-47f2-9bb4-594f7d01c1aa
   title: Directional Dodge State
-  position: {x: 578.25, y: -120.29802}
+  position: {x: 588, y: -107}
   transitions:
   - rootStateID: 3c1b4db4-94aa-47f2-9bb4-594f7d01c1aa
     trueStateID: 753ecfcc-6a4a-4886-adfd-4d18e4f30a36

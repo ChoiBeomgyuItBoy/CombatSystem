@@ -19,7 +19,7 @@ namespace CombatSystem.Abilites.Effects
 
             shieldInstance.tag = user.tag;
             
-            user.SetInvulnerable(true);
+            user.SetInvulnerability();
             data.StartCoroutine(DestroyRoutine(user, shieldInstance));
 
             finished();
@@ -33,11 +33,6 @@ namespace CombatSystem.Abilites.Effects
             {       
                 if(shieldInstance.IsDead())
                 {
-                    if(destroyEffect != null)
-                    {
-                        Instantiate(destroyEffect, user.transform.position, Quaternion.identity);
-                    }
-
                     break;
                 }
 
@@ -46,7 +41,13 @@ namespace CombatSystem.Abilites.Effects
                 yield return null;
             }   
 
-            user.SetInvulnerable(false);
+            if(destroyEffect != null)
+            {
+                Instantiate(destroyEffect, user.transform.position, Quaternion.identity);
+            }
+
+            user.CancelInvulnerability();
+            
             Destroy(shieldInstance.gameObject);
         }
     }

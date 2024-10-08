@@ -1,4 +1,3 @@
-using CombatSystem.Attributes;
 using CombatSystem.Control;
 using RainbowAssets.Utils;
 using UnityEngine;
@@ -12,7 +11,6 @@ namespace CombatSystem.Movement
         [SerializeField] [Range(0,1)] float dodgeSpeedFraction = 0.6f;
         InputReader inputReader;
         Mover mover;
-        Health health;
         Vector2 lastFrameDirection;
         float timeSinceLastDodge = Mathf.Infinity;
         float remainingDodgeTime = 0;
@@ -21,7 +19,6 @@ namespace CombatSystem.Movement
         {
             inputReader = GetComponent<InputReader>();
             mover = GetComponent<Mover>();
-            health = GetComponent<Health>();
         }
 
         void Update()
@@ -31,7 +28,6 @@ namespace CombatSystem.Movement
 
         void StartDodge(Vector3 direction)
         {
-            health.SetInvulnerable(true);
             remainingDodgeTime = dodgeDuration;
             lastFrameDirection = direction;
         }
@@ -68,7 +64,6 @@ namespace CombatSystem.Movement
             }
             else
             {
-                health.SetInvulnerable(false);
                 timeSinceLastDodge = 0;
             }
 

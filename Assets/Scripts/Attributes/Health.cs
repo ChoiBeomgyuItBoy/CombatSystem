@@ -4,23 +4,28 @@ using UnityEngine;
 
 namespace CombatSystem.Attributes
 {
-    public class Health : MonoBehaviour, IAction, IPredicateEvaluator
+    public class Health : MonoBehaviour, IPredicateEvaluator
     {
         [SerializeField] float maxHealth = 100;
         [SerializeField] LazyEvent<float> onDamageTaken;
         [SerializeField] LazyEvent<float> onHeal;
         public LazyEvent onDie;
         float currentHealth = 0;
-        bool isInvulnerable = false;
+        [SerializeField] int invulnerabilityCounter = 0;
 
         public bool IsInvulnerable()
         {
-            return isInvulnerable;
+            return invulnerabilityCounter > 0;
         }
 
-        public void SetInvulnerable(bool isInvulnerable)
+        public void SetInvulnerability()
         {
-            this.isInvulnerable = isInvulnerable;
+            invulnerabilityCounter++;
+        }
+
+        public void CancelInvulnerability()
+        {
+            invulnerabilityCounter = Mathf.Max(0, invulnerabilityCounter - 1);
         }
 
         public bool IsDead()
@@ -45,7 +50,7 @@ namespace CombatSystem.Attributes
 
         public void TakeDamage(float damage)
         {
-            if(!IsDead() && !isInvulnerable)
+            if(!IsDead() && !IsInvulnerable())
             {
                 currentHealth = Mathf.Max(0, currentHealth - damage);
                 StartCoroutine(onDamageTaken?.Invoke(damage));     
@@ -69,20 +74,6 @@ namespace CombatSystem.Attributes
         void Awake()
         {
             currentHealth = maxHealth;
-        }
-
-        void IAction.DoAction(string actionID, string[] parameters)
-        {
-            switch(actionID)
-            {
-                case "Set Invulnerability":
-                    SetInvulnerable(true);
-                    break;
-
-                case "Cancel Invulnerability":
-                    SetInvulnerable(false);
-                    break;
-            }
         }
 
         bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
