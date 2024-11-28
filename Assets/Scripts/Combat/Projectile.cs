@@ -129,6 +129,13 @@ namespace CombatSystem.Combat
         void FollowPath()
         {
             Vector3 nextPosition = CalculatePath(timeSinceLaunched);
+
+            if(float.IsNaN(nextPosition.x) || float.IsNaN(nextPosition.y) || float.IsNaN(nextPosition.z) ||
+                float.IsInfinity(nextPosition.x) || float.IsInfinity(nextPosition.y) || float.IsInfinity(nextPosition.z))
+            {
+                return;
+            }
+
             Vector3 directionToNextPosition = nextPosition - transform.position;
 
             if(directionToNextPosition != Vector3.zero)
@@ -138,6 +145,7 @@ namespace CombatSystem.Combat
 
             transform.position = nextPosition;
         }
+
 
         Vector3 CalculatePath(float time)
         {
