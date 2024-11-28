@@ -10,7 +10,7 @@ namespace CombatSystem.Combat
 {
     public class Fighter : MonoBehaviour, IAction, IPredicateEvaluator
     {
-        [SerializeField] WeaponData weaponData;
+        [SerializeField] WeaponData defaultWeapon;
         [SerializeField] Transform rightHand;
         [SerializeField] Transform leftHand;
         [SerializeField] Health target;
@@ -28,13 +28,13 @@ namespace CombatSystem.Combat
         ForceReceiver forceReceiver;
         Mover mover;
         GameObject player;
+        WeaponData currentWeapon;
         Vector3 currentTargetingPoint;
         int currentAttackIndex = 0;
         float timeSinceLastSawTarget = Mathf.Infinity;
         float timeSinceStartedTargeting = Mathf.Infinity;
         const float targetGroupRadius = 2;
         const float targetGroupWeight = 1;
-
 
         public Transform GetHand(bool isLeftHanded)
         {
@@ -44,6 +44,12 @@ namespace CombatSystem.Combat
         public Health GetTarget()
         {
             return target;
+        }
+
+        public void EquipWeapon(WeaponData weaponData)
+        {
+            currentWeapon = weaponData.Clone();
+            currentWeapon.Spawn(gameObject, rightHand, leftHand, animationPlayer);
         }
 
         void Awake()
@@ -57,7 +63,7 @@ namespace CombatSystem.Combat
 
         void Start()
         {
-            EquipWeapon();
+            EquipWeapon(defaultWeapon);
         }
 
         void Update()
@@ -66,18 +72,9 @@ namespace CombatSystem.Combat
             timeSinceStartedTargeting += Time.deltaTime;
         }
 
-        void EquipWeapon()
-        {
-            if(weaponData != null)
-            {
-                weaponData = weaponData.Clone();
-                weaponData.Spawn(gameObject, rightHand, leftHand, animationPlayer);
-            }
-        }
-
         WeaponAttack GetCurrentAttack()
         {
-            return weaponData.GetAttack(currentAttackIndex);
+            return currentWeapon.GetAttack(currentAttackIndex);
         }
 
         float GetCurrentAttackTime()
@@ -87,7 +84,7 @@ namespace CombatSystem.Combat
 
         bool CurrentAttackIsLast()
         {
-            return currentAttackIndex == weaponData.GetComboLength() - 1;
+            return currentAttackIndex == currentWeapon.GetComboLength() - 1;
         }
 
         bool CurrentAttackFinished()
@@ -120,7 +117,7 @@ namespace CombatSystem.Combat
         // Animation Event
         void Hit()
         {
-            weaponData.Hit(currentAttackIndex, target);
+            currentWeapon.Hit(currentAttackIndex, target);
             forceReceiver.AddForce(transform.forward * GetCurrentAttack().GetAttackForce());
         }
 
@@ -374,7 +371,7 @@ namespace CombatSystem.Combat
                     return TargetInRange(targetingRange);
                 
                 case "Target In Attack Range":
-                    return TargetInRange(weaponData.GetRange());
+                    return TargetInRange(currentWeapon.GetRange());
 
                 case "At Targeting Point":
                     return AtTargetingPoint();

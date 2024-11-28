@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
   title: Free Look State
-  position: {x: 310.00003, y: 111.99997}
+  position: {x: 326, y: 112}
   transitions:
   - rootStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
     trueStateID: 7b1841da-627c-4a31-80da-e78d3b1b8091
@@ -561,7 +561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 030741fb-42ad-4558-9227-ddd7b9b9e43e
   title: Fixed Dodge State
-  position: {x: 318.00003, y: 247.00002}
+  position: {x: 318, y: 247}
   transitions:
   - rootStateID: 030741fb-42ad-4558-9227-ddd7b9b9e43e
     trueStateID: 0e5a65b6-86b0-428c-aac8-8bfbd877e690
@@ -595,7 +595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 674eed9a-07fd-47c1-83a7-4645d5c5fa2e
   title: Dead Entry
-  position: {x: -333, y: -18}
+  position: {x: -329, y: -10}
   transitions:
   - rootStateID: 674eed9a-07fd-47c1-83a7-4645d5c5fa2e
     trueStateID: 6814dd82-98e9-4299-90f4-d2987bc285aa

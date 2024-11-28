@@ -6,9 +6,8 @@ namespace CombatSystem.Abilites
 {
     public class AbilityStore : MonoBehaviour, IAction, IPredicateEvaluator
     {
-        [SerializeField] bool useConditions = true;
         [SerializeField] bool randomSelection = false;
-        [SerializeField] AbilityCondition[] abilityConditions;
+        [SerializeField] Ability[] abilities;        
         InputReader inputReader;
         Ability currentAbility;
         string[] abilityInputs;
@@ -25,9 +24,9 @@ namespace CombatSystem.Abilites
         {
             inputReader = GetComponent<InputReader>();
 
-            for(int i = 0; i < abilityConditions.Length; i++)
+            for(int i = 0; i < abilities.Length; i++)
             {
-                abilityConditions[i].ability = abilityConditions[i].ability.Clone();
+                abilities[i]= abilities[i].Clone();
             }
 
             if(inputReader != null)
@@ -38,19 +37,12 @@ namespace CombatSystem.Abilites
 
         bool UseAbility(int index)
         {
-            if(abilityConditions.Length == 0)
+            if(abilities.Length == 0)
             {
                 return false;
             }
 
-            Condition useCondition = abilityConditions[index].useCondition;
-
-            if(useConditions && !useCondition.Check(GetComponents<IPredicateEvaluator>()))
-            {
-                return false;
-            }
-
-            Ability candidate = abilityConditions[index].ability;
+            Ability candidate = abilities[index];
 
             if(candidate.CanBeUsed())
             {
@@ -75,9 +67,9 @@ namespace CombatSystem.Abilites
 
         void FillInputs()
         {
-            abilityInputs = new string[abilityConditions.Length];
+            abilityInputs = new string[abilities.Length];
 
-            for(int i = 0; i < abilityConditions.Length; i++)
+            for(int i = 0; i < abilities.Length; i++)
             {
                 abilityInputs[i] = $"Ability {i + 1}";
             }
@@ -85,7 +77,7 @@ namespace CombatSystem.Abilites
 
         bool AbilitySelected()
         {
-            for(int i = 0; i < abilityConditions.Length; i++)
+            for(int i = 0; i < abilities.Length; i++)
             {
                 if(inputReader.WasPressed(abilityInputs[i]))
                 {
@@ -100,7 +92,7 @@ namespace CombatSystem.Abilites
         {
             if(randomSelection)
             {
-                UseAbility(Random.Range(0, abilityConditions.Length));
+                UseAbility(Random.Range(0, abilities.Length));
             }
             else
             {
@@ -110,7 +102,7 @@ namespace CombatSystem.Abilites
 
         void CycleAbility()
         {
-            if(currentAbilityIndex == abilityConditions.Length - 1)
+            if(currentAbilityIndex == abilities.Length - 1)
             {
                 currentAbilityIndex = 0;
                 return;

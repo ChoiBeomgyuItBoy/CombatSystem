@@ -18,6 +18,8 @@ namespace CombatSystem.Combat
         Transform rightHand;
         Transform leftHand;
         Weapon weaponInstance;
+        const string spawnID = "Weapon";
+        const string destroyID = "Destroying";
 
         public WeaponData Clone()
         {
@@ -45,9 +47,12 @@ namespace CombatSystem.Combat
             this.rightHand = rightHand;
             this.leftHand = leftHand;
 
+            DestroyOldWeapon();
+
             if(equippedWeapon != null)
             {
                 weaponInstance = Instantiate(equippedWeapon, GetHand());
+                weaponInstance.gameObject.name = spawnID;
             }
 
             animationPlayer.SetAnimatorOverride(animatorOverride);
@@ -99,6 +104,22 @@ namespace CombatSystem.Combat
         Transform GetHand()
         {
             return isLeftHanded ? leftHand : rightHand;
+        }
+
+        void DestroyOldWeapon()
+        {
+            Transform oldWeapon = rightHand.Find(spawnID);
+
+            if(oldWeapon == null)
+            {
+                oldWeapon = leftHand.Find(spawnID);
+            }
+
+            if(oldWeapon != null)
+            {
+                oldWeapon.name = destroyID;
+                Destroy(oldWeapon.gameObject);
+            }
         }
     }
 }

@@ -1478,9 +1478,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c85f67d9a3d13445887f6205298f96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 88ed3df358532ad42838b10367c3ffd5, type: 2}
+  defaultWeapon: {fileID: 11400000, guid: e965b39d6ff6ea44f9b1c414f1159c03, type: 2}
   rightHand: {fileID: 3075955041797519054}
   leftHand: {fileID: 6563671787854371292}
+  target: {fileID: 0}
   targetGroup: {fileID: 6166532866636124502}
   targetingRange: 20
   targetingSpeedFraction: 0.8
@@ -1516,5 +1517,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7e63333986dc34d8018a5e3e4689c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useConditions: 0
-  abilityConditions: []
+  randomSelection: 0
+  abilities: []

@@ -210,7 +210,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7e127b3d-b210-4624-b94a-39f61cb20260"",
-                    ""path"": ""<Mouse>/forwardButton"",
+                    ""path"": ""<Mouse>/middleButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
