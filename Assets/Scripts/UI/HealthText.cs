@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace CombatSystem.UI
+namespace RPG.UI
 {
     public class HealthText : MonoBehaviour
     {

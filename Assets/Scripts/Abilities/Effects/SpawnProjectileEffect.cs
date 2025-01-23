@@ -1,9 +1,9 @@
 using System;
-using CombatSystem.Attributes;
-using CombatSystem.Combat;
+using RPG.Attributes;
+using RPG.Combat;
 using UnityEngine;
 
-namespace CombatSystem.Abilites.Effects
+namespace RPG.Abilites.Effects
 {
     [CreateAssetMenu(menuName = "Abilities/Effects/Spawn Projectile Effect")]
     public class SpawnProjectileEffect : EffectStrategy

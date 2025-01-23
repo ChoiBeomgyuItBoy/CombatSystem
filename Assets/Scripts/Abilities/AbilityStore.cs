@@ -1,8 +1,8 @@
-using CombatSystem.Control;
+using RPG.Control;
 using RainbowAssets.Utils;
 using UnityEngine;
 
-namespace CombatSystem.Abilites
+namespace RPG.Abilites
 {
     public class AbilityStore : MonoBehaviour, IAction, IPredicateEvaluator
     {

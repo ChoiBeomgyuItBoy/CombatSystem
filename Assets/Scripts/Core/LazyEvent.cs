@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace CombatSystem.Core
+namespace RPG.Core
 {
     [System.Serializable]
     public class LazyEvent : UnityEvent

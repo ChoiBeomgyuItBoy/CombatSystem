@@ -1,9 +1,9 @@
 using RainbowAssets.Utils;
-using CombatSystem.Control;
+using RPG.Control;
 using UnityEngine;
 using System;
 
-namespace CombatSystem.Movement
+namespace RPG.Movement
 {
     public class Patroller : MonoBehaviour, IAction, IPredicateEvaluator
     {

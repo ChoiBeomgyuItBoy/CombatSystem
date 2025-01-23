@@ -1,7 +1,7 @@
 using UnityEngine;
 using RainbowAssets.Utils;
 
-namespace CombatSystem.Core
+namespace RPG.Core
 {
     public class AnimationPlayer : MonoBehaviour, IAction, IPredicateEvaluator
     {

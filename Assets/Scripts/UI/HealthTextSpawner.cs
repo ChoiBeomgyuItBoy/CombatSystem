@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CombatSystem.UI
+namespace RPG.UI
 {
     public class HealthTextSpawner : MonoBehaviour
     {   

@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
-using CombatSystem.Attributes;
+using RPG.Attributes;
 using UnityEngine;
 
-namespace CombatSystem.Abilites.Effects
+namespace RPG.Abilites.Effects
 {
     [CreateAssetMenu(menuName = "Abilities/Effects/Shield Effect")]
     public class ShieldEffect : EffectStrategy

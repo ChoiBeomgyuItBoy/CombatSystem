@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.AI;
-using CombatSystem.Core;
+using RPG.Core;
 using RainbowAssets.Utils;
 
-namespace CombatSystem.Movement
+namespace RPG.Movement
 {
     public class Mover : MonoBehaviour, IAction
     {

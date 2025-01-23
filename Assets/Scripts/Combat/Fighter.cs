@@ -1,12 +1,12 @@
 using UnityEngine;
 using Cinemachine;
 using RainbowAssets.Utils;
-using CombatSystem.Core;
-using CombatSystem.Attributes;
-using CombatSystem.Movement;
-using CombatSystem.Control;
+using RPG.Core;
+using RPG.Attributes;
+using RPG.Movement;
+using RPG.Control;
 
-namespace CombatSystem.Combat
+namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour, IAction, IPredicateEvaluator
     {

@@ -2,7 +2,7 @@ using RainbowAssets.Utils;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace CombatSystem.Core
+namespace RPG.Core
 {
     public class ForceReceiver : MonoBehaviour, IAction, IPredicateEvaluator
     {

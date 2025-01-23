@@ -1,9 +1,9 @@
 using System;
-using CombatSystem.Attributes;
-using CombatSystem.Core;
+using RPG.Attributes;
+using RPG.Core;
 using UnityEngine;
 
-namespace CombatSystem.Abilites.Effects
+namespace RPG.Abilites.Effects
 {
     [CreateAssetMenu(menuName = "Abilities/Effects/Health Effect")]
     public class HealthEffect : EffectStrategy

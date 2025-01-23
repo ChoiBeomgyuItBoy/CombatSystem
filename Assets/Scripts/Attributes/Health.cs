@@ -1,8 +1,8 @@
-using CombatSystem.Core;
+using RPG.Core;
 using RainbowAssets.Utils;
 using UnityEngine;
 
-namespace CombatSystem.Attributes
+namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, IPredicateEvaluator
     {

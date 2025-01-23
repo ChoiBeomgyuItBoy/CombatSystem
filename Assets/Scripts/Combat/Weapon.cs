@@ -1,8 +1,8 @@
-using CombatSystem.Attributes;
-using CombatSystem.Core;
+using RPG.Attributes;
+using RPG.Core;
 using UnityEngine;
 
-namespace CombatSystem.Combat
+namespace RPG.Combat
 {
     public class Weapon : MonoBehaviour 
     { 

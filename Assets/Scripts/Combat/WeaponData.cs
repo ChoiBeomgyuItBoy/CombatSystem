@@ -1,8 +1,9 @@
-using CombatSystem.Attributes;
-using CombatSystem.Core;
+using System.Data;
+using RPG.Attributes;
+using RPG.Core;
 using UnityEngine;
 
-namespace CombatSystem.Combat
+namespace RPG.Combat
 {
     [CreateAssetMenu(menuName = "New Weapon")]
     public class WeaponData : ScriptableObject

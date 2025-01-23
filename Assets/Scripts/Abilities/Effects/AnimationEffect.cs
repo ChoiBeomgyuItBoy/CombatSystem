@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
-using CombatSystem.Core;
+using RPG.Core;
 using UnityEngine;
 
-namespace CombatSystem.Abilites.Effects
+namespace RPG.Abilites.Effects
 {
     [CreateAssetMenu(menuName = "Abilities/Effects/Animation Effect")]
     public class AnimationEffect : EffectStrategy

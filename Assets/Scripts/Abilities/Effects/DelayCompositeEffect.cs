@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace CombatSystem.Abilites.Effects
+namespace RPG.Abilites.Effects
 {
     [CreateAssetMenu(menuName = "Abilities/Effects/Delay Composite Effect")]
     public class DelayCompositeEffect : EffectStrategy

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace CombatSystem.Abilites.Effects
+namespace RPG.Abilites.Effects
 {
     [CreateAssetMenu(menuName = "Abilities/Effects/Spawn Prefab Effect")]
     public class SpawnPrefabEffect : EffectStrategy

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CombatSystem.Core
+namespace RPG.Core
 {
     public class CameraFacer : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace CombatSystem.Abilites
+namespace RPG.Abilites
 {
     public abstract class TargetingStrategy : ScriptableObject
     {

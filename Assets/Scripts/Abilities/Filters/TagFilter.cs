@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CombatSystem.Abilites.Filters
+namespace RPG.Abilites.Filters
 {
     [CreateAssetMenu(menuName = "Abilities/Filters/Tag Filter")]
     public class TagFilter : FilterStrategy

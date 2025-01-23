@@ -1,8 +1,8 @@
-using CombatSystem.Attributes;
+using RPG.Attributes;
 using TMPro;
 using UnityEngine;
 
-namespace CombatSystem.UI
+namespace RPG.UI
 {
     public class HealthBar : MonoBehaviour
     {

@@ -2,7 +2,7 @@ using RainbowAssets.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace CombatSystem.Control
+namespace RPG.Control
 {
     public class InputReader : MonoBehaviour, IPredicateEvaluator
     {

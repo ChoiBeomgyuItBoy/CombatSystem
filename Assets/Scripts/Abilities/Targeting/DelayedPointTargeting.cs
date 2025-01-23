@@ -1,14 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using CombatSystem.Attributes;
-using CombatSystem.Combat;
-using CombatSystem.Control;
-using CombatSystem.Core;
-using CombatSystem.Movement;
+using RPG.Attributes;
+using RPG.Combat;
+using RPG.Control;
+using RPG.Core;
+using RPG.Movement;
 using UnityEngine;
 
-namespace CombatSystem.Abilites.Targeting
+namespace RPG.Abilites.Targeting
 {
     [CreateAssetMenu(menuName = "Abilities/Targeting/Delayed Point Targeting")]
     public class DelayedPointTargeting : TargetingStrategy

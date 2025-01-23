@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace CombatSystem.Abilites.Targeting
+namespace RPG.Abilites.Targeting
 {
     [CreateAssetMenu(menuName = "Abilities/Targeting/Self Targeting")]
     public class SelfTargeting : TargetingStrategy

@@ -1,8 +1,8 @@
-using CombatSystem.Control;
+using RPG.Control;
 using RainbowAssets.Utils;
 using UnityEngine;
 
-namespace CombatSystem.Movement
+namespace RPG.Movement
 {
     public class FreeLooker : MonoBehaviour, IAction
     {

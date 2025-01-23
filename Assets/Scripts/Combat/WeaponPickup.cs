@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CombatSystem.Combat
+namespace RPG.Combat
 {
     public class WeaponPickup : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-# Unity Souls Like Combat System
+# Unity 3rd Person RPG
 ## Content:
  - Complex state machine and behaviour tree design.
  - Reuse of code between AI and player.
